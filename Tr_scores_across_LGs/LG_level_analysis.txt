@@ -1,0 +1,61 @@
+### plot of tc scores on one LG
+
+data <- read.csv("reproductive_mode_TWISST.popGenwins.csv", header=TRUE)
+lengths <- read.csv("contigs_lengths.csv",header=TRUE)
+
+par(mfrow=c(3,6))
+lg_list = seq(1:17)
+
+for(i in lg_list) {
+
+LG <- i
+
+data2 <- subset(data, topoC  > 0.7)
+data3 <- subset(data2, topoC  < 0.8)
+data4 <- subset(data2, topoC  > 0.8 & topoC < 0.9 | topoC == 0.8)
+data5 <- subset(data2, topoC  > 0.9 & topoC < 1 | topoC== 1)
+data6 <- subset(data2, topoC == 1)
+
+
+colourA<-"grey"
+colour1<-"grey"
+colour2<-"darkgoldenrod1"
+colour3<-"darkorange1"
+colour4<-"firebrick2"
+
+point<-20
+
+E0<-min(lengths$av[lengths$LG==LG], na.rm=TRUE)
+E1<-max(lengths$av[lengths$LG==LG], na.rm=TRUE)
+
+plot(data2$av[data2$LG==LG], data2$topoC[data2$LG==LG], pch=point, cex=0.7, col=colourA, frame=FALSE, yaxt = "n",  xlab = "", ylab = "", xlim = c(E0,100), ylim=c(0.69,1))
+points(data3$av[data3$LG==LG], data3$topoC[data3$LG==LG], pch=point, cex=0.9, col=colour1)
+points(data4$av[data4$LG==LG], data4$topoC[data4$LG==LG], pch=point, cex=1.1, col=colour2)
+points(data5$av[data5$LG==LG], data5$topoC[data5$LG==LG], pch=point, cex=1.3, col=colour3)
+points(data6$av[data6$LG==LG], data6$topoC[data6$LG==LG], pch=point, cex=1.7, col=colour4)
+abline(v=E1)
+
+}
+
+
+####### counts for contig level 
+
+data <- read.csv("reproductive_mode_TWISST.popGenwins_mapped.csv", header=TRUE)
+
+lg <- 1
+
+data3 <- subset(data2, topoC  < 0.8 & data2$LG==lg)
+data4 <- subset(data2, topoC  > 0.8 & topoC < 0.9 & LG==lg | topoC == 0.8 & LG==lg)
+data5 <- subset(data2, topoC  > 0.9 & topoC < 1 & LG==lg)
+data6 <- subset(data2, topoC == 1 & data2$LG==lg)
+
+ 
+length(data3$topoC)
+length(data4$topoC)
+length(data5$topoC)
+length(data6$topoC)
+length(total$topoC)
+
+################
+
+

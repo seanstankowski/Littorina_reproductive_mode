@@ -1,0 +1,98 @@
+## extracting trees from twisst output
+
+## prints one tree to the terminal
+sed -n 2062p output100.phyml_bionj.w100.v2.trees 
+
+
+##### as a loop, output to file, all trees repromode weights == 1
+for Item in '6509'	'9765'	'11034'	'11035'	'11478'	'12105'	'12106'	'12107'	'12108'	'17128'	'19501'	'20194'	'20195'	'20198'	'29732'	'33677'	'35486'	'35532'	'41475'	'43427'	'48810'	'52694'	'52696'	'62064'	'73401'	'75068'	'75069'	'75070'	'76238'	'76239'	'85306'	'87582'	'89070'	'95372'	'95373'	'95374'	'106684'	'106685'	'106686'	'106688'	'106689'	'106690'	'107721'	'107723'	'107726'	'109076'	'109077'	'110564'	'110565'	'113482'	'117438'	'119150'	'123173'	'129459'	'129460'	'129462'	'129755'	'129756'	'131863'	'132998'	'133001'	'133002'	'133003'	'133004'	'133005'	'133006'	'133007'	'133259'	'134775'	'134776'	'134777'	'134778'	'134779'	'134780'	'134781'	'136627'	'138308'	'145224'	'145551'	'146704'	'147068'	'149106'	'152639'	'152984'	'153003'	'153004'	'153005'	'154083' ;
+  do
+    sed -n "$Item"p output100new.phyml_bionj.w100.v2.trees  > "$Item".tree
+
+  done
+
+
+####################### 1 tree with colored branches and tip points letters  #WORKING 
+
+library(tidyverse)
+library(ggtree)
+setwd("/Users/sstankow/Documents/Projects/Littorina/reproductive mode/New_reproductive_mode_MS/new_tree_files/trees.Tc.1")
+tip_metadata <- read.table("meta_data.txt", sep="\t", header=TRUE,check.names=FALSE, stringsAsFactor=F)
+
+tree <- read.tree("152984.tree")
+
+cls <- list(c1=c("AMB_5_3_A","BH_10_1_A","NE_E1_367_La_A","NE_E2_140_La_A","NE_E2_158_La_A","NE_E2_410_La_A","NE_E2_429_La_A","NE_E4_Larc_F_1_A","NE_E4_Larc_F_2_A","NE_F1_007_La_A","NE_F1_137_La_A","NE_F1_338_La_A","NE_F1_371_La_A","NOR_Larc_F_1_A","NOR_Larc_F_2_A","NOR_Larc_F_3_A","NOR_Larc_F_4_A","STA_Larc_F_1_A","STA_Larc_F_2_A","TF_130_La_A","W_arc_01_La_A","W_arc_02_La_A","W_arc_03_La_A","W_arc_04_Lamerged_sorted.bam_A","CEA_Larc_F_1_A","NE_F1_141_Lc_A","NOR_Lcom_F_A","W_com_01_Lc_A","AMB_5_3_B","BH_10_1_B","NE_E1_367_La_B","NE_E2_140_La_B","NE_E2_158_La_B","NE_E2_410_La_B","NE_E2_429_La_B","NE_E4_Larc_F_1_B","NE_E4_Larc_F_2_B","NE_F1_007_La_B","NE_F1_137_La_B","NE_F1_338_La_B","NE_F1_371_La_B","NOR_Larc_F_1_B","NOR_Larc_F_2_B","NOR_Larc_F_3_B","NOR_Larc_F_4_B","STA_Larc_F_1_B","STA_Larc_F_2_B","TF_130_La_B","W_arc_01_La_B","W_arc_02_La_B","W_arc_03_La_B","W_arc_04_Lamerged_sorted.bam_B","CEA_Larc_F_1_B","NE_F1_141_Lc_B","NOR_Lcom_F_B","W_com_01_Lc_B"),
+            c2=c("83_AB1_Lsb_A","88_AB1_Lsb_A","ACF_1_A","ACF_2_A","ACF_3_A","ACF_4_A","BH_8_2_A","CEA_Larc_F_2_A","CEA_Lsax_F_1_A","CZA005_Ls_A","CZA020_Ls_A","CZA506_Ls_A","CZA524_Ls_A","CZD309_Ls_A","CZD390_Ls_A","CZD563_Ls_A","CZD565_Ls_A","DER_Lten_F_A","DER_Lten_M_A","IMI_6_2_A","LR_11_Ls_A","LR_14_Ls_A","NE_E1_022_Lsb_A","NE_E2_023_Lsb_A","NE_E2_030_Lsax_F_A","NE_E2_151_Ls_A","NE_E2_159_Ls_A","NE_E2_382_Ls_A","NE_E2_439_Ls_A","NE_F1_003_Ls_A","NE_F1_087_Lsb_A","NE_F1_134_Ls_A","NE_F1_263_Lsb_A","NE_F1_333_Ls_A","NE_F1_373_Lsb_A","NE_W1_331_Lsax_F_A","NE_W1_356_Lsax_M_A","NOR_Lsax_F_1_A","NOR_Lsax_F_2_A","NOR_Lsax_F_3_A","NOR_Lsax_F_4_A","OBI_12_5_A","PSM2_4_4_A","STA_Lsax_F_1_A","STA_Lsax_F_2_A","SWE_Lten_F_A","SWE_Lten_M_A","TCF_1_A","TCF_2_A","TCF_3_A","TCF_4_A","TF_155_La_A","TF9_153_Ls_A","TF9_157_Ls_A","TWF_1_A","TWF_2_A","TWF_3_A","TWF_4_A","W_sax_01_Ls_A","W_sax_02_Ls_A","W_sax_03_Ls_A","W_sax_04_Ls_A","WS_female_Ls_A","WS_male_Ls_A","York_B-1_Ls_A","York_B-12_Ls_A","York_T-3_Ls_A","York_T-9_Ls_A","BUR_Lsax_F_A","BUR_Lsax_M_A","ER_EA1_073_Ls_A","ER_EA1_116_Ls_A","ER_EA1_463_Ls_A","ER_EA1_468_Ls_A","ER_EA1_547_A","ER_EA2_029_A","ER_EA2_569_A","ER_EB1_100_Ls_A","ER_EB1_101_Ls_A","ER_EB1_266_Ls_A","83_AB1_Lsb_B","88_AB1_Lsb_B","ACF_1_B","ACF_2_B","ACF_3_B","ACF_4_B","BH_8_2_B","CEA_Larc_F_2_B","CEA_Lsax_F_1_B","CZA005_Ls_B","CZA020_Ls_B","CZA506_Ls_B","CZA524_Ls_B","CZD309_Ls_B","CZD390_Ls_B","CZD563_Ls_B","CZD565_Ls_B","DER_Lten_F_B","DER_Lten_M_B","IMI_6_2_B","LR_11_Ls_B","LR_14_Ls_B","NE_E1_022_Lsb_B","NE_E2_023_Lsb_B","NE_E2_030_Lsax_F_B","NE_E2_151_Ls_B","NE_E2_159_Ls_B","NE_E2_382_Ls_B","NE_E2_439_Ls_B","NE_F1_003_Ls_B","NE_F1_087_Lsb_B","NE_F1_134_Ls_B","NE_F1_263_Lsb_B","NE_F1_333_Ls_B","NE_F1_373_Lsb_B","NE_W1_331_Lsax_F_B","NE_W1_356_Lsax_M_B","NOR_Lsax_F_1_B","NOR_Lsax_F_2_B","NOR_Lsax_F_3_B","NOR_Lsax_F_4_B","OBI_12_5_B","PSM2_4_4_B","STA_Lsax_F_1_B","STA_Lsax_F_2_B","SWE_Lten_F_B","SWE_Lten_M_B","TCF_1_B","TCF_2_B","TCF_3_B","TCF_4_B","TF_155_La_B","TF9_153_Ls_B","TF9_157_Ls_B","TWF_1_B","TWF_2_B","TWF_3_B","TWF_4_B","W_sax_01_Ls_B","W_sax_02_Ls_B","W_sax_03_Ls_B","W_sax_04_Ls_B","WS_female_Ls_B","WS_male_Ls_B","York_B-1_Ls_B","York_B-12_Ls_B","York_T-3_Ls_B","York_T-9_Ls_B","BUR_Lsax_F_B","BUR_Lsax_M_B","ER_EA1_073_Ls_B","ER_EA1_116_Ls_B","ER_EA1_463_Ls_B","ER_EA1_468_Ls_B","ER_EA1_547_B","ER_EA2_029_B","ER_EA2_569_B","ER_EB1_100_Ls_B","ER_EB1_101_Ls_B","ER_EB1_266_Ls_B"))
+
+tree <- groupOTU(tree, cls)
+library("colorspace")
+p <- ggtree(tree, aes(color=group), layout='unrooted') + scale_color_manual(values=c("blue","red"))
+
+p1 <- p  %<+% tip_metadata + geom_tippoint(aes(color=species, shape=species_region), size=1.25) + scale_color_manual(values=c("Blue", "peru","turquoise3", "Black","red")) + scale_shape_manual(values=c(5,0,2,6)) 
+
+plot(p1)
+
+
+##### save a tree as pdf
+ggsave(plot = p1, width = 5, height = 3, dpi = 300, filename = "not squished axis.pdf")
+
+
+####################### branches colored by taxon ## WORKING
+
+### lines only, colored by taxa
+library(tidyverse)
+library(ggtree)
+setwd("/Users/sstankow/Documents/Projects/Littorina/reproductive mode/New_reproductive_mode_MS/new_tree_files/trees.Tc.1")
+tip_metadata <- read.table("meta_data.txt", sep="\t", header=TRUE,check.names=FALSE, stringsAsFactor=F)
+
+tree <- read.tree("6509.tree")
+
+cls <- list(c1=c("AMB_5_3_A","BH_10_1_A","NE_E1_367_La_A","NE_E2_140_La_A","NE_E2_158_La_A","NE_E2_410_La_A","NE_E2_429_La_A","NE_E4_Larc_F_1_A","NE_E4_Larc_F_2_A","NE_F1_007_La_A","NE_F1_137_La_A","NE_F1_338_La_A","NE_F1_371_La_A","NOR_Larc_F_1_A","NOR_Larc_F_2_A","NOR_Larc_F_3_A","NOR_Larc_F_4_A","STA_Larc_F_1_A","STA_Larc_F_2_A","TF_130_La_A","W_arc_01_La_A","W_arc_02_La_A","W_arc_03_La_A","W_arc_04_Lamerged_sorted.bam_A","AMB_5_3_B","BH_10_1_B","NE_E1_367_La_B","NE_E2_140_La_B","NE_E2_158_La_B","NE_E2_410_La_B","NE_E2_429_La_B","NE_E4_Larc_F_1_B","NE_E4_Larc_F_2_B","NE_F1_007_La_B","NE_F1_137_La_B","NE_F1_338_La_B","NE_F1_371_La_B","NOR_Larc_F_1_B","NOR_Larc_F_2_B","NOR_Larc_F_3_B","NOR_Larc_F_4_B","STA_Larc_F_1_B","STA_Larc_F_2_B","TF_130_La_B","W_arc_01_La_B","W_arc_02_La_B","W_arc_03_La_B","W_arc_04_Lamerged_sorted.bam_B"),
+			c2=c("CEA_Larc_F_1_B","NE_F1_141_Lc_B","NOR_Lcom_F_B","W_com_01_Lc_B","CEA_Larc_F_1_A","NE_F1_141_Lc_A","NOR_Lcom_F_A","W_com_01_Lc_A"),
+            c3=c("83_AB1_Lsb_A","88_AB1_Lsb_A","ACF_1_A","ACF_2_A","ACF_3_A","ACF_4_A","BH_8_2_A","CEA_Larc_F_2_A","CEA_Lsax_F_1_A","CZA005_Ls_A","CZA020_Ls_A","CZA506_Ls_A","CZA524_Ls_A","CZD309_Ls_A","CZD390_Ls_A","CZD563_Ls_A","CZD565_Ls_A","DER_Lten_F_A","DER_Lten_M_A","IMI_6_2_A","LR_11_Ls_A","LR_14_Ls_A","NE_E1_022_Lsb_A","NE_E2_023_Lsb_A","NE_E2_030_Lsax_F_A","NE_E2_151_Ls_A","NE_E2_159_Ls_A","NE_E2_382_Ls_A","NE_E2_439_Ls_A","NE_F1_003_Ls_A","NE_F1_087_Lsb_A","NE_F1_134_Ls_A","NE_F1_263_Lsb_A","NE_F1_333_Ls_A","NE_F1_373_Lsb_A","NE_W1_331_Lsax_F_A","NE_W1_356_Lsax_M_A","NOR_Lsax_F_1_A","NOR_Lsax_F_2_A","NOR_Lsax_F_3_A","NOR_Lsax_F_4_A","OBI_12_5_A","PSM2_4_4_A","STA_Lsax_F_1_A","STA_Lsax_F_2_A","SWE_Lten_F_A","SWE_Lten_M_A","TCF_1_A","TCF_2_A","TCF_3_A","TCF_4_A","TF_155_La_A","TF9_153_Ls_A","TF9_157_Ls_A","TWF_1_A","TWF_2_A","TWF_3_A","TWF_4_A","W_sax_01_Ls_A","W_sax_02_Ls_A","W_sax_03_Ls_A","W_sax_04_Ls_A","WS_female_Ls_A","WS_male_Ls_A","York_B-1_Ls_A","York_B-12_Ls_A","York_T-3_Ls_A","York_T-9_Ls_A","BUR_Lsax_F_A","BUR_Lsax_M_A","ER_EA1_073_Ls_A","ER_EA1_116_Ls_A","ER_EA1_463_Ls_A","ER_EA1_468_Ls_A","ER_EA1_547_A","ER_EA2_029_A","ER_EA2_569_A","ER_EB1_100_Ls_A","ER_EB1_101_Ls_A","ER_EB1_266_Ls_A","83_AB1_Lsb_B","88_AB1_Lsb_B","ACF_1_B","ACF_2_B","ACF_3_B","ACF_4_B","BH_8_2_B","CEA_Larc_F_2_B","CEA_Lsax_F_1_B","CZA005_Ls_B","CZA020_Ls_B","CZA506_Ls_B","CZA524_Ls_B","CZD309_Ls_B","CZD390_Ls_B","CZD563_Ls_B","CZD565_Ls_B","DER_Lten_F_B","DER_Lten_M_B","IMI_6_2_B","LR_11_Ls_B","LR_14_Ls_B","NE_E1_022_Lsb_B","NE_E2_023_Lsb_B","NE_E2_030_Lsax_F_B","NE_E2_151_Ls_B","NE_E2_159_Ls_B","NE_E2_382_Ls_B","NE_E2_439_Ls_B","NE_F1_003_Ls_B","NE_F1_087_Lsb_B","NE_F1_134_Ls_B","NE_F1_263_Lsb_B","NE_F1_333_Ls_B","NE_F1_373_Lsb_B","NE_W1_331_Lsax_F_B","NE_W1_356_Lsax_M_B","NOR_Lsax_F_1_B","NOR_Lsax_F_2_B","NOR_Lsax_F_3_B","NOR_Lsax_F_4_B","OBI_12_5_B","PSM2_4_4_B","STA_Lsax_F_1_B","STA_Lsax_F_2_B","SWE_Lten_F_B","SWE_Lten_M_B","TCF_1_B","TCF_2_B","TCF_3_B","TCF_4_B","TF_155_La_B","TF9_153_Ls_B","TF9_157_Ls_B","TWF_1_B","TWF_2_B","TWF_3_B","TWF_4_B","W_sax_01_Ls_B","W_sax_02_Ls_B","W_sax_03_Ls_B","W_sax_04_Ls_B","WS_female_Ls_B","WS_male_Ls_B","York_B-1_Ls_B","York_B-12_Ls_B","York_T-3_Ls_B","York_T-9_Ls_B","BUR_Lsax_F_B","BUR_Lsax_M_B","ER_EA1_073_Ls_B","ER_EA1_116_Ls_B","ER_EA1_463_Ls_B","ER_EA1_468_Ls_B","ER_EA1_547_B","ER_EA2_029_B","ER_EA2_569_B","ER_EB1_100_Ls_B","ER_EB1_101_Ls_B","ER_EB1_266_Ls_B"))
+
+tree <- groupOTU(tree, cls)
+library("colorspace")
+p1 <- ggtree(tree, aes(color=group), layout='unrooted') + scale_color_manual(values=c("blue","black","red", "gray"))
+plot(p1)
+
+##### save a tree as pdf
+ggsave(plot = p1, width = 5, height = 3, dpi = 300, filename = "not squished axis.pdf")
+
+
+#################################################
+
+#### this draws a set of trees and saves pdfs using a loop
+
+library(tidyverse)
+library(ggtree)
+setwd("/Users/sstankow/Documents/Projects/Littorina/reproductive mode/New_reproductive_mode_MS/new_tree_files/trees.Tc.1")
+tip_metadata <- read.table("meta_data.txt", sep="\t", header=TRUE,check.names=FALSE, stringsAsFactor=F)
+tree_list <- read.csv("tree_list.csv", header=FALSE)
+trees <- tree_list$V1
+
+for (i in trees)
+{
+tree_id <- i
+
+tree <- read.tree(tree_id)
+
+cls <- list(c1=c("AMB_5_3_A","BH_10_1_A","NE_E1_367_La_A","NE_E2_140_La_A","NE_E2_158_La_A","NE_E2_410_La_A","NE_E2_429_La_A","NE_E4_Larc_F_1_A","NE_E4_Larc_F_2_A","NE_F1_007_La_A","NE_F1_137_La_A","NE_F1_338_La_A","NE_F1_371_La_A","NOR_Larc_F_1_A","NOR_Larc_F_2_A","NOR_Larc_F_3_A","NOR_Larc_F_4_A","STA_Larc_F_1_A","STA_Larc_F_2_A","TF_130_La_A","W_arc_01_La_A","W_arc_02_La_A","W_arc_03_La_A","W_arc_04_Lamerged_sorted.bam_A","CEA_Larc_F_1_A","NE_F1_141_Lc_A","NOR_Lcom_F_A","W_com_01_Lc_A","AMB_5_3_B","BH_10_1_B","NE_E1_367_La_B","NE_E2_140_La_B","NE_E2_158_La_B","NE_E2_410_La_B","NE_E2_429_La_B","NE_E4_Larc_F_1_B","NE_E4_Larc_F_2_B","NE_F1_007_La_B","NE_F1_137_La_B","NE_F1_338_La_B","NE_F1_371_La_B","NOR_Larc_F_1_B","NOR_Larc_F_2_B","NOR_Larc_F_3_B","NOR_Larc_F_4_B","STA_Larc_F_1_B","STA_Larc_F_2_B","TF_130_La_B","W_arc_01_La_B","W_arc_02_La_B","W_arc_03_La_B","W_arc_04_Lamerged_sorted.bam_B","CEA_Larc_F_1_B","NE_F1_141_Lc_B","NOR_Lcom_F_B","W_com_01_Lc_B"),
+            c2=c("83_AB1_Lsb_A","88_AB1_Lsb_A","ACF_1_A","ACF_2_A","ACF_3_A","ACF_4_A","BH_8_2_A","CEA_Larc_F_2_A","CEA_Lsax_F_1_A","CZA005_Ls_A","CZA020_Ls_A","CZA506_Ls_A","CZA524_Ls_A","CZD309_Ls_A","CZD390_Ls_A","CZD563_Ls_A","CZD565_Ls_A","DER_Lten_F_A","DER_Lten_M_A","IMI_6_2_A","LR_11_Ls_A","LR_14_Ls_A","NE_E1_022_Lsb_A","NE_E2_023_Lsb_A","NE_E2_030_Lsax_F_A","NE_E2_151_Ls_A","NE_E2_159_Ls_A","NE_E2_382_Ls_A","NE_E2_439_Ls_A","NE_F1_003_Ls_A","NE_F1_087_Lsb_A","NE_F1_134_Ls_A","NE_F1_263_Lsb_A","NE_F1_333_Ls_A","NE_F1_373_Lsb_A","NE_W1_331_Lsax_F_A","NE_W1_356_Lsax_M_A","NOR_Lsax_F_1_A","NOR_Lsax_F_2_A","NOR_Lsax_F_3_A","NOR_Lsax_F_4_A","OBI_12_5_A","PSM2_4_4_A","STA_Lsax_F_1_A","STA_Lsax_F_2_A","SWE_Lten_F_A","SWE_Lten_M_A","TCF_1_A","TCF_2_A","TCF_3_A","TCF_4_A","TF_155_La_A","TF9_153_Ls_A","TF9_157_Ls_A","TWF_1_A","TWF_2_A","TWF_3_A","TWF_4_A","W_sax_01_Ls_A","W_sax_02_Ls_A","W_sax_03_Ls_A","W_sax_04_Ls_A","WS_female_Ls_A","WS_male_Ls_A","York_B-1_Ls_A","York_B-12_Ls_A","York_T-3_Ls_A","York_T-9_Ls_A","BUR_Lsax_F_A","BUR_Lsax_M_A","ER_EA1_073_Ls_A","ER_EA1_116_Ls_A","ER_EA1_463_Ls_A","ER_EA1_468_Ls_A","ER_EA1_547_A","ER_EA2_029_A","ER_EA2_569_A","ER_EB1_100_Ls_A","ER_EB1_101_Ls_A","ER_EB1_266_Ls_A","83_AB1_Lsb_B","88_AB1_Lsb_B","ACF_1_B","ACF_2_B","ACF_3_B","ACF_4_B","BH_8_2_B","CEA_Larc_F_2_B","CEA_Lsax_F_1_B","CZA005_Ls_B","CZA020_Ls_B","CZA506_Ls_B","CZA524_Ls_B","CZD309_Ls_B","CZD390_Ls_B","CZD563_Ls_B","CZD565_Ls_B","DER_Lten_F_B","DER_Lten_M_B","IMI_6_2_B","LR_11_Ls_B","LR_14_Ls_B","NE_E1_022_Lsb_B","NE_E2_023_Lsb_B","NE_E2_030_Lsax_F_B","NE_E2_151_Ls_B","NE_E2_159_Ls_B","NE_E2_382_Ls_B","NE_E2_439_Ls_B","NE_F1_003_Ls_B","NE_F1_087_Lsb_B","NE_F1_134_Ls_B","NE_F1_263_Lsb_B","NE_F1_333_Ls_B","NE_F1_373_Lsb_B","NE_W1_331_Lsax_F_B","NE_W1_356_Lsax_M_B","NOR_Lsax_F_1_B","NOR_Lsax_F_2_B","NOR_Lsax_F_3_B","NOR_Lsax_F_4_B","OBI_12_5_B","PSM2_4_4_B","STA_Lsax_F_1_B","STA_Lsax_F_2_B","SWE_Lten_F_B","SWE_Lten_M_B","TCF_1_B","TCF_2_B","TCF_3_B","TCF_4_B","TF_155_La_B","TF9_153_Ls_B","TF9_157_Ls_B","TWF_1_B","TWF_2_B","TWF_3_B","TWF_4_B","W_sax_01_Ls_B","W_sax_02_Ls_B","W_sax_03_Ls_B","W_sax_04_Ls_B","WS_female_Ls_B","WS_male_Ls_B","York_B-1_Ls_B","York_B-12_Ls_B","York_T-3_Ls_B","York_T-9_Ls_B","BUR_Lsax_F_B","BUR_Lsax_M_B","ER_EA1_073_Ls_B","ER_EA1_116_Ls_B","ER_EA1_463_Ls_B","ER_EA1_468_Ls_B","ER_EA1_547_B","ER_EA2_029_B","ER_EA2_569_B","ER_EB1_100_Ls_B","ER_EB1_101_Ls_B","ER_EB1_266_Ls_B"))
+
+tree <- groupOTU(tree, cls)
+library("colorspace")
+p <- ggtree(tree, aes(color=group), layout='unrooted') + scale_color_manual(values=c("blue","red"))
+
+p1 <- p  %<+% tip_metadata + geom_tippoint(aes(color=species, shape=species_region), size=1.25) + scale_color_manual(values=c("Blue", "peru","turquoise3", "Black","red")) + scale_shape_manual(values=c(5,0,2,6)) + ggtitle(tree_id)
+
+plot(p1)
+
+##### save a tree as pdf
+ggsave(p1,filename=paste(tree_id,".pdf",sep=""))
+
+}
+
+###
+
+

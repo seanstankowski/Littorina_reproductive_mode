@@ -1,0 +1,53 @@
+######## Filter VCF file
+
+#----- move vcfs for each batch of contigs into 1 directory
+
+## copies all vcfs in from n subdirectories into a single new directory
+find . -name '*.combined.vcf.gz' -exec mv {} /fastdata/bo1srs/Take_4_VCFs \;
+
+
+#----- combine the VCFs from all batches of contigs called separately 
+/data/bo1srs/bcftools_dir/bcftools/bcftools concat --file-list /fastdata/bo1srs/Take_4_VCFs/vcf_list.txt --output /fastdata/bo1srs/Take_4_VCFs/concat_108.vcf.gz --output-type z 
+
+
+#----- hard filtering in BCFtools
+/data/bo1srs/bcftools_dir/bcftools/bcftools filter -e 'FS>60.0 || SOR>3 || MQ<40 || MQRankSum<-12.5 || QD<2.0 || ReadPosRankSum<-8.0' -O z -o /fastdata/bo1srs/Take_4_VCFs/HardFilter_concat_108.vcf.gz --threads 16 /fastdata/bo1srs/Take_4_VCFs/concat_108.vcf.gz
+
+
+#----- remove SNPs within 5 bp of an indel/complex polymorphism; these tend to be problematic caused by realignment problems
+/data/bo1srs/bcftools-1.15/bcftools filter -g 5:indel,other /fastdata/bo1srs/Take_4_VCFs/HardFilter_concat_108.vcf.gz -o /fastdata/bo1srs/Take_4_VCFs/SNPgap5_HardFilter_concat_108.vcf.gz --output-type z --threads 16
+
+
+#----- remove indels and mult-allelic snps
+/data/bo1srs/bcftools-1.15/bcftools --exclude-types indels,other --max-alleles 2 --output-type z -o /fastdata/bo1srs/Take_4_VCFs/ExcludeIndelsOtherMulti_SNPgap5_HardFilters_concat_108.vcf.gz /fastdata/bo1srs/Take_4_VCFs/SNPgap5_HardFilter_concat_108.vcf.gz
+
+
+#----- drop sites where average read depth is high 
+/data/bo1srs/bcftools-1.15/bcftools  filter -e 'INFO/DP>4320' --output-type z --threads 16 -o /fastdata/bo1srs/Take_4_VCFs/MaxDP_ExcludeIndelsOtherMulti_SNPgap5_HardFilters_concat_108.vcf.gz /fastdata/bo1srs/Take_4_VCFs/ExcludeIndelsOtherMulti_SNPgap5_HardFilters_concat_108.vcf.gz 
+
+
+#----- initial filtering of genotypes for depth and quality to make the file a bit more manageable 
+/data/bo1srs/bcftools-1.15/bcftools filter -S . 
+-e 'FMT/DP<5 | FMT/GQ<20' -O z -o /fastdata/bo1srs/Take_4_VCFs/Softfilters_MaxDP_ExcludeIndelsOtherMulti_SNPgap5_HardFilters_concat_108.vcf.gz /fastdata/bo1srs/Take_4_VCFs/MaxDP_ExcludeIndelsOtherMulti_SNPgap5_HardFilters_concat_108.vcf.gz --threads 16
+
+
+#----- drop sites with > 20% missing data 
+/data/bo1srs/bcftools-1.15/bcftools filter -e 'F_MISSING > 0.2' -O z -o MaxMiss0.2_Softfilters_MaxDP_ExcludeIndelsOtherMulti_SNPgap5_HardFilters_concat_108.vcf.gz Softfilters_MaxDP_ExcludeIndelsOtherMulti_SNPgap5_HardFilters_concat_108.vcf.gz
+
+
+#----- after looking at the depth distributions drop all sites with < 1500 total reads...
+
+/data/bo1srs/bcftools-1.15/bcftools  filter -e 'INFO/DP<1500' --output-type z --threads 16 -o  minDP1500_all_sites_108_littorina.vcf.gz  all_sites_108_littorina.vcf.gz 
+
+
+#----- ... and set genotypes with less < 10 reads to missing
+
+/data/bo1srs/bcftools-1.15/bcftools filter -S . -e 'FMT/DP<10' -O z -o /fastdata/bo1srs/final_working_VCFs/softDP10_minDP1500_all_sites_108_littorina.vcf.gz /fastdata/bo1srs/final_working_VCFs/minDP1500_all_sites_108_littorina.vcf.gz --threads 16
+
+
+#----- finally, drop all sites with > 10% missing data 
+
+/data/bo1srs/bcftools-1.15/bcftools filter -e 'F_MISSING > 0.1' -O z --threads 16 -o /fastdata/bo1srs/final_working_VCFs/Maxmiss0.1_softDP10_minDP1500_all_sites_108_littorina.vcf.gz /fastdata/bo1srs/final_working_VCFs/softDP10_minDP1500_all_sites_108_littorina.vcf.gz 
+
+
+

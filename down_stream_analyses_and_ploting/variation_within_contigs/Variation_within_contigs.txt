@@ -1,0 +1,88 @@
+#data <- read.csv("TC1_Contig1808_popgenOut.csv",header=TRUE)
+data <- read.csv("TC1_3kb_popgenOut.csv",header=TRUE)
+
+par(mfrow=c(2,1))
+
+## find y lim for pi
+min_egg <- min(data$pi_Egglayer)
+min_brood <- min(data$pi_Brooder)
+min_pi_B <- min(data$dxy_Egglayer_Brooder)
+
+miny <- min(min_egg, min_brood, min_pi_B)
+
+max_egg <- max(data$pi_Egglayer)
+max_brood <- max(data$pi_Brooder)
+max_pi_B <- max(data$dxy_Egglayer_Brooder)
+
+maxy <- max(max_egg, max_brood, max_pi_B)
+
+
+
+###
+
+data <- read.csv("TC1_3kb_popgenOut.csv",header=TRUE)
+
+par(mfrow=c(2,1))
+contig <- "Contig1261"
+
+data2 <- subset(data,scaffold==contig)
+
+size = 0.7
+plot(data2$mid,data2$Fst_Egglayer_Brooder, col="red", cex=size)
+
+
+plot(data2$mid,data2$pi_Egglayer, col="darkgoldenrod2", cex=size)
+points(data2$mid,data2$pi_Brooder, col="cyan3", cex=size)
+points(data2$mid,data2$dxy_Egglayer_Brooder, col="black", cex=size)
+
+
+
+########################## Contig1808 ############################
+
+data <- read.csv("TC1_3kb_popgenOut.csv",header=TRUE)
+
+par(mfrow=c(2,1))
+contig <- "Contig1808"
+
+data2 <- subset(data,scaffold==contig)
+
+size = 0.7
+plot(data2$mid,data2$Fst_Egglayer_Brooder, col="red", cex=size, xlim=c(7200,19000), ylim=c(0,0.65))
+plot(data2$mid,data2$pi_Egglayer, col="darkgoldenrod2", cex=size,  xlim=c(7200,19000), ylim=c(0,0.02))
+points(data2$mid,data2$pi_Brooder, col="cyan3", cex=size)
+points(data2$mid,data2$dxy_Egglayer_Brooder, col="black", cex=size)
+
+########################## Contig3201 #############################
+data <- read.csv("TC1_3kb_popgenOut.csv",header=TRUE)
+
+par(mfrow=c(2,1))
+contig <- "Contig3201"
+
+data2 <- subset(data,scaffold==contig)
+
+size = 0.7
+plot(data2$mid,data2$Fst_Egglayer_Brooder, col="red", cex=size, xlim=c(50000,67000), ylim=c(0,0.65))
+plot(data2$mid,data2$pi_Egglayer, col="darkgoldenrod2", cex=size,  xlim=c(50000,67000), ylim=c(0,0.02))
+points(data2$mid,data2$pi_Brooder, col="cyan3", cex=size)
+points(data2$mid,data2$dxy_Egglayer_Brooder, col="black", cex=size)
+
+######################## 48348 ##################################
+data <- read.csv("TC1_3kb_popgenOut.csv",header=TRUE)
+
+par(mfrow=c(2,1))
+contig <- "Contig48348"
+
+data2 <- subset(data,scaffold==contig)
+
+size = 0.7
+plot(data2$mid,data2$Fst_Egglayer_Brooder, col="red", cex=size, xlim=c(25000,45000), ylim=c(0,0.75))
+plot(data2$mid,data2$pi_Egglayer, col="darkgoldenrod2", cex=size,  xlim=c(25000,45000), ylim=c(0,0.025))
+points(data2$mid,data2$pi_Brooder, col="cyan3", cex=size)
+points(data2$mid,data2$dxy_Egglayer_Brooder, col="black", cex=size)
+
+
+
+
+
+
+

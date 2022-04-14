@@ -1,0 +1,23 @@
+
+############ pi_w, pi_b ridge-line plot fig 1
+
+library(tidyverse)
+# install.packages("ggridges")
+library(ggridges)
+# install.packages("ggplot2")
+library(ggplot2)
+
+data <- read.csv("pi_dxy_joy.csv", header=TRUE)
+
+long_data <- data %>% 
+    rownames_to_column("id") %>%
+    gather(conditions, values, -id)
+    
+ggplot(long_data, aes(x = values, y = conditions)) +
+  geom_density_ridges(quantile_lines=TRUE,
+                      quantile_fun=function(x,...)mean(x))+
+  theme(legend.position = "none") + 
+  xlim(0, 0.02)
+
+
+

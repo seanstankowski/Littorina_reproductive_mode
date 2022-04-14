@@ -1,0 +1,223 @@
+###############################################Twisst_'n_Tern###############################################
+
+# Some scripts fot plotting twisst topology weights in a ternary plot and testing for a symmetrical distribution of alternative toplogies
+# includes the code needed to produce the major elements of topology weight figure
+
+############################################################################################################
+
+#ABOUT THIS SCRIPT:
+#associated publication:
+#Author: Sean Stankowski
+#contact: sean.stankowski@gmail.com
+
+
+############################################  SETUP  ##################################################
+
+## read in data
+data <- read.csv("reproductive_mode_TWISST.popGenwins.csv", header=TRUE)
+
+
+## load packages
+library(ggtern) ## note that this stopped working after some time and I have to revert to R 4.0.2, ggplot2: 3.3.2 & ggtern: 3.3.0  
+library(dplyr)
+
+###################### Part A--Making a ternary plot ######################
+
+## this script makes a ternary hexbin plot, which I edited in illustrator afterwards
+ggtern(data=data,aes(x=topoB,y=topoA, z=topoC))+ geom_hex_tern(bins=150) + scale_fill_gradientn(colours = terrain.colors(5))
+
+
+### triturn plot with counts: I used this to get the counts for each sub triangle to for use in the assymmetry analysis
+
+ggtern(data,aes(topoB,topoA,topoC)) + 
+  theme_bw() +
+  geom_tri_tern(bins=10,aes(fill=..count..)) + 
+  stat_tri_tern(bins=10,
+                geom='text',
+                aes(label=sprintf("%.2f",..count..)),
+                size=2, color='white',centroid=TRUE)
+
+
+###################### part B--Estimate symmetry for the full observed data ######################
+
+	## polarise the widows as left or right the line that that bisects the triangle, where the apex is the 'species topology'. here, TopoA. So:
+	#1# create a -+ vector by subtracting topo C from topo B. If B > than C, topoB-topoC is positive; if C > B, then topoB-topoC negative
+	
+	polar_data <- data %>% 
+  mutate(diff_TopoB_TopoC = topoB-topoC)
+	
+	#2# Now, make windows that have positive topoB-topoC "left", and negative values "right"
+		left <- length(polar_data$diff_TopoB_TopoC[polar_data$diff_TopoB_TopoC>0])
+		right <- length(polar_data$diff_TopoB_TopoC[polar_data$diff_TopoB_TopoC<0])
+	
+		left <- sum(polar_data$diff_TopoB_TopoC > 0)
+		right <- sum(polar_data$diff_TopoB_TopoC < 0)
+		totalwins <- right+left
+		
+	#3# Calculate the observed symmetry; this is Patterson's D, but with left and right instead of abba and baba; negative D is excess of left; pos D and excess right
+		absObsDry <- (left-(0.5*totalwins))/(0.5*totalwins)
+
+
+################### data for symmetry analysis for each pair of triangles in  ###########################
+
+###Totals
+total1	<-	580
+total2	<-	243
+total3	<-	1086
+total4	<-	121
+total5	<-	505
+total6	<-	3111
+total7	<-	115
+total8	<-	319
+total9	<-	1890
+total10	<-	5084
+total11	<-	69
+total12	<-	213
+total13	<-	1310
+total14	<-	3276
+total15	<-	14255
+total16	<-	60
+total17	<-	190
+total18	<-	1045
+total19	<-	2473
+total20	<-	9646
+total21	<-	22545
+total22	<-	74
+total23	<-	151
+total24	<-	947
+total25	<-	1905
+total26	<-	4394
+total27	<-	9829
+total28	<-	8260
+total29	<-	111
+total30	<-	192
+total31	<-	502
+total32	<-	1076
+total33	<-	744
+total34	<-	1648
+total35	<-	776
+total36	<-	1675
+total37	<-	247
+total38	<-	175
+total39	<-	67
+total40	<-	158
+total41	<-	36
+total42	<-	107
+total43	<-	37
+total44	<-	83
+total45	<-	19
+
+### left counts
+L1	<-	258
+L2	<-	110
+L3	<-	547
+L4	<-	67
+L5	<-	243
+L6	<-	1667
+L7	<-	58
+L8	<-	162
+L9	<-	1050
+L10	<-	2745
+L11	<-	26
+L12	<-	120
+L13	<-	765
+L14	<-	1859
+L15	<-	7587
+L16	<-	14
+L17	<-	101
+L18	<-	573
+L19	<-	1397
+L20	<-	5223
+L21	<-	11854
+L22	<-	27
+L23	<-	56
+L24	<-	488
+L25	<-	1049
+L26	<-	2307
+L27	<-	4995
+L28	<-	4100
+L29	<-	27
+L30	<-	52
+L31	<-	226
+L32	<-	533
+L33	<-	357
+L34	<-	817
+L35	<-	351
+L36	<-	853
+L37	<-	17
+L38	<-	44
+L39	<-	13
+L40	<-	54
+L41	<-	11
+L42	<-	42
+L43	<-	19
+L44	<-	40
+L45	<-	6
+		
+
+###################### part C--permutation test ##########################
+start.time <- Sys.time()
+###########Setup
+#Choose the number of permutations
+
+
+########## Perm_test ##########
+
+
+title = 1 ############## this prints the triangle identity on the plot at the end
+total_count = total1 ######## this is the sum of count between the pairs of triangles
+left_count = L1 ######## This is the count for the left triangle. because the results are symmetrical, this is only done for one side
+
+#Choose the number of permutations
+n <- 99999
+### Empty variable to collect perm stats
+	permutedSideWindows <- c() ## empty variable
+
+for(i in 1:n){
+	win_count <- 
+	slots <- 1:total_count
+	RandomSideSlots <- sample(c(-1,1), size=length(slots), replace=TRUE) * slots
+	expected <- 0.5*total_count
+	left<-sum(RandomSideSlots < 0)
+	Dlr <- abs((left-expected)/expected)
+	permutedSideWindows[i]<-Dlr ## add the Dlr to the data frame 
+		}
+		
+### get empirical stats	
+
+absObsDry <- abs(left_count-(0.5*total_count))/(0.5*total_count)
+absObsDry	
+
+		
+p_value <- ((sum(permutedSideWindows >  absObsDry  | permutedSideWindows==absObsDry)+1)/(n+1))
+p_value
+
+
+hist(permutedSideWindows, main=title, breaks = 100)
+abline(v=absObsDry, col="red")
+
+
+hist(permutedSideWindows, main=title, breaks =100, xlim=c(0,4), xlab="",ylab="")
+abline(v=absObsDry, col="red")
+########################################################################################### time to run #########
+end.time <- Sys.time()
+time.taken <- end.time - start.time
+time.taken
+################################################################################################# end ###########
+
+#####  make the 3 plots of corner weights (weights > 0.8)
+
+data <- read.csv("reproductive_mode_TWISST.popGenwins.csv", header=TRUE)
+
+high_ta <- subset(data, topoA == 0.7 | topoA > 0.7)
+high_tb <- subset(data, topoB == 0.7 | topoB > 0.7)
+high_tc <- subset(data, topoC == 0.7 | topoC > 0.7)
+
+par(mfrow=c(3,1))
+hist(high_ta$topoA, breaks=200, ylim=c(0,100), xlim=c(0.7,1))
+hist(high_tb$topoB, breaks=200, ylim=c(0,100), xlim=c(0.7,1))
+hist(high_tc$topoC, breaks=200, ylim=c(0,100), xlim=c(0.7,1))
+
+
+
+

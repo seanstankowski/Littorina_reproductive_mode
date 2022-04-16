@@ -20,6 +20,7 @@ data <- read.csv("reproductive_mode_TWISST.popGenwins.csv", header=TRUE)
 ## load packages
 library(ggtern) ## note that this stopped working after some time and I have to revert to R 4.0.2, ggplot2: 3.3.2 & ggtern: 3.3.0  
 library(dplyr)
+library(tidyverse)
 
 ###################### Part A--Making a ternary plot ######################
 
@@ -47,15 +48,54 @@ ggtern(data,aes(topoB,topoA,topoC)) +
   mutate(diff_TopoB_TopoC = topoB-topoC)
 	
 	#2# Now, make windows that have positive topoB-topoC "left", and negative values "right"
-		left <- length(polar_data$diff_TopoB_TopoC[polar_data$diff_TopoB_TopoC>0])
-		right <- length(polar_data$diff_TopoB_TopoC[polar_data$diff_TopoB_TopoC<0])
+		left <- subset(polar_data, diff_TopoB_TopoC > 0)
+		right <- subset(polar_data, diff_TopoB_TopoC < 0)
 	
-		left <- sum(polar_data$diff_TopoB_TopoC > 0)
-		right <- sum(polar_data$diff_TopoB_TopoC < 0)
+		left <- length(left$diff_TopoB_TopoC)
+		right <- length(right$diff_TopoB_TopoC)
 		totalwins <- right+left
 		
 	#3# Calculate the observed symmetry; this is Patterson's D, but with left and right instead of abba and baba; negative D is excess of left; pos D and excess right
 		absObsDry <- (left-(0.5*totalwins))/(0.5*totalwins)
+
+
+### Perm_test 
+
+
+title = 1 ############## this prints the triangle identity on the plot at the end
+total_count = totalwins ######## this is the sum of count between the pairs of triangles
+left_count = left ######## This is the count for the left triangle. because the results are symmetrical, this is only done for one side
+
+#Choose the number of permutations
+n <- 99999
+### Empty variable to collect perm stats
+	permutedSideWindows <- c() ## empty variable
+
+for(i in 1:n){
+	win_count <- 
+	slots <- 1:total_count
+	RandomSideSlots <- sample(c(-1,1), size=length(slots), replace=TRUE) * slots
+	expected <- 0.5*total_count
+	left<-sum(RandomSideSlots < 0)
+	Dlr <- abs((left-expected)/expected)
+	permutedSideWindows[i]<-Dlr ## add the Dlr to the data frame 
+		}
+		
+### get empirical stats	
+
+absObsDry	
+
+		
+p_value <- ((sum(permutedSideWindows >  absObsDry  | permutedSideWindows==absObsDry)+1)/(n+1))
+p_value
+
+
+hist(permutedSideWindows, main=title, breaks = 100)
+abline(v=absObsDry, col="red")
+
+
+hist(permutedSideWindows, main=title, breaks =100, xlim=c(0,4), xlab="",ylab="")
+abline(v=absObsDry, col="red")
 
 
 ################### data for symmetry analysis for each pair of triangles in  ###########################

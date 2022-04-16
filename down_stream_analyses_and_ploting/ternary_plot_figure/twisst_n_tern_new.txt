@@ -94,7 +94,7 @@ hist(permutedSideWindows, main=title, breaks = 100)
 abline(v=absObsDry, col="red")
 
 
-hist(permutedSideWindows, main=title, breaks =100, xlim=c(0,4), xlab="",ylab="")
+hist(permutedSideWindows, main=title, breaks =100, xlim=c(0,1), xlab="",ylab="")
 abline(v=absObsDry, col="red")
 
 

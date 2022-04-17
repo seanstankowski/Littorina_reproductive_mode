@@ -50,4 +50,39 @@ find . -name '*.combined.vcf.gz' -exec mv {} /fastdata/bo1srs/Take_4_VCFs \;
 /data/bo1srs/bcftools-1.15/bcftools filter -e 'F_MISSING > 0.1' -O z --threads 16 -o /fastdata/bo1srs/final_working_VCFs/Maxmiss0.1_softDP10_minDP1500_all_sites_108_littorina.vcf.gz /fastdata/bo1srs/final_working_VCFs/softDP10_minDP1500_all_sites_108_littorina.vcf.gz 
 
 
+################################## more precise filtering for contigs 1808 and 3201 to leave in indels
+
+
+###Starting with the results of the hardfilters 
+
+#----- pull out regions of interest
+
+/data/bo1srs/bcftools-1.15/bcftools view /fastdata/bo1srs/final_working_VCFs/sweep_contigs/SNPgap5_HardFilter_concat_108.vcf.gz --regions Contig1808:5000-22000 --min-alleles 2 --output-type z -o /mnt/fastdata/bo1srs/final_working_VCFs/sweep_contigs/1808_minall2.vcf.gz
+/data/bo1srs/bcftools-1.15/bcftools view /fastdata/bo1srs/final_working_VCFs/sweep_contigs/SNPgap5_HardFilter_concat_108.vcf.gz --regions Contig3201:48000-70000 --min-alleles 2 --output-type z -o /mnt/fastdata/bo1srs/final_working_VCFs/sweep_contigs/3201_minall2.vcf.gz
+
+#----- drop sites where average read depth is high 
+
+/data/bo1srs/bcftools-1.15/bcftools  filter -e 'INFO/DP>4320 | INFO/DP<1500' --output-type z --threads 16 -o /mnt/fastdata/bo1srs/final_working_VCFs/sweep_contigs/1808_MinMax_DP.vcf.gz /mnt/fastdata/bo1srs/final_working_VCFs/sweep_contigs/1808_minall2.vcf.gz 
+/data/bo1srs/bcftools-1.15/bcftools  filter -e 'INFO/DP>4320 | INFO/DP<1500' --output-type z --threads 16 -o /mnt/fastdata/bo1srs/final_working_VCFs/sweep_contigs/3201_MinMax_DP.vcf.gz /mnt/fastdata/bo1srs/final_working_VCFs/sweep_contigs/3201_minall2.vcf.gz 
+
+#----- ... and set genotypes with less < 10 reads to missing
+
+/data/bo1srs/bcftools-1.15/bcftools filter -S . -e 'FMT/DP<10' -O z -o /fastdata/bo1srs/final_working_VCFs/sweep_contigs/1808_softDP10.vcf.gz /fastdata/bo1srs/final_working_VCFs/sweep_contigs/1808_minall2.vcf.gz
+/data/bo1srs/bcftools-1.15/bcftools filter -S . -e 'FMT/DP<10' -O z -o /fastdata/bo1srs/final_working_VCFs/sweep_contigs/3201_softDP10.vcf.gz /fastdata/bo1srs/final_working_VCFs/sweep_contigs/3201_minall2.vcf.gz
+
+#----- finally, drop all sites with > 10% missing data 
+
+/data/bo1srs/bcftools-1.15/bcftools filter -e 'F_MISSING > 0.1' -O z --threads 16 -o /fastdata/bo1srs/final_working_VCFs/sweep_contigs/1808_Maxmiss0.1_softDP10_vcf.gz /fastdata/bo1srs/final_working_VCFs/sweep_contigs/1808_softDP10.vcf.gz
+/data/bo1srs/bcftools-1.15/bcftools filter -e 'F_MISSING > 0.1' -O z --threads 16 -o /fastdata/bo1srs/final_working_VCFs/sweep_contigs/3201_Maxmiss0.1_softDP10_vcf.gz /fastdata/bo1srs/final_working_VCFs/sweep_contigs/3201_softDP10.vcf.gz
+
+
+
+
+
+
+
+
+
+
+
 

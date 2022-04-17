@@ -81,6 +81,9 @@ points(data2$mid,data2$pi_Brooder, col="cyan3", cex=size)
 points(data2$mid,data2$dxy_Egglayer_Brooder, col="black", cex=size)
 
 
+############# making plots of 0,1,2 genotypes after exporting from vcftools
+
+
 
 
 

@@ -75,8 +75,9 @@ find . -name '*.combined.vcf.gz' -exec mv {} /fastdata/bo1srs/Take_4_VCFs \;
 /data/bo1srs/bcftools-1.15/bcftools filter -e 'F_MISSING > 0.1' -O z --threads 16 -o /fastdata/bo1srs/final_working_VCFs/sweep_contigs/1808_Maxmiss0.1_softDP10_vcf.gz /fastdata/bo1srs/final_working_VCFs/sweep_contigs/1808_softDP10.vcf.gz
 /data/bo1srs/bcftools-1.15/bcftools filter -e 'F_MISSING > 0.1' -O z --threads 16 -o /fastdata/bo1srs/final_working_VCFs/sweep_contigs/3201_Maxmiss0.1_softDP10_vcf.gz /fastdata/bo1srs/final_working_VCFs/sweep_contigs/3201_softDP10.vcf.gz
 
-
-
+#----- output in --012 format
+vcftools --gzvcf 3201_Maxmiss0.1_softDP10_vcf.gz --out 3201 --012 
+vcftools --gzvcf 1808_Maxmiss0.1_softDP10_vcf.gz --out 1808 --012 
 
 
 

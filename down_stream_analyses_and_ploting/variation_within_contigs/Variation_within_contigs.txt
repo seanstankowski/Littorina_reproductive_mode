@@ -83,8 +83,12 @@ points(data2$mid,data2$dxy_Egglayer_Brooder, col="black", cex=size)
 
 ############# making plots of 0,1,2 genotypes after exporting from vcftools
 
-
-
+## read the data frame
+data <-read.csv("3201_geno.csv", header=FALSE)
+## make a transposed matrix
+transposed <- t(as.matrix(data))
+## make a genotype by pos matrix
+image(transposed)
 
 
 

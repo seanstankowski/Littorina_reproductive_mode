@@ -59,7 +59,7 @@ length(total$topoC)
 ################
 
 #####################################################################################################################################################
-################################### permutation test for enrichment of high Tc windows for each LG position #########################################
+################################### permutation test for enrichment of high Tc windows for each LG  #################################################
 #####################################################################################################################################################
 
 start.time <- Sys.time()
@@ -202,3 +202,111 @@ time.taken
 
 data3$p_values_less <- all_p_values_less
 write.csv(data3, "LG_p_values.csv")
+
+
+
+
+#####################################################################################################################################################
+################################### permutation test for enrichment of high Tc windows for each map position #########################################
+#####################################################################################################################################################
+
+################################### permutation test for enrichment of high Tc windows for each map position #########################################
+start.time <- Sys.time()
+setwd("/Users/sstankow/Desktop")
+
+library(dplyr)
+
+data <- read.csv("reproductive_mode_TWISST.popGenwins.csv",header=TRUE)
+data2 <- subset(data, high_topo1 == 1)
+
+## tabulate wins per map pos
+wins_per_map <- table(data$LG_map_position)
+
+## make data frame
+n_map_pos <- as.data.frame(wins_per_map)
+
+## remove top row which is map pos NA
+n_map_pos = n_map_pos[-1,]
+
+## tabulate observed number high Tc wins per map pos
+high_tc_per_map <- table(data2$LG_map_position)
+
+## make data frame
+n_high_tc <- as.data.frame(high_tc_per_map)
+
+## rename variables in both dataframes
+
+n_high_tc <- n_high_tc %>% 
+  rename(
+    map_pos = Var1,
+    n_high_tc = Freq
+    )
+
+n_map_pos <- n_map_pos %>% 
+  rename(
+    map_pos = Var1,
+    n_wins = Freq
+    )
+    
+### merge the dataframes
+data3 <- merge(n_map_pos, n_high_tc, by = "map_pos", all = TRUE)
+
+## replace NA with 0s
+data3[is.na(data3)] <- 0
+
+######### now have a dataset
+
+##################################################### permutation test outer loop   ########################################################
+
+all_p_values <- vector("numeric",length(nrow(data3))) ### make dataframe to catch p values
+
+############################################################################################################################################
+
+for (row in 1:nrow(data3)) {
+number_of_windows <- data3[row,2]
+obs_counts <- data3[row,3]
+
+		######################################################## permutation test setup and control: inner loop  ###########################
+
+		n_perms <- 9999 ######## number of permutations
+		permuted_counts <- vector("numeric",length(n_perms)) ####### create a vector to catch all of the permutations
+
+		####################################################################################################################################
+
+
+		for(i in 1:n_perms)
+{
+
+		## randomly sample 'high_topo1' n times
+		rand_sample <- sample(data$high_topo1, number_of_windows, replace = FALSE)
+
+		## count the number of high topo wins
+		sum_high_wins <- sum(rand_sample==1)
+
+		## add count to the growing data frame
+		permuted_counts[i] <- sum_high_wins
+
+}
+
+
+		p_value <- ((sum(permuted_counts >  obs_counts | permuted_counts==obs_counts)+1)/(n_perms+1))
+
+		p_value
+		
+		### inner loop end
+
+all_p_values[row] <- p_value
+
+
+} ### outer loop end
+
+
+
+########################################################################################### time to run #####################################
+end.time <- Sys.time()
+time.taken <- end.time - start.time
+time.taken
+################################################################################################# end #######################################
+
+data3$p_values <- all_p_values
+write.csv(data3, "windows_with_p_values.csv")

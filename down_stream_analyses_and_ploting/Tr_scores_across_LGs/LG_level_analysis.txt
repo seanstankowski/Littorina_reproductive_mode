@@ -310,3 +310,42 @@ time.taken
 
 data3$p_values <- all_p_values
 write.csv(data3, "windows_with_p_values.csv")
+
+
+
+#####################################################################################################################################################
+################################################### plot p-values from the map position permutation test ############################################
+#####################################################################################################################################################
+
+### plot of tc scores on one LG
+setwd("/Users/sstankow/Desktop")
+
+lengths <- read.csv("contigs_lengths.csv",header=TRUE)
+data <- read.csv("windows_with_p_values.csv", header=TRUE)
+dataB <- subset(data, p_values < 0.05 | p_values == 0.05)
+
+par(mfrow=c(3,6))
+lg_list = seq(1:17)
+
+for(i in lg_list)
+
+{
+
+LG <- i
+map_pos_list <- dataB$map_position[dataB$LG==LG]
+
+E0<-min(lengths$av[lengths$LG==LG], na.rm=TRUE)
+E1<-max(lengths$av[lengths$LG==LG], na.rm=TRUE)
+
+plot(data$map_position[data$LG==LG], data$p_values[data$LG==LG], cex=0.5, col="white", frame=FALSE, yaxt = "n",  xlab = "", ylab = "", xlim = c(0,100), ylim=c(0,1))
+
+for(i in map_pos_list)
+{
+abline(v = i, col="blue")
+}
+
+abline(v=E1, col="red")
+
+}
+
+

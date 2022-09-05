@@ -73,6 +73,15 @@ plot(high_tb_0.6 $topoB,high_tb_0.6 $dxy_Egglayer_Brooder, ylim=c(0,0.025), xlab
 smoothed_dxy <- ksmooth(high_tb_0.6$topoB, high_tb_0.6$dxy_Egglayer_Brooder, kernel = c("normal"), bandwidth = 0.1)
 lines(smoothed_dxy, lwd=2, col="black")
 
+
+
+############### FST
+
+plot(high_tc_0.6 $topoC,high_tc_0.6 $Fst_Egglayer_Brooder , ylim=c(0,0.7), xlab="Topology weight (TopoC)", ylab=("Statistic"), pch=1, cex=0.9, xlim=c(0.6,1), col="gray")
+smoothed_fst <- ksmooth(high_tc_0.6$topoC, high_tc_0.6$Fst_Egglayer_Brooder, kernel = c("normal"), bandwidth = 0.03)
+lines(smoothed_fst, lwd=2, col="black")
+
+
 ############### paired pi plot
 
 data <- read.csv('paired_pi.csv',header=TRUE)

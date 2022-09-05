@@ -1,0 +1,3009 @@
+parent2
+ngens = 40#
+#
+## setup and empty plot#
+	plot(1, type = "n",                        #
+     xlab = "ind", ylab = "gen",#
+     xlim = c(0, n), ylim = c(0, ngens+1), bty="n", axes = FALSE)#
+#
+##make n individuals#
+	inds <-c(1,2,3,4,5,6,7,8,9,10,12,13,14,15,16,17,18,19,20,21))#
+#
+##make n gens#
+	gens <- seq(1:ngens)#
+#
+###### uncomment if you want points for each individual	#
+#for (i in gens) {#
+#y <- rep(i, each=n)#
+#  points(inds,y)#
+#}#
+#
+for (j in gens) { #
+##choose parent 1 for each ind in n#
+	parent1 <- sample(inds, prob = ifelse(inds <=10, 0.97, 0.03))#
+##choose parent 2 for each ind in n#
+	parent2 <- sample(inds, prob = ifelse(inds <=12, 0.97, 0.03))#
+#
+## make color j if you want each gen to be a diff color#
+segments(inds, j, parent1, j+1, col="gray")#
+segments(inds, j, parent2, j+1, col="gray")#
+}
+ngens = 40#
+#
+## setup and empty plot#
+	plot(1, type = "n",                        #
+     xlab = "ind", ylab = "gen",#
+     xlim = c(0, n), ylim = c(0, ngens+1), bty="n", axes = FALSE)#
+#
+##make n individuals#
+	inds <-c(1,2,3,4,5,6,7,8,9,10,12,13,14,15,16,17,18,19,20,21))#
+#
+##make n gens#
+	gens <- seq(1:ngens)#
+#
+###### uncomment if you want points for each individual	#
+#for (i in gens) {#
+#y <- rep(i, each=n)#
+#  points(inds,y)#
+#}#
+#
+for (j in gens) { #
+##choose parent 1 for each ind in n#
+	parent1 <- sample(inds, prob = ifelse(inds <=10, 0.97, 0.03))#
+##choose parent 2 for each ind in n#
+	parent2 <- sample(inds, prob = ifelse(inds <=12, 0.97, 0.03))#
+#
+## make color j if you want each gen to be a diff color#
+segments(inds, j, parent1, j+1, col="gray")#
+segments(inds, j, parent2, j+1, col="gray")#
+}ngens = 40#
+#
+## setup and empty plot#
+	plot(1, type = "n",                        #
+     xlab = "ind", ylab = "gen",#
+     xlim = c(0, n), ylim = c(0, ngens+1), bty="n", axes = FALSE)#
+#
+##make n individuals#
+	inds <-c(1,2,3,4,5,6,7,8,9,10,12,13,14,15,16,17,18,19,20,21))#
+#
+##make n gens#
+	gens <- seq(1:ngens)#
+#
+###### uncomment if you want points for each individual	#
+#for (i in gens) {#
+#y <- rep(i, each=n)#
+#  points(inds,y)#
+#}#
+#
+for (j in gens) { #
+##choose parent 1 for each ind in n#
+	parent1 <- sample(inds, prob = ifelse(inds <=10, 0.97, 0.03))#
+##choose parent 2 for each ind in n#
+	parent2 <- sample(inds, prob = ifelse(inds <=12, 0.97, 0.03))#
+#
+## make color j if you want each gen to be a diff color#
+segments(inds, j, parent1, j+1, col="gray")#
+segments(inds, j, parent2, j+1, col="gray")#
+}
+ngens = 40#
+#
+## setup and empty plot#
+	plot(1, type = "n",                        #
+     xlab = "ind", ylab = "gen",#
+     xlim = c(0, n), ylim = c(0, ngens+1), bty="n", axes = FALSE)#
+#
+##make n individuals#
+	inds <-c(1,2,3,4,5,6,7,8,9,10,13,14,15,16,17,18,19,20,21,22)#
+#
+##make n gens#
+	gens <- seq(1:ngens)#
+#
+###### uncomment if you want points for each individual	#
+#for (i in gens) {#
+#y <- rep(i, each=n)#
+#  points(inds,y)#
+#}#
+#
+for (j in gens) { #
+##choose parent 1 for each ind in n#
+	parent1 <- sample(inds, prob = ifelse(inds <=10, 0.97, 0.03))#
+##choose parent 2 for each ind in n#
+	parent2 <- sample(inds, prob = ifelse(inds <=13, 0.97, 0.03))#
+#
+## make color j if you want each gen to be a diff color#
+segments(inds, j, parent1, j+1, col="gray")#
+segments(inds, j, parent2, j+1, col="gray")#
+}
+ngens = 40#
+#
+## setup and empty plot#
+	plot(1, type = "n",                        #
+     xlab = "ind", ylab = "gen",#
+     xlim = c(0, n), ylim = c(0, ngens+1), bty="n", axes = FALSE)#
+#
+##make n individuals#
+	inds <-c(1,2,3,4,5,6,7,8,9,10,13,14,15,16,17,18,19,20,21,22)#
+#
+##make n gens#
+	gens <- seq(1:ngens)#
+#
+###### uncomment if you want points for each individual	#
+#for (i in gens) {#
+#y <- rep(i, each=n)#
+#  points(inds,y)#
+#}#
+#
+for (j in gens) { #
+##choose parent 1 for each ind in n#
+	parent1 <- sample(inds, prob = ifelse(inds <=10, 0.97, 0.03))#
+##choose parent 2 for each ind in n#
+	parent2 <- sample(inds, prob = ifelse(inds <=13, 0.97, 0.03))#
+#
+## make color j if you want each gen to be a diff color#
+segments(inds, j, parent1, j+1, col=j)#
+segments(inds, j, parent2, j+1, col=j)#
+}
+ngens = 40#
+#
+## setup and empty plot#
+	plot(1, type = "n",                        #
+     xlab = "ind", ylab = "gen",#
+     xlim = c(0, n), ylim = c(0, ngens+1), bty="n", axes = FALSE)#
+#
+##make n individuals#
+	inds <-c(1,2,3,4,5,6,7,8,9,10,13,14,15,16,17,18,19,20,21,22)#
+#
+##make n gens#
+	gens <- seq(1:ngens)#
+#
+###### uncomment if you want points for each individual	#
+for (i in gens) {#
+y <- rep(i, each=n)#
+  points(inds,y)#
+}#
+#
+for (j in gens) { #
+##choose parent 1 for each ind in n#
+	parent1 <- sample(inds, prob = ifelse(inds <=10, 0.97, 0.03))#
+##choose parent 2 for each ind in n#
+	parent2 <- sample(inds, prob = ifelse(inds <=13, 0.97, 0.03))#
+#
+## make color j if you want each gen to be a diff color#
+segments(inds, j, parent1, j+1, col="gray")#
+segments(inds, j, parent2, j+1, col="gray")#
+}
+ngens = 40#
+#
+## setup and empty plot#
+	plot(1, type = "n",                        #
+     xlab = "ind", ylab = "gen",#
+     xlim = c(0, n), ylim = c(0, ngens+1), bty="n", axes = FALSE)#
+#
+##make n individuals#
+	inds <-c(1,2,3,4,5,6,7,8,9,10,13,14,15,16,17,18,19,20,21,22)#
+#
+##make n gens#
+	gens <- seq(1:ngens)#
+#
+###### uncomment if you want points for each individual	#
+for (i in gens) {#
+y <- rep(i, each=20)#
+  points(inds,y)#
+}#
+#
+for (j in gens) { #
+##choose parent 1 for each ind in n#
+	parent1 <- sample(inds, prob = ifelse(inds <=10, 0.97, 0.03))#
+##choose parent 2 for each ind in n#
+	parent2 <- sample(inds, prob = ifelse(inds <=13, 0.97, 0.03))#
+#
+## make color j if you want each gen to be a diff color#
+segments(inds, j, parent1, j+1, col="gray")#
+segments(inds, j, parent2, j+1, col="gray")#
+}
+ngens = 40#
+#
+## setup and empty plot#
+	plot(1, type = "n",                        #
+     xlab = "ind", ylab = "gen",#
+     xlim = c(0, n), ylim = c(0, ngens+1))#
+#
+##make n individuals#
+	inds <-c(1,2,3,4,5,6,7,8,9,10,13,14,15,16,17,18,19,20,21,22)#
+#
+##make n gens#
+	gens <- seq(1:ngens)#
+#
+###### uncomment if you want points for each individual	#
+for (i in gens) {#
+y <- rep(i, each=20)#
+  points(inds,y)#
+}#
+#
+for (j in gens) { #
+##choose parent 1 for each ind in n#
+	parent1 <- sample(inds, prob = ifelse(inds <=10, 0.97, 0.03))#
+##choose parent 2 for each ind in n#
+	parent2 <- sample(inds, prob = ifelse(inds <=13, 0.97, 0.03))#
+#
+## make color j if you want each gen to be a diff color#
+segments(inds, j, parent1, j+1, col="gray")#
+segments(inds, j, parent2, j+1, col="gray")#
+}
+ngens = 40#
+#
+## setup and empty plot#
+	plot(1,                        #
+     xlab = "ind", ylab = "gen",#
+     xlim = c(0, n), ylim = c(0, ngens+1))#
+#
+##make n individuals#
+	inds <-c(1,2,3,4,5,6,7,8,9,10,13,14,15,16,17,18,19,20,21,22)#
+#
+##make n gens#
+	gens <- seq(1:ngens)#
+#
+###### uncomment if you want points for each individual	#
+for (i in gens) {#
+y <- rep(i, each=20)#
+  points(inds,y)#
+}#
+#
+for (j in gens) { #
+##choose parent 1 for each ind in n#
+	parent1 <- sample(inds, prob = ifelse(inds <=10, 0.97, 0.03))#
+##choose parent 2 for each ind in n#
+	parent2 <- sample(inds, prob = ifelse(inds <=13, 0.97, 0.03))#
+#
+## make color j if you want each gen to be a diff color#
+segments(inds, j, parent1, j+1, col="gray")#
+segments(inds, j, parent2, j+1, col="gray")#
+}
+ngens = 40#
+#
+## setup and empty plot#
+	plot(1, type = "n",                        #
+     xlab = "ind", ylab = "gen",#
+     xlim = c(0, 22), ylim = c(0, ngens+1), bty="n", axes = FALSE)#
+#
+##make n individuals#
+	inds <-c(1,2,3,4,5,6,7,8,9,10,13,14,15,16,17,18,19,20,21,22)#
+#
+##make n gens#
+	gens <- seq(1:ngens)#
+#
+###### uncomment if you want points for each individual	#
+for (i in gens) {#
+y <- rep(i, each=20)#
+  points(inds,y)#
+}#
+#
+for (j in gens) { #
+##choose parent 1 for each ind in n#
+	parent1 <- sample(inds, prob = ifelse(inds <=10, 0.97, 0.03))#
+##choose parent 2 for each ind in n#
+	parent2 <- sample(inds, prob = ifelse(inds <=13, 0.97, 0.03))#
+#
+## make color j if you want each gen to be a diff color#
+segments(inds, j, parent1, j+1, col="gray")#
+segments(inds, j, parent2, j+1, col="gray")#
+}
+ngens = 40#
+#
+## setup and empty plot#
+	plot(1, type = "n",                        #
+     xlab = "ind", ylab = "gen",#
+     xlim = c(0, 22), ylim = c(0, ngens+1), bty="n", axes = FALSE)#
+#
+##make n individuals#
+	inds <-c(1,2,3,4,5,6,7,8,9,10,13,14,15,16,17,18,19,20,21,22)#
+#
+##make n gens#
+	gens <- seq(1:ngens)#
+#
+###### uncomment if you want points for each individual	#
+#for (i in gens) {#
+#y <- rep(i, each=20)#
+#  points(inds,y)#
+#}#
+#
+for (j in gens) { #
+##choose parent 1 for each ind in n#
+	parent1 <- sample(inds, prob = ifelse(inds <=10, 0.97, 0.03))#
+##choose parent 2 for each ind in n#
+	parent2 <- sample(inds, prob = ifelse(inds <=13, 0.97, 0.03))#
+#
+## make color j if you want each gen to be a diff color#
+segments(inds, j, parent1, j+1, col="gray")#
+segments(inds, j, parent2, j+1, col="gray")#
+}
+ngens = 40#
+#
+## setup and empty plot#
+	plot(1, type = "n",                        #
+     xlab = "ind", ylab = "gen",#
+     xlim = c(0, 22), ylim = c(0, ngens+1), bty="n", axes = FALSE)#
+#
+##make n individuals#
+	inds <-c(1,2,3,4,5,6,7,8,9,10,13,14,15,16,17,18,19,20,21,22)#
+#
+##make n gens#
+	gens <- seq(1:ngens)#
+#
+###### uncomment if you want points for each individual	#
+#for (i in gens) {#
+#y <- rep(i, each=20)#
+#  points(inds,y)#
+#}#
+#
+for (j in gens) { #
+##choose parent 1 for each ind in n#
+	parent1 <- sample(inds, prob = ifelse(inds <=10, 0.97, 0.03))#
+##choose parent 2 for each ind in n#
+	parent2 <- sample(inds, prob = ifelse(inds >=13, 0.97, 0.03))#
+#
+## make color j if you want each gen to be a diff color#
+segments(inds, j, parent1, j+1, col="gray")#
+segments(inds, j, parent2, j+1, col="gray")#
+}
+ngens = 40#
+#
+## setup and empty plot#
+	plot(1, type = "n",                        #
+     xlab = "ind", ylab = "gen",#
+     xlim = c(0, 22), ylim = c(0, ngens+1), bty="n", axes = FALSE)#
+#
+##make n individuals#
+	inds <-c(1,2,3,4,5,6,7,8,9,10,13,14,15,16,17,18,19,20,21,22)#
+#
+##make n gens#
+	gens <- seq(1:ngens)#
+#
+###### uncomment if you want points for each individual	#
+#for (i in gens) {#
+#y <- rep(i, each=20)#
+#  points(inds,y)#
+#}#
+#
+for (j in gens) { #
+##choose parent 1 for each ind in n#
+	parent1 <- sample(inds, prob = ifelse(inds <=10, 0.97, 0.03))#
+##choose parent 2 for each ind in n#
+	parent2 <- sample(inds, prob = ifelse(inds <=10, 0.97, 0.03))#
+#
+## make color j if you want each gen to be a diff color#
+segments(inds, j, parent1, j+1, col="gray")#
+segments(inds, j, parent2, j+1, col="gray")#
+}
+ngens = 40#
+#
+## setup and empty plot#
+	plot(1, type = "n",                        #
+     xlab = "ind", ylab = "gen",#
+     xlim = c(0, 22), ylim = c(0, ngens+1), bty="n", axes = FALSE)#
+#
+##make n individuals#
+	inds <-c(1,2,3,4,5,6,7,8,9,10,12,13,14,15,16,17,18,19,20,21)#
+#
+##make n gens#
+	gens <- seq(1:ngens)#
+#
+###### uncomment if you want points for each individual	#
+#for (i in gens) {#
+#y <- rep(i, each=20)#
+#  points(inds,y)#
+#}#
+#
+for (j in gens) { #
+##choose parent 1 for each ind in n#
+	parent1 <- sample(inds, prob = ifelse(inds <=10, 0.97, 0.03))#
+##choose parent 2 for each ind in n#
+	parent2 <- sample(inds, prob = ifelse(inds <=10, 0.97, 0.03))#
+#
+## make color j if you want each gen to be a diff color#
+segments(inds, j, parent1, j+1, col="gray")#
+segments(inds, j, parent2, j+1, col="gray")#
+}
+ngens = 40#
+#
+## setup and empty plot#
+	plot(1, type = "n",                        #
+     xlab = "ind", ylab = "gen",#
+     xlim = c(0, 22), ylim = c(0, ngens+1), bty="n", axes = FALSE)#
+#
+##make n individuals#
+	inds <-c(1,2,3,4,5,6,7,8,9,10,12,13,14,15,16,17,18,19,20,21)#
+#
+##make n gens#
+	gens <- seq(1:ngens)#
+#
+###### uncomment if you want points for each individual	#
+#for (i in gens) {#
+#y <- rep(i, each=20)#
+#  points(inds,y)#
+#}#
+#
+for (j in gens) { #
+##choose parent 1 for each ind in n#
+	parent1 <- sample(inds, prob = ifelse(inds <=10, 0.95, 0.03))#
+##choose parent 2 for each ind in n#
+	parent2 <- sample(inds, prob = ifelse(inds <=10, 0.95, 0.03))#
+#
+## make color j if you want each gen to be a diff color#
+segments(inds, j, parent1, j+1, col="gray")#
+segments(inds, j, parent2, j+1, col="gray")#
+}
+ngens = 40#
+#
+## setup and empty plot#
+	plot(1, type = "n",                        #
+     xlab = "ind", ylab = "gen",#
+     xlim = c(0, 22), ylim = c(0, ngens+1), bty="n", axes = FALSE)#
+#
+##make n individuals#
+	inds <-c(1,2,3,4,5,6,7,8,9,10,12,13,14,15,16,17,18,19,20,21)#
+#
+##make n gens#
+	gens <- seq(1:ngens)#
+#
+###### uncomment if you want points for each individual	#
+#for (i in gens) {#
+#y <- rep(i, each=20)#
+#  points(inds,y)#
+#}#
+#
+for (j in gens) { #
+##choose parent 1 for each ind in n#
+	parent1 <- sample(inds, prob = ifelse(inds <=10, 0.95, 0.05))#
+##choose parent 2 for each ind in n#
+	parent2 <- sample(inds, prob = ifelse(inds <=10, 0.95, 0.05))#
+#
+## make color j if you want each gen to be a diff color#
+segments(inds, j, parent1, j+1, col="gray")#
+segments(inds, j, parent2, j+1, col="gray")#
+}
+ngens = 40#
+#
+## setup and empty plot#
+	plot(1, type = "n",                        #
+     xlab = "ind", ylab = "gen",#
+     xlim = c(0, 22), ylim = c(0, ngens+1), bty="n", axes = FALSE)#
+#
+##make n individuals#
+	inds <-c(1,2,3,4,5,6,7,8,9,10,12,13,14,15,16,17,18,19,20,21)#
+#
+##make n gens#
+	gens <- seq(1:ngens)#
+#
+###### uncomment if you want points for each individual	#
+#for (i in gens) {#
+#y <- rep(i, each=20)#
+#  points(inds,y)#
+#}#
+#
+for (j in gens) { #
+##choose parent 1 for each ind in n#
+	parent1 <- sample(inds, prob = ifelse(inds <=10, 0.95, 0.05))#
+##choose parent 2 for each ind in n#
+	parent2 <- sample(inds, prob = ifelse(inds <=10, 0.95, 0.05))#
+#
+## make color j if you want each gen to be a diff color#
+segments(inds, j, parent1, j+1, col="red")#
+segments(inds, j, parent2, j+1, col="gray")#
+}
+ngens = 3#
+#
+## setup and empty plot#
+	plot(1, type = "n",                        #
+     xlab = "ind", ylab = "gen",#
+     xlim = c(0, 22), ylim = c(0, ngens+1), bty="n", axes = FALSE)#
+#
+##make n individuals#
+	inds <-c(1,2,3,4,5,6,7,8,9,10,12,13,14,15,16,17,18,19,20,21)#
+#
+##make n gens#
+	gens <- seq(1:ngens)#
+#
+###### uncomment if you want points for each individual	#
+#for (i in gens) {#
+#y <- rep(i, each=20)#
+#  points(inds,y)#
+#}#
+#
+for (j in gens) { #
+##choose parent 1 for each ind in n#
+	parent1 <- sample(inds, prob = ifelse(inds <=10, 0.97, 0.03))#
+##choose parent 2 for each ind in n#
+	parent2 <- sample(inds, prob = ifelse(inds <=10, 0.97, 0.03))#
+#
+## make color j if you want each gen to be a diff color#
+segments(inds, j, parent1, j+1, col="gray")#
+segments(inds, j, parent2, j+1, col="gray")#
+}
+ngens = 3#
+#
+## setup and empty plot#
+	plot(1, type = "n",                        #
+     xlab = "ind", ylab = "gen",#
+     xlim = c(0, 22), ylim = c(0, ngens+1), bty="n", axes = FALSE)#
+#
+##make n individuals#
+	inds <-c(1,2,3,4,5,6,7,8,9,10,12,13,14,15,16,17,18,19,20,21)#
+#
+##make n gens#
+	gens <- seq(1:ngens)#
+#
+###### uncomment if you want points for each individual	#
+#for (i in gens) {#
+#y <- rep(i, each=20)#
+#  points(inds,y)#
+#}#
+#
+for (j in gens) { #
+##choose parent 1 for each ind in n#
+	parent1 <- sample(inds, prob = ifelse(inds <=10, 0.97, 0.03))#
+##choose parent 2 for each ind in n#
+	parent2 <- sample(inds, prob = ifelse(inds <=10, 0.97, 0.03))#
+#
+## make color j if you want each gen to be a diff color#
+segments(inds, j, parent1, j+1, col="red")#
+segments(inds, j, parent2, j+1, col="gray")#
+}
+ngens = 40#
+#
+## setup and empty plot#
+	plot(1, type = "n",                        #
+     xlab = "ind", ylab = "gen",#
+     xlim = c(0, 22), ylim = c(0, ngens+1), bty="n", axes = FALSE)#
+#
+##make n individuals#
+	inds <-c(1,2,3,4,5,6,7,8,9,10,12,13,14,15,16,17,18,19,20,21)#
+#
+##make n gens#
+	gens <- seq(1:ngens)#
+#
+###### uncomment if you want points for each individual	#
+#for (i in gens) {#
+#y <- rep(i, each=20)#
+#  points(inds,y)#
+#}#
+#
+for (j in gens) { #
+##choose parent 1 for each ind in n#
+	parent1 <- sample(inds, prob = ifelse(inds <=10, 0.95, 0.05))#
+##choose parent 2 for each ind in n#
+	parent2 <- sample(inds, prob = ifelse(inds <=10, 0.95, 0.05))#
+#
+## make color j if you want each gen to be a diff color#
+segments(inds, j, parent1, j+1, col="red")#
+segments(inds, j, parent2, j+1, col="gray")#
+}
+ngens = 40#
+#
+## setup and empty plot#
+	plot(1, type = "n",                        #
+     xlab = "ind", ylab = "gen",#
+     xlim = c(0, 22), ylim = c(0, ngens+1), bty="n", axes = FALSE)#
+#
+##make n individuals#
+	inds <-c(1,2,3,4,5,6,7,8,9,10,12,13,14,15,16,17,18,19,20,21)#
+#
+##make n gens#
+	gens <- seq(1:ngens)#
+#
+###### uncomment if you want points for each individual	#
+#for (i in gens) {#
+#y <- rep(i, each=20)#
+#  points(inds,y)#
+#}#
+#
+for (j in gens) { #
+##choose parent 1 for each ind in n#
+	parent1 <- sample(inds, prob = ifelse(inds <=10, 0.97, 0.03))#
+##choose parent 2 for each ind in n#
+	parent2 <- sample(inds, prob = ifelse(inds <=10, 0.97, 0.03))#
+#
+## make color j if you want each gen to be a diff color#
+segments(inds, j, parent1, j+1, col="red")#
+segments(inds, j, parent2, j+1, col="gray")#
+}
+ngens = 40#
+#
+## setup and empty plot#
+	plot(1, type = "n",                        #
+     xlab = "ind", ylab = "gen",#
+     xlim = c(0, 22), ylim = c(0, ngens+1), bty="n", axes = FALSE)#
+#
+##make n individuals#
+	inds <-c(1,2,3,4,5,6,7,8,9,10,12,13,14,15,16,17,18,19,20,21)#
+#
+##make n gens#
+	gens <- seq(1:ngens)#
+#
+###### uncomment if you want points for each individual	#
+#for (i in gens) {#
+#y <- rep(i, each=20)#
+#  points(inds,y)#
+#}#
+#
+for (j in gens) { #
+##choose parent 1 for each ind in n#
+	parent1 <- sample(inds, prob = ifelse(inds <=10, 0.99, 0.01))#
+##choose parent 2 for each ind in n#
+	parent2 <- sample(inds, prob = ifelse(inds <=10, 0.99, 0.01))#
+#
+## make color j if you want each gen to be a diff color#
+segments(inds, j, parent1, j+1, col="red")#
+segments(inds, j, parent2, j+1, col="gray")#
+}
+ngens = 40#
+#
+## setup and empty plot#
+	plot(1, type = "n",                        #
+     xlab = "ind", ylab = "gen",#
+     xlim = c(0, 22), ylim = c(0, ngens+1), bty="n", axes = FALSE)#
+#
+##make n individuals#
+	inds <-c(1,2,3,4,5,6,7,8,9,10,12,13,14,15,16,17,18,19,20,21)#
+#
+##make n gens#
+	gens <- seq(1:ngens)#
+#
+###### uncomment if you want points for each individual	#
+#for (i in gens) {#
+#y <- rep(i, each=20)#
+#  points(inds,y)#
+#}#
+#
+for (j in gens) { #
+##choose parent 1 for each ind in n#
+	parent1 <- sample(inds, prob = ifelse(inds <=10, 0.98, 0.2))#
+##choose parent 2 for each ind in n#
+	parent2 <- sample(inds, prob = ifelse(inds <=10, 0.98, 0.2))#
+#
+## make color j if you want each gen to be a diff color#
+segments(inds, j, parent1, j+1, col="red")#
+segments(inds, j, parent2, j+1, col="gray")#
+}
+ngens = 40#
+#
+## setup and empty plot#
+	plot(1, type = "n",                        #
+     xlab = "ind", ylab = "gen",#
+     xlim = c(0, 22), ylim = c(0, ngens+1), bty="n", axes = FALSE)#
+#
+##make n individuals#
+	inds <-c(1,2,3,4,5,6,7,8,9,10,12,13,14,15,16,17,18,19,20,21)#
+#
+##make n gens#
+	gens <- seq(1:ngens)#
+#
+###### uncomment if you want points for each individual	#
+#for (i in gens) {#
+#y <- rep(i, each=20)#
+#  points(inds,y)#
+#}#
+#
+for (j in gens) { #
+##choose parent 1 for each ind in n#
+	parent1 <- sample(inds, prob = ifelse(inds <=10, 0.98, 0.02))#
+##choose parent 2 for each ind in n#
+	parent2 <- sample(inds, prob = ifelse(inds <=10, 0.98, 0.02))#
+#
+## make color j if you want each gen to be a diff color#
+segments(inds, j, parent1, j+1, col="red")#
+segments(inds, j, parent2, j+1, col="gray")#
+}
+ngens = 40#
+#
+## setup and empty plot#
+	plot(1, type = "n",                        #
+     xlab = "ind", ylab = "gen",#
+     xlim = c(0, 22), ylim = c(0, ngens+1), bty="n", axes = FALSE)#
+#
+##make n individuals#
+	inds <-c(1,2,3,4,5,6,7,8,9,10,12,13,14,15,16,17,18,19,20,21)#
+#
+##make n gens#
+	gens <- seq(1:ngens)#
+#
+###### uncomment if you want points for each individual	#
+#for (i in gens) {#
+#y <- rep(i, each=20)#
+#  points(inds,y)#
+#}#
+#
+for (j in gens) { #
+##choose parent 1 for each ind in n#
+	parent1 <- sample(inds, prob = ifelse(inds <=10, 0.98, 0.02))#
+##choose parent 2 for each ind in n#
+	parent2 <- sample(inds, prob = ifelse(inds <=10, 0.98, 0.02))#
+#
+## make color j if you want each gen to be a diff color#
+segments(inds, j, parent1, j+1, col="gray")#
+segments(inds, j, parent2, j+1, col="gray")#
+}
+ngens = 40#
+#
+## setup and empty plot#
+	plot(1, type = "n",                        #
+     xlab = "ind", ylab = "gen",#
+     xlim = c(0, 22), ylim = c(0, ngens+1), bty="n", axes = FALSE)#
+#
+##make n individuals#
+	inds <-c(1,2,3,4,5,6,7,8,9,10,12,13,14,15,16,17,18,19,20,21)#
+#
+##make n gens#
+	gens <- seq(1:ngens)#
+#
+###### uncomment if you want points for each individual	#
+#for (i in gens) {#
+#y <- rep(i, each=20)#
+#  points(inds,y)#
+#}#
+#
+for (j in gens) { #
+##choose parent 1 for each ind in n#
+	parent1 <- sample(inds, prob = ifelse(inds <=10, 0.975, 0.025))#
+##choose parent 2 for each ind in n#
+	parent2 <- sample(inds, prob = ifelse(inds <=10, 0.975, 0.025))#
+#
+## make color j if you want each gen to be a diff color#
+segments(inds, j, parent1, j+1, col="gray")#
+segments(inds, j, parent2, j+1, col="gray")#
+}
+ngens = 40#
+#
+## setup and empty plot#
+	plot(1, type = "n",                        #
+     xlab = "ind", ylab = "gen",#
+     xlim = c(0, 22), ylim = c(0, ngens+1), bty="n", axes = FALSE)#
+#
+##make n individuals#
+	inds <-c(1,2,3,4,5,6,7,8,9,10,12,13,14,15,16,17,18,19,20,21)#
+#
+##make n gens#
+	gens <- seq(1:ngens)#
+#
+###### uncomment if you want points for each individual	#
+#for (i in gens) {#
+#y <- rep(i, each=20)#
+#  points(inds,y)#
+#}#
+#
+for (j in gens) { #
+##choose parent 1 for each ind in n#
+	parent1 <- sample(inds, prob = ifelse(inds <=10, 0.98, 0.02))#
+##choose parent 2 for each ind in n#
+	parent2 <- sample(inds, prob = ifelse(inds <=10, 0.98, 0.02))#
+#
+## make color j if you want each gen to be a diff color#
+segments(inds, j, parent1, j+1, col="gray")#
+segments(inds, j, parent2, j+1, col="gray")#
+}
+ngens = 30#
+#
+## setup and empty plot#
+	plot(1, type = "n",                        #
+     xlab = "ind", ylab = "gen",#
+     xlim = c(0, 22), ylim = c(0, ngens+1), bty="n", axes = FALSE)#
+#
+##make n individuals#
+	inds <-c(1,2,3,4,5,6,7,8,9,10,12,13,14,15,16,17,18,19,20,21)#
+#
+##make n gens#
+	gens <- seq(1:ngens)#
+#
+###### uncomment if you want points for each individual	#
+#for (i in gens) {#
+#y <- rep(i, each=20)#
+#  points(inds,y)#
+#}#
+#
+for (j in gens) { #
+##choose parent 1 for each ind in n#
+	parent1 <- sample(inds, prob = ifelse(inds <=10, 0.98, 0.02))#
+##choose parent 2 for each ind in n#
+	parent2 <- sample(inds, prob = ifelse(inds <=10, 0.98, 0.02))#
+#
+## make color j if you want each gen to be a diff color#
+segments(inds, j, parent1, j+1, col="gray")#
+segments(inds, j, parent2, j+1, col="gray")#
+}
+ngens = 30#
+#
+## setup and empty plot#
+	plot(1, type = "n",                        #
+     xlab = "ind", ylab = "gen",#
+     xlim = c(0, 22), ylim = c(0, ngens+1), bty="n", axes = FALSE)#
+#
+##make n individuals#
+	inds <-c(1,2,3,4,5,6,7,8,9,10,12,13,14,15,16,17,18,19,20,21)#
+#
+##make n gens#
+	gens <- seq(1:ngens)#
+#
+###### uncomment if you want points for each individual	#
+#for (i in gens) {#
+#y <- rep(i, each=20)#
+#  points(inds,y)#
+#}#
+#
+for (j in gens) { #
+##choose parent 1 for each ind in n#
+	parent1 <- sample(inds, prob = ifelse(inds <=10, 0.98, 0.02))#
+##choose parent 2 for each ind in n#
+	parent2 <- sample(inds, prob = ifelse(inds <=10, 0.98, 0.02))#
+#
+## make color j if you want each gen to be a diff color#
+segments(inds, j, parent1, j+1, col="j")#
+segments(inds, j, parent2, j+1, col="j")#
+}
+ngens = 30#
+#
+## setup and empty plot#
+	plot(1, type = "n",                        #
+     xlab = "ind", ylab = "gen",#
+     xlim = c(0, 22), ylim = c(0, ngens+1), bty="n", axes = FALSE)#
+#
+##make n individuals#
+	inds <-c(1,2,3,4,5,6,7,8,9,10,12,13,14,15,16,17,18,19,20,21)#
+#
+##make n gens#
+	gens <- seq(1:ngens)#
+#
+###### uncomment if you want points for each individual	#
+#for (i in gens) {#
+#y <- rep(i, each=20)#
+#  points(inds,y)#
+#}#
+#
+for (j in gens) { #
+##choose parent 1 for each ind in n#
+	parent1 <- sample(inds, prob = ifelse(inds <=10, 0.98, 0.02))#
+##choose parent 2 for each ind in n#
+	parent2 <- sample(inds, prob = ifelse(inds <=10, 0.98, 0.02))#
+#
+## make color j if you want each gen to be a diff color#
+segments(inds, j, parent1, j+1, col=j)#
+segments(inds, j, parent2, j+1, col=j)#
+}
+ngens = 30#
+#
+## setup and empty plot#
+	plot(1, type = "n",                        #
+     xlab = "ind", ylab = "gen",#
+     xlim = c(0, 22), ylim = c(0, ngens+1), bty="n", axes = FALSE)#
+#
+##make n individuals#
+	inds <-c(1,2,3,4,5,6,7,8,9,10,12,13,14,15,16,17,18,19,20,21)#
+#
+##make n gens#
+	gens <- seq(1:ngens)#
+#
+###### uncomment if you want points for each individual	#
+#for (i in gens) {#
+#y <- rep(i, each=20)#
+#  points(inds,y)#
+#}#
+#
+for (j in gens) { #
+##choose parent 1 for each ind in n#
+	parent1 <- sample(inds, prob = ifelse(inds <=10, 0.98, 0.02))#
+##choose parent 2 for each ind in n#
+	parent2 <- sample(inds, prob = ifelse(inds <=10, 0.98, 0.02))#
+#
+## make color j if you want each gen to be a diff color#
+segments(inds, j, parent1, j+1, col="gray")#
+segments(inds, j, parent2, j+1, col="gray")#
+}
+ngens = 30#
+#
+## setup and empty plot#
+	plot(1, type = "n",                        #
+     xlab = "ind", ylab = "gen",#
+     xlim = c(0, 22), ylim = c(0, ngens+1), bty="n", axes = FALSE)#
+#
+##make n individuals#
+	inds <-c(1,2,3,4,5,6,7,8,9,10,12,13,14,15,16,17,18,19,20,21)#
+#
+##make n gens#
+	gens <- seq(1:ngens)#
+#
+###### uncomment if you want points for each individual	#
+for (i in gens) {#
+y <- rep(i, each=20)#
+  points(inds,y, pch = "-")#
+}#
+#
+for (j in gens) { #
+##choose parent 1 for each ind in n#
+	parent1 <- sample(inds, prob = ifelse(inds <=10, 0.98, 0.02))#
+##choose parent 2 for each ind in n#
+	parent2 <- sample(inds, prob = ifelse(inds <=10, 0.98, 0.02))#
+#
+## make color j if you want each gen to be a diff color#
+segments(inds, j, parent1, j+1, col="gray")#
+segments(inds, j, parent2, j+1, col="gray")#
+}
+n = 100#
+ngens = 100#
+#
+## setup and empty plot#
+	plot(1, type = "n",                        #
+     xlab = "ind", ylab = "gen",#
+     xlim = c(0, n), ylim = c(0, ngens+1), bty="n", axes = false)#
+#
+##make n individuals#
+	inds <-seq(1:n)#
+#
+##make n gens#
+	gens <- seq(1:ngens)#
+#
+###### uncomment if you want points for each individual	#
+#for (i in gens) {#
+#y <- rep(i, each=n)#
+#  points(inds,y)#
+#}#
+#
+for (j in gens) { #
+##choose parent 1 for each ind in n#
+	parent1 <-sample(inds, replace=FALSE)#
+##choose parent 2 for each ind in n#
+	parent2 <-sample(inds, replace=FALSE)#
+#
+## make color j if you want each gen to be a diff color#
+segments(inds, j, parent1, j+1, col="gray")#
+segments(inds, j, parent2, j+1, col="gray")#
+}
+############ 2 demes with reduced mating #
+#
+ngens = 30#
+#
+## setup and empty plot#
+	plot(1, type = "n",                        #
+     xlab = "ind", ylab = "gen",#
+     xlim = c(0, 13), ylim = c(0, ngens+1), bty="n", axes = FALSE)#
+#
+##make n individuals#
+	inds <-c(1,2,3,4,5,6,7,8,9,10,12,13)#
+#
+##make n gens#
+	gens <- seq(1:ngens)#
+#
+###### uncomment if you want points for each individual	#
+#for (i in gens) {#
+#y <- rep(i, each=12)#
+#  points(inds,y)#
+#}#
+#
+for (j in gens) { #
+##choose parent 1 for each ind in n#
+	parent1 <- sample(inds, prob = ifelse(inds <=10, 0.97, 0.03))#
+##choose parent 2 for each ind in n#
+	parent2 <- sample(inds, prob = ifelse(inds <=10, 0.97, 0.03))#
+#
+## make color j if you want each gen to be a diff color#
+segments(inds, j, parent1, j+1, col="gray")#
+segments(inds, j, parent2, j+1, col="gray")#
+}
+############ 2 demes with reduced mating #
+#
+ngens = 30#
+#
+## setup and empty plot#
+	plot(1, type = "n",                        #
+     xlab = "ind", ylab = "gen",#
+     xlim = c(0, 13), ylim = c(0, ngens+1), bty="n", axes = FALSE)#
+#
+##make n individuals#
+	inds <-c(1,2,3,4,5,6,7,8,9,10,12,13)#
+#
+##make n gens#
+	gens <- seq(1:ngens)#
+#
+###### uncomment if you want points for each individual	#
+#for (i in gens) {#
+#y <- rep(i, each=12)#
+#  points(inds,y)#
+#}#
+#
+for (j in gens) { #
+##choose parent 1 for each ind in n#
+	parent1 <- sample(inds, prob = ifelse(inds <=6, 0.97, 0.03))#
+##choose parent 2 for each ind in n#
+	parent2 <- sample(inds, prob = ifelse(inds <=6, 0.97, 0.03))#
+#
+## make color j if you want each gen to be a diff color#
+segments(inds, j, parent1, j+1, col="gray")#
+segments(inds, j, parent2, j+1, col="gray")#
+}
+############ 2 demes with reduced mating #
+#
+ngens = 30#
+#
+## setup and empty plot#
+	plot(1, type = "n",                        #
+     xlab = "ind", ylab = "gen",#
+     xlim = c(0, 13), ylim = c(0, ngens+1), bty="n", axes = FALSE)#
+#
+##make n individuals#
+	inds <-c(1,2,3,4,5,6,8,9,10,11,12,13)#
+#
+##make n gens#
+	gens <- seq(1:ngens)#
+#
+###### uncomment if you want points for each individual	#
+for (i in gens) {#
+y <- rep(i, each=12)#
+points(inds,y)#
+}#
+#
+for (j in gens) { #
+##choose parent 1 for each ind in n#
+	parent1 <- sample(inds, prob = ifelse(inds <=6, 0.97, 0.03))#
+##choose parent 2 for each ind in n#
+	parent2 <- sample(inds, prob = ifelse(inds <=6, 0.97, 0.03))#
+#
+###### uncomment if you want points for each individual	#
+for (i in gens) {#
+y <- rep(i, each=12)#
+points(inds,y, pch="_")#
+}
+############ 2 demes with reduced mating #
+#
+ngens = 30#
+#
+## setup and empty plot#
+	plot(1, type = "n",                        #
+     xlab = "ind", ylab = "gen",#
+     xlim = c(0, 13), ylim = c(0, ngens+1), bty="n", axes = FALSE)#
+#
+##make n individuals#
+	inds <-c(1,2,3,4,5,6,8,9,10,11,12,13)#
+#
+##make n gens#
+	gens <- seq(1:ngens)#
+#
+###### uncomment if you want points for each individual	#
+for (i in gens) {#
+y <- rep(i, each=12)#
+points(inds,y, pch="_")#
+}#
+#
+for (j in gens) { #
+##choose parent 1 for each ind in n#
+	parent1 <- sample(inds, prob = ifelse(inds <=6, 0.97, 0.03))#
+##choose parent 2 for each ind in n#
+	parent2 <- sample(inds, prob = ifelse(inds <=6, 0.97, 0.03))#
+#
+## make color j if you want each gen to be a diff color#
+segments(inds, j, parent1, j+1, col="gray")#
+segments(inds, j, parent2, j+1, col="gray")#
+}
+############### 2 pops 20 inds RI#
+ngens = 3#
+#
+## setup and empty plot#
+	plot(1, type = "n",                        #
+     xlab = "ind", ylab = "gen",#
+     xlim = c(0, 22), ylim = c(0, ngens+1), bty="n", axes = FALSE)#
+#
+##make n individuals#
+	inds <-c(1,2,3,4,5,6,8,9,10,11,12,13)#
+#
+##make n gens#
+	gens <- seq(1:ngens)#
+#
+###### uncomment if you want points for each individual	#
+#for (i in gens) {#
+#y <- rep(i, each=20)#
+#  points(inds,y, pch="_")#
+#}#
+#
+for (j in gens) { #
+##choose parent 1 for each ind in n#
+	parent1 <- sample(inds, prob = ifelse(inds <=10, 0.97, 0.03))#
+##choose parent 2 for each ind in n#
+	parent2 <- sample(inds, prob = ifelse(inds <=10, 0.97, 0.03))#
+#
+## make color j if you want each gen to be a diff color#
+segments(inds, j, parent1, j+1, col="gray")#
+segments(inds, j, parent2, j+1, col="gray")#
+}
+n = 20#
+ngens = 20#
+#
+## setup and empty plot#
+	plot(1, type = "n",                        #
+     xlab = "ind", ylab = "gen",#
+     xlim = c(0, n), ylim = c(0, ngens+1), bty="n", axes = FALSE)#
+#
+##make n individuals#
+	inds <-seq(1:n)#
+#
+##make n gens#
+	gens <- seq(1:ngens)#
+#
+###### uncomment if you want points for each individual	#
+#for (i in gens) {#
+#y <- rep(i, each=n)#
+#  points(inds,y)#
+#}#
+#
+for (j in gens) { #
+##choose parent 1 for each ind in n#
+	parent1 <-sample(inds, replace=FALSE)#
+##choose parent 2 for each ind in n#
+	parent2 <-sample(inds, replace=FALSE)#
+#
+## make color j if you want each gen to be a diff color#
+segments(inds, j, parent1, j+1, col="gray")#
+segments(inds, j, parent2, j+1, col="gray")#
+}
+############### 2 pops 20 inds RI#
+ngens = 3#
+#
+## setup and empty plot#
+	plot(1, type = "n",                        #
+     xlab = "ind", ylab = "gen",#
+     xlim = c(0, 22), ylim = c(0, ngens+1), bty="n", axes = FALSE)#
+#
+##make n individuals#
+	inds <-c(1,2,3,4,5,6,8,9,10,11,12,13)#
+#
+##make n gens#
+	gens <- seq(1:ngens)#
+#
+###### uncomment if you want points for each individual	#
+#for (i in gens) {#
+#y <- rep(i, each=20)#
+#  points(inds,y, pch="_")#
+#}#
+#
+for (j in gens) { #
+##choose parent 1 for each ind in n#
+	parent1 <- sample(inds, prob = ifelse(inds <=10, 0.97, 0.03))#
+##choose parent 2 for each ind in n#
+	parent2 <- sample(inds, prob = ifelse(inds <=10, 0.97, 0.03))#
+#
+## make color j if you want each gen to be a diff color#
+segments(inds, j, parent1, j+1, col="gray")#
+segments(inds, j, parent2, j+1, col="gray")#
+}#
+#
+############### 2 pops 20 inds RI#
+ngens = 3#
+#
+## setup and empty plot#
+	plot(1, type = "n",                        #
+     xlab = "ind", ylab = "gen",#
+     xlim = c(0, 13), ylim = c(0, ngens+1), bty="n", axes = FALSE)#
+#
+##make n individuals#
+	inds <-c(1,2,3,4,5,6,8,9,10,11,12,13)#
+#
+##make n gens#
+	gens <- seq(1:ngens)#
+#
+###### uncomment if you want points for each individual	#
+#for (i in gens) {#
+#y <- rep(i, each=12)#
+#  points(inds,y, pch="_")#
+#}#
+#
+for (j in gens) { #
+##choose parent 1 for each ind in n#
+	parent1 <- sample(inds, prob = ifelse(inds <=6, 0.97, 0.03))#
+##choose parent 2 for each ind in n#
+	parent2 <- sample(inds, prob = ifelse(inds <=6, 0.97, 0.03))#
+#
+## make color j if you want each gen to be a diff color#
+segments(inds, j, parent1, j+1, col="gray")#
+segments(inds, j, parent2, j+1, col="gray")#
+}
+############### 2 pops 20 inds RI#
+ngens = 30#
+#
+## setup and empty plot#
+	plot(1, type = "n",                        #
+     xlab = "ind", ylab = "gen",#
+     xlim = c(0, 13), ylim = c(0, ngens+1), bty="n", axes = FALSE)#
+#
+##make n individuals#
+	inds <-c(1,2,3,4,5,6,8,9,10,11,12,13)#
+#
+##make n gens#
+	gens <- seq(1:ngens)#
+#
+###### uncomment if you want points for each individual	#
+#for (i in gens) {#
+#y <- rep(i, each=12)#
+#  points(inds,y, pch="_")#
+#}#
+#
+for (j in gens) { #
+##choose parent 1 for each ind in n#
+	parent1 <- sample(inds, prob = ifelse(inds <=6, 0.97, 0.03))#
+##choose parent 2 for each ind in n#
+	parent2 <- sample(inds, prob = ifelse(inds <=6, 0.97, 0.03))#
+#
+## make color j if you want each gen to be a diff color#
+segments(inds, j, parent1, j+1, col="gray")#
+segments(inds, j, parent2, j+1, col="gray")#
+}
+############### 2 pops 20 inds RI#
+ngens = 30#
+#
+## setup and empty plot#
+	plot(1, type = "n",                        #
+     xlab = "ind", ylab = "gen",#
+     xlim = c(0, 13), ylim = c(0, ngens+1), bty="n", axes = FALSE)#
+#
+##make n individuals#
+	inds <-c(1,2,3,4,5,6,8,9,10,11,12,13)#
+#
+##make n gens#
+	gens <- seq(1:ngens)#
+#
+###### uncomment if you want points for each individual	#
+#for (i in gens) {#
+#y <- rep(i, each=12)#
+#  points(inds,y, pch="_")#
+#}#
+#
+for (j in gens) { #
+##choose parent 1 for each ind in n#
+	parent1 <- sample(inds, prob = ifelse(inds <=6, 0.97, 0.03))#
+##choose parent 2 for each ind in n#
+	parent2 <- sample(inds, prob = ifelse(inds <=6, 0.97, 0.03))#
+#
+## make color j if you want each gen to be a diff color#
+segments(inds, j, parent1, j+1, col=j)#
+segments(inds, j, parent2, j+1, col=j)#
+}
+parent1
+parent2
+############### 2 pops 20 inds RI#
+ngens = 30#
+#
+## setup and empty plot#
+	plot(1, type = "n",                        #
+     xlab = "ind", ylab = "gen",#
+     xlim = c(0, 13), ylim = c(0, ngens+1), bty="n", axes = FALSE) ## make xlim max == to max value of individuals#
+#
+##make n individuals#
+	inds <-c(1,2,3,4,5,6,8,9,10,11,12,13) ## make this an uneven number with the central value missing#
+#
+##make n gens#
+	gens <- seq(1:ngens)#
+#
+###### uncomment if you want points for each individual	#
+for (i in gens) {#
+y <- rep(i, each=12) ### set to number of individuals#
+points(inds,y, pch="_")#
+}#
+#
+for (j in gens) { #
+##choose parent 1 for each ind in n#
+	parent1 <- sample(inds, prob = ifelse(inds <=6, 0.97, 0.03))#
+##choose parent 2 for each ind in n#
+	parent2 <- sample(inds, prob = ifelse(inds <=6, 0.97, 0.03))#
+#
+## make color j if you want each gen to be a diff color#
+segments(inds, j, parent1, j+1, col="gray")#
+segments(inds, j, parent2, j+1, col="gray")#
+}
+help(sample)
+############### 2 pops 20 inds RI#
+ngens = 30#
+#
+## setup and empty plot#
+	plot(1, type = "n",                        #
+     xlab = "ind", ylab = "gen",#
+     xlim = c(0, 13), ylim = c(0, ngens+1), bty="n", axes = FALSE) ## make xlim max == to max value of individuals#
+#
+##make n individuals#
+	inds <-c(1,2,3,4,5,6,8,9,10,11,12,13) ## make this an uneven number with the central value missing#
+#
+##make n gens#
+	gens <- seq(1:ngens)#
+#
+###### uncomment if you want points for each individual	#
+for (i in gens) {#
+y <- rep(i, each=12) ### set to number of individuals#
+points(inds,y, pch="_")#
+}#
+#
+for (j in gens) { #
+##choose parent 1 for each ind in n#
+	parent1 <- sample(inds, prob = ifelse(inds <=6, 0.97, 0.03))#
+##choose parent 2 for each ind in n#
+	parent2 <- sample(inds, prob = ifelse(inds <=6, 0.97, 0.03))#
+#
+## make color j if you want each gen to be a diff color#
+segments(inds, j, parent1, j+1, col="gray")#
+segments(inds, j, parent2, j+1, col="gray")#
+}
+V1 <- seq(1:20)
+V1
+parent1 <- sample(inds, prob = ifelse(inds <=10, 0.97, 0.03))
+parent1
+parent1 <- sample(inds, prob = ifelse(V1 <=10, 0.97, 0.03))
+parent1 <- sample(inds, prob = ifelse(v1 <=10, 0.97, 0.03))
+v1=seq(1:21)
+parent1 <- sample(v1, prob = ifelse(v1 <=10, 0.97, 0.03))
+parent1
+############### 2 pops 20 inds RI#
+ngens = 3#
+#
+## setup and empty plot#
+	plot(1, type = "n",                        #
+     xlab = "ind", ylab = "gen",#
+     xlim = c(0, 13), ylim = c(0, ngens+1), bty="n", axes = FALSE) ## make xlim max == to max value of individuals#
+#
+##make n individuals#
+	inds <-c(1,2,3,4,5,6,8,9,10,11,12,13) ## make this an uneven number with the central value missing#
+#
+##make n gens#
+	gens <- seq(1:ngens)#
+#
+###### uncomment if you want points for each individual	#
+for (i in gens) {#
+y <- rep(i, each=12) ### set to number of individuals#
+points(inds,y, pch="_")#
+}#
+#
+for (j in gens) {#
+#
+while(if (table(parent1 %in% parent2)[[2]]==0)) {#
+##choose parent 1 for each ind in n#
+	parent1 <- sample(inds, prob = ifelse(inds <=10, 0.97, 0.03))#
+}#
+for (j in gens) {	#
+##choose parent 2 for each ind in n#
+	parent2 <- sample(inds, prob = ifelse(inds <=6, 0.97, 0.03))#
+}#
+#
+## make color j if you want each gen to be a diff color#
+segments(inds, j, parent1, j+1, col="pink")#
+segments(inds, j, parent2, j+1, col="gray")#
+}
+############### 2 pops 20 inds RI#
+ngens = 30#
+#
+## setup and empty plot#
+	plot(1, type = "n",                        #
+     xlab = "ind", ylab = "gen",#
+     xlim = c(0, 13), ylim = c(0, ngens+1), bty="n", axes = FALSE) ## make xlim max == to max value of individuals#
+#
+##make n individuals#
+	inds <-c(1,2,3,4,5,6,8,9,10,11,12,13) ## make this an uneven number with the central value missing#
+#
+##make n gens#
+	gens <- seq(1:ngens)#
+#
+###### uncomment if you want points for each individual	#
+for (i in gens) {#
+y <- rep(i, each=12) ### set to number of individuals#
+points(inds,y, pch="_")#
+}#
+#
+for (j in gens) {#
+#
+while(if (table(inds %in% parent1)[[2]]==0)) {#
+##choose parent 1 for each ind in n#
+	parent1 <- sample(inds, prob = ifelse(inds <=10, 0.97, 0.03))}#
+while(if (table(inds %in% parent2)[[2]]==0)) {	#
+##choose parent 2 for each ind in n#
+	parent2 <- sample(inds, prob = ifelse(inds <=6, 0.97, 0.03))}#
+#
+## make color j if you want each gen to be a diff color#
+segments(inds, j, parent1, j+1, col="gray")#
+segments(inds, j, parent2, j+1, col="gray")#
+}
+############### 2 pops 20 inds RI#
+ngens = 30#
+#
+## setup and empty plot#
+	plot(1, type = "n",                        #
+     xlab = "ind", ylab = "gen",#
+     xlim = c(0, 13), ylim = c(0, ngens+1), bty="n", axes = FALSE) ## make xlim max == to max value of individuals#
+#
+##make n individuals#
+	inds <-c(1,2,3,4,5,6,8,9,10,11,12,13) ## make this an uneven number with the central value missing#
+#
+##make n gens#
+	gens <- seq(1:ngens)#
+#
+###### uncomment if you want points for each individual	#
+for (i in gens) {#
+y <- rep(i, each=12) ### set to number of individuals#
+points(inds,y, pch="_")#
+}#
+#
+for (j in gens) {#
+#
+##choose parent 1 for each ind in n#
+while(table(inds %in% parent1)) {#
+	parent1 <- sample(inds, prob = ifelse(inds <=10, 0.97, 0.03))}#
+	if (table(inds %in% parent1)[[2]]==0)}#
+while(table(inds %in% parent2)) {#
+	parent2 <- sample(inds, prob = ifelse(inds <=10, 0.97, 0.03))}#
+	if (table(inds %in% parent2)[[2]]==0)}#
+#
+## make color j if you want each gen to be a diff color#
+segments(inds, j, parent1, j+1, col="gray")#
+segments(inds, j, parent2, j+1, col="gray")#
+}
+############### 2 pops 20 inds RI#
+ngens = 30#
+#
+## setup and empty plot#
+	plot(1, type = "n",                        #
+     xlab = "ind", ylab = "gen",#
+     xlim = c(0, 13), ylim = c(0, ngens+1), bty="n", axes = FALSE) ## make xlim max == to max value of individuals#
+#
+##make n individuals#
+	inds <-c(1,2,3,4,5,6,8,9,10,11,12,13) ## make this an uneven number with the central value missing#
+#
+##make n gens#
+	gens <- seq(1:ngens)#
+#
+###### uncomment if you want points for each individual	#
+for (i in gens) {#
+y <- rep(i, each=12) ### set to number of individuals#
+points(inds,y, pch="_")#
+}#
+#
+for (j in gens) {#
+#
+##choose parent 1 for each ind in n#
+while(table(inds %in% parent1)) {#
+	parent1 <- sample(inds, prob = ifelse(inds <=10, 0.97, 0.03))#
+	if (table(inds %in% parent1)[[2]]==0)}#
+while(table(inds %in% parent2)) {#
+	parent2 <- sample(inds, prob = ifelse(inds <=10, 0.97, 0.03))#
+	if (table(inds %in% parent2)[[2]]==0)}#
+#
+## make color j if you want each gen to be a diff color#
+segments(inds, j, parent1, j+1, col="gray")#
+segments(inds, j, parent2, j+1, col="gray")#
+}
+############### 2 pops 20 inds RI#
+ngens = 30#
+#
+## setup and empty plot#
+	plot(1, type = "n",                        #
+     xlab = "ind", ylab = "gen",#
+     xlim = c(0, 13), ylim = c(0, ngens+1), bty="n", axes = FALSE) ## make xlim max == to max value of individuals#
+#
+##make n individuals#
+	inds <-c(1,2,3,4,5,6,8,9,10,11,12,13) ## make this an uneven number with the central value missing#
+#
+##make n gens#
+	gens <- seq(1:ngens)#
+#
+###### uncomment if you want points for each individual	#
+for (i in gens) {#
+y <- rep(i, each=12) ### set to number of individuals#
+points(inds,y, pch="_")#
+}#
+#
+for (j in gens) {#
+#
+##choose parent 1 for each ind in n#
+while(table(inds %in% parent1)) {#
+	parent1 <- sample(inds, prob = ifelse(inds <=10, 0.97, 0.03))#
+	if (table(inds %in% parent1)[[2]]==0)#
+	}#
+while(table(inds %in% parent2)) {#
+	parent2 <- sample(inds, prob = ifelse(inds <=10, 0.97, 0.03))#
+	if (table(inds %in% parent2)[[2]]==0)#
+	}#
+#
+## make color j if you want each gen to be a diff color#
+segments(inds, j, parent1, j+1, col="gray")#
+segments(inds, j, parent2, j+1, col="gray")#
+}
+############### 2 pops 20 inds RI#
+ngens = 30#
+#
+## setup and empty plot#
+	plot(1, type = "n",                        #
+     xlab = "ind", ylab = "gen",#
+     xlim = c(0, 13), ylim = c(0, ngens+1), bty="n", axes = FALSE) ## make xlim max == to max value of individuals#
+#
+##make n individuals#
+	inds <-c(1,2,3,4,5,6,8,9,10,11,12,13) ## make this an uneven number with the central value missing#
+#
+##make n gens#
+	gens <- seq(1:ngens)#
+#
+###### uncomment if you want points for each individual	#
+for (i in gens) {#
+y <- rep(i, each=12) ### set to number of individuals#
+points(inds,y, pch="_")#
+}#
+#
+for (j in gens) {#
+while (inds %in% parent1) {#
+   parent1 <- sample(inds, prob = ifelse(inds <=10, 0.97, 0.03));#
+   if (table(inds %in% parent1)[[2]]==0) break;}#
+#
+while (inds %in% parent2) {#
+   parent2 <- sample(inds, prob = ifelse(inds <=10, 0.97, 0.03));#
+   if (table(inds %in% parent2)[[2]]==0) break;}#
+#
+## make color j if you want each gen to be a diff color#
+segments(inds, j, parent1, j+1, col="gray")#
+segments(inds, j, parent2, j+1, col="gray")#
+}
+############### 2 pops 20 inds RI#
+ngens = 30#
+#
+## setup and empty plot#
+	plot(1, type = "n",                        #
+     xlab = "ind", ylab = "gen",#
+     xlim = c(0, 13), ylim = c(0, ngens+1), bty="n", axes = FALSE) ## make xlim max == to max value of individuals#
+#
+##make n individuals#
+	inds <-c(1,2,3,4,5,6,8,9,10,11,12,13) ## make this an uneven number with the central value missing#
+#
+##make n gens#
+	gens <- seq(1:ngens)#
+#
+###### uncomment if you want points for each individual	#
+for (i in gens) {#
+y <- rep(i, each=12) ### set to number of individuals#
+points(inds,y, pch="_")#
+}#
+#
+for (j in gens) {#
+#
+  parent1 <- sample(inds, prob = ifelse(inds <=10, 0.97, 0.03))#
+while (inds %in% parent1) {#
+   parent1 <- sample(inds, prob = ifelse(inds <=10, 0.97, 0.03));#
+   if (table(inds %in% parent1)[[2]]==0) break;}#
+#
+  parent2 <- sample(inds, prob = ifelse(inds <=10, 0.97, 0.03))#
+while (inds %in% parent2) {#
+   parent2 <- sample(inds, prob = ifelse(inds <=10, 0.97, 0.03));#
+   if (table(inds %in% parent2)[[2]]==0) break;}#
+#
+## make color j if you want each gen to be a diff color#
+segments(inds, j, parent1, j+1, col="gray")#
+segments(inds, j, parent2, j+1, col="gray")#
+}
+############### 2 pops 20 inds RI#
+ngens = 30#
+#
+## setup and empty plot#
+	plot(1, type = "n",                        #
+     xlab = "ind", ylab = "gen",#
+     xlim = c(0, 13), ylim = c(0, ngens+1), bty="n", axes = FALSE) ## make xlim max == to max value of individuals#
+#
+##make n individuals#
+	inds <-c(1,2,3,4,5,6,8,9,10,11,12,13) ## make this an uneven number with the central value missing#
+#
+##make n gens#
+	gens <- seq(1:ngens)#
+#
+###### uncomment if you want points for each individual	#
+for (i in gens) {#
+y <- rep(i, each=12) ### set to number of individuals#
+points(inds,y, pch="_")#
+}#
+#
+for (j in gens) { #
+##choose parent 1 for each ind in n#
+	parent1 <- sample(inds, prob = ifelse(inds <=6, 0.97, 0.03))#
+##choose parent 2 for each ind in n#
+	parent2 <- sample(inds, prob = ifelse(inds <=6, 0.97, 0.03))#
+#
+## make color j if you want each gen to be a diff color#
+segments(inds, j, parent1, j+1, col="gray")#
+segments(inds, j, parent2, j+1, col="gray")#
+}
+table(inds %in% parent1)
+############### 2 pops 20 inds RI#
+ngens = 3#
+#
+## setup and empty plot#
+	plot(1, type = "n",                        #
+     xlab = "ind", ylab = "gen",#
+     xlim = c(0, 13), ylim = c(0, ngens+1), bty="n", axes = FALSE) ## make xlim max == to max value of individuals#
+#
+##make n individuals#
+	inds <-c(1,2,3,4,5,6,8,9,10,11,12,13) ## make this an uneven number with the central value missing#
+#
+##make n gens#
+	gens <- seq(1:ngens)#
+#
+###### uncomment if you want points for each individual	#
+for (i in gens) {#
+y <- rep(i, each=12) ### set to number of individuals#
+points(inds,y, pch="_")#
+}#
+#
+for (j in gens) { #
+##choose parent 1 for each ind in n#
+	parent1 <- sample(inds, prob = ifelse(inds <=6, 0.97, 0.03))#
+##choose parent 2 for each ind in n#
+	parent2 <- sample(inds, prob = ifelse(inds <=6, 0.97, 0.03))#
+#
+## make color j if you want each gen to be a diff color#
+segments(inds, j, parent1, j+1, col="gray")#
+segments(inds, j, parent2, j+1, col="gray")#
+}
+############### 2 pops 20 inds RI#
+ngens = 2#
+#
+## setup and empty plot#
+	plot(1, type = "n",                        #
+     xlab = "ind", ylab = "gen",#
+     xlim = c(0, 13), ylim = c(0, ngens+1), bty="n", axes = FALSE) ## make xlim max == to max value of individuals#
+#
+##make n individuals#
+	inds <-c(1,2,3,4,5,6,8,9,10,11,12,13) ## make this an uneven number with the central value missing#
+#
+##make n gens#
+	gens <- seq(1:ngens)#
+#
+###### uncomment if you want points for each individual	#
+for (i in gens) {#
+y <- rep(i, each=12) ### set to number of individuals#
+points(inds,y, pch="_")#
+}#
+#
+for (j in gens) { #
+##choose parent 1 for each ind in n#
+	parent1 <- sample(inds, prob = ifelse(inds <=6, 0.97, 0.03))#
+##choose parent 2 for each ind in n#
+	parent2 <- sample(inds, prob = ifelse(inds <=6, 0.97, 0.03))#
+#
+## make color j if you want each gen to be a diff color#
+segments(inds, j, parent1, j+1, col="gray")#
+segments(inds, j, parent2, j+1, col="gray")
+}
+}1
+############### 2 pops 20 inds RI#
+ngens = 1#
+#
+## setup and empty plot#
+	plot(1, type = "n",                        #
+     xlab = "ind", ylab = "gen",#
+     xlim = c(0, 13), ylim = c(0, ngens+1), bty="n", axes = FALSE) ## make xlim max == to max value of individuals#
+#
+##make n individuals#
+	inds <-c(1,2,3,4,5,6,8,9,10,11,12,13) ## make this an uneven number with the central value missing#
+#
+##make n gens#
+	gens <- seq(1:ngens)#
+#
+###### uncomment if you want points for each individual	#
+for (i in gens) {#
+y <- rep(i, each=12) ### set to number of individuals#
+points(inds,y, pch="_")#
+}#
+#
+for (j in gens) { #
+##choose parent 1 for each ind in n#
+	parent1 <- sample(inds, prob = ifelse(inds <=6, 0.97, 0.03))#
+##choose parent 2 for each ind in n#
+	parent2 <- sample(inds, prob = ifelse(inds <=6, 0.97, 0.03))#
+#
+## make color j if you want each gen to be a diff color#
+segments(inds, j, parent1, j+1, col="gray")#
+segments(inds, j, parent2, j+1, col="gray")}
+parent1
+parent2
+inds
+match(parent1,parent2)
+############### 2 pops 20 inds RI#
+ngens = 2#
+#
+## setup and empty plot#
+	plot(1, type = "n",                        #
+     xlab = "ind", ylab = "gen",#
+     xlim = c(0, 12), ylim = c(0, ngens+1), bty="n", axes = FALSE) ## make xlim max == to max value of individuals#
+#
+##make n individuals#
+	inds <-seq(1,:12) #
+#
+##make n gens#
+	gens <- seq(1:ngens)#
+#
+###### uncomment if you want points for each individual	#
+for (i in gens) {#
+y <- rep(i, each=12) ### set to number of individuals#
+points(inds,y, pch="_")#
+}#
+#
+for (j in gens) { #
+##choose parent 1 for each ind in n#
+	parent1 <- sample(inds, prob = ifelse(inds <=6, 0.97, 0.03))#
+##choose parent 2 for each ind in n#
+	parent2 <- sample(inds, prob = ifelse(inds <=6, 0.97, 0.03))#
+#
+## make color j if you want each gen to be a diff color#
+segments(inds, j, parent1, j+1, col="gray")#
+segments(inds, j, parent2, j+1, col="gray")#
+}
+############### 2 pops 20 inds RI#
+ngens = 2#
+#
+## setup and empty plot#
+	plot(1, type = "n",                        #
+     xlab = "ind", ylab = "gen",#
+     xlim = c(0, 12), ylim = c(0, ngens+1), bty="n", axes = FALSE) ## make xlim max == to max value of individuals#
+#
+##make n individuals#
+	inds <-seq(1:12) #
+#
+##make n gens#
+	gens <- seq(1:ngens)#
+#
+###### uncomment if you want points for each individual	#
+for (i in gens) {#
+y <- rep(i, each=12) ### set to number of individuals#
+points(inds,y, pch="_")#
+}#
+#
+for (j in gens) { #
+##choose parent 1 for each ind in n#
+	parent1 <- sample(inds, prob = ifelse(inds <=6, 0.97, 0.03))#
+##choose parent 2 for each ind in n#
+	parent2 <- sample(inds, prob = ifelse(inds <=6, 0.97, 0.03))#
+#
+## make color j if you want each gen to be a diff color#
+segments(inds, j, parent1, j+1, col="gray")#
+segments(inds, j, parent2, j+1, col="gray")#
+}
+vecA <- c(3, 4, 5, 10, 32)#
+vecB <- c(0, 1, 2,  0,  1)
+vecB[which(vecA == res_vecA)]
+vecA <- c(3, 4, 5, 10, 32)#
+vecB <- c(0, 1, 2,  0,  1) #
+res_vecA <- x + y
+vecA <- c(3, 4, 5, 10, 32)#
+vecB <- c(0, 1, 2,  0,  1) #
+res_vecA <- 3
+vecB[which(vecA == res_vecA)]
+############### 2 pops 20 inds RI#
+ngens = 2#
+#
+## setup and empty plot#
+	plot(1, type = "n",                        #
+     xlab = "ind", ylab = "gen",#
+     xlim = c(0, 12), ylim = c(0, ngens+1), bty="n", axes = FALSE) ## make xlim max == to max value of individuals#
+#
+##make n individuals#
+	inds <-seq(1:12) #
+#
+##make n gens#
+	gens <- seq(1:ngens)#
+#
+###### uncomment if you want points for each individual	#
+for (i in gens) {#
+y <- rep(i, each=12) ### set to number of individuals#
+points(inds,y, pch="_")#
+}#
+#
+for (j in gens) { #
+##choose parent 1 for each ind in n#
+	parent1 <- sample(inds, prob = ifelse(inds <=6, 0.97, 0.03))#
+##choose parent 2 for each ind in n#
+	parent2 <- sample(inds, prob = ifelse(inds <=6, 0.97, 0.03))#
+#
+## make color j if you want each gen to be a diff color#
+segments(inds, j, parent1, j+1, col="gray")#
+segments(inds, j, parent2, j+1, col="gray")#
+}
+which(parent1==inds)
+parent1
+parent2
+############### 2 pops 20 inds RI#
+ngens = 2#
+#
+## setup and empty plot#
+	plot(1, type = "n",                        #
+     xlab = "ind", ylab = "gen",#
+     xlim = c(0, 12), ylim = c(0, ngens+1), bty="n", axes = FALSE) ## make xlim max == to max value of individuals#
+#
+##make n individuals#
+	inds <-seq(1:12) #
+#
+##make n gens#
+	gens <- seq(1:ngens)#
+#
+###### uncomment if you want points for each individual	#
+for (i in gens) {#
+y <- rep(i, each=12) ### set to number of individuals#
+points(inds,y, pch="_")#
+}#
+#
+for (j in gens) { #
+##choose parent 1 for each ind in n#
+	parent1 <- sample(inds, prob = ifelse(inds <=6, 0.97, 0.03))#
+##choose parent 2 for each ind in n#
+	parent2 <- sample(inds, prob = ifelse(inds <=6, 0.97, 0.03))#
+#
+## make color j if you want each gen to be a diff color#
+segments(inds, j, parent1, j+1, col="gray")#
+segments(inds, j, parent2, j+1, col="gray")#
+}
+which(parent1==inds)
+parent1
+inds
+############### 2 pops 20 inds RI#
+ngens = 2#
+#
+## setup and empty plot#
+	plot(1, type = "n",                        #
+     xlab = "ind", ylab = "gen",#
+     xlim = c(0, 12), ylim = c(0, ngens+1), bty="n", axes = FALSE) ## make xlim max == to max value of individuals#
+#
+##make n individuals#
+	inds <-seq(1:12) #
+#
+##make n gens#
+	gens <- seq(1:ngens)#
+#
+###### uncomment if you want points for each individual	#
+for (i in gens) {#
+y <- rep(i, each=12) ### set to number of individuals#
+points(inds,y, pch="_")#
+}#
+#
+for (j in gens) { #
+##choose parent 1 for each ind in n#
+	parent1 <- sample(inds, prob = ifelse(inds <=6, 0.97, 0.03))#
+##choose parent 2 for each ind in n#
+	parent2 <- sample(inds, prob = ifelse(inds <=6, 0.97, 0.03))#
+#
+## make color j if you want each gen to be a diff color#
+segments(inds, j, parent1, j+1, col="gray")#
+segments(inds, j, parent2, j+1, col="gray")#
+}
+which(parent1==inds)
+parent1
+inds
+############### 2 pops 20 inds RI#
+ngens = 2#
+#
+## setup and empty plot#
+	plot(1, type = "n",                        #
+     xlab = "ind", ylab = "gen",#
+     xlim = c(0, 12), ylim = c(0, ngens+1), bty="n", axes = FALSE) ## make xlim max == to max value of individuals#
+#
+##make n individuals#
+	inds <-seq(1:12) #
+#
+##make n gens#
+	gens <- seq(1:ngens)#
+#
+###### uncomment if you want points for each individual	#
+for (i in gens) {#
+y <- rep(i, each=12) ### set to number of individuals#
+points(inds,y, pch="_")#
+}#
+#
+for (j in gens) { #
+##choose parent 1 for each ind in n#
+	parent1 <- sample(inds, prob = ifelse(inds <=6, 0.97, 0.03))#
+##choose parent 2 for each ind in n#
+	parent2 <- sample(inds, prob = ifelse(inds <=6, 0.97, 0.03))#
+#
+## make color j if you want each gen to be a diff color#
+segments(inds, j, parent1, j+1, col="gray")#
+segments(inds, j, parent2, j+1, col="gray")#
+}
+which(parent1==inds)
+inds
+parent1
+############### 2 pops 20 inds RI#
+ngens = 2#
+#
+## setup and empty plot#
+	plot(1, type = "n",                        #
+     xlab = "ind", ylab = "gen",#
+     xlim = c(0, 12), ylim = c(0, ngens+1), bty="n", axes = FALSE) ## make xlim max == to max value of individuals#
+#
+##make n individuals#
+	inds <-seq(1:12) #
+#
+##make n gens#
+	gens <- seq(1:ngens)#
+#
+###### uncomment if you want points for each individual	#
+for (i in gens) {#
+y <- rep(i, each=12) ### set to number of individuals#
+points(inds,y, pch="_")#
+}#
+#
+for (j in gens) { #
+##choose parent 1 for each ind in n#
+	parent1 <- sample(inds, prob = ifelse(inds <=6, 0.97, 0.03))#
+##choose parent 2 for each ind in n#
+	parent2 <- sample(inds, prob = ifelse(inds <=6, 0.97, 0.03))#
+#
+## make color j if you want each gen to be a diff color#
+segments(inds, j, parent1, j+1, col="gray")#
+segments(inds, j, parent2, j+1, col="gray")#
+}
+which(parent1==inds)
+############### 2 pops 20 inds RI#
+ngens = 2#
+#
+## setup and empty plot#
+	plot(1, type = "n",                        #
+     xlab = "ind", ylab = "gen",#
+     xlim = c(0, 12), ylim = c(0, ngens+1), bty="n", axes = FALSE) ## make xlim max == to max value of individuals#
+#
+##make n individuals#
+	inds <-seq(1:12) #
+#
+##make n gens#
+	gens <- seq(1:ngens)#
+#
+###### uncomment if you want points for each individual	#
+for (i in gens) {#
+y <- rep(i, each=12) ### set to number of individuals#
+points(inds,y, pch="_")#
+}#
+#
+for (j in gens) { #
+##choose parent 1 for each ind in n#
+	parent1 <- sample(inds, prob = ifelse(inds <=6, 0.97, 0.03))#
+##choose parent 2 for each ind in n#
+	parent2 <- sample(inds, prob = ifelse(inds <=6, 0.97, 0.03))#
+#
+## make color j if you want each gen to be a diff color#
+segments(inds, j, parent1, j+1, col="gray")#
+segments(inds, j, parent2, j+1, col="gray")#
+}
+which(parent1==inds)
+############### 2 pops 20 inds RI#
+ngens = 2#
+#
+## setup and empty plot#
+	plot(1, type = "n",                        #
+     xlab = "ind", ylab = "gen",#
+     xlim = c(0, 12), ylim = c(0, ngens+1), bty="n", axes = FALSE) ## make xlim max == to max value of individuals#
+#
+##make n individuals#
+	inds <-seq(1:12) #
+#
+##make n gens#
+	gens <- seq(1:ngens)#
+#
+###### uncomment if you want points for each individual	#
+for (i in gens) {#
+y <- rep(i, each=12) ### set to number of individuals#
+points(inds,y, pch="_")#
+}#
+#
+for (j in gens) { #
+##choose parent 1 for each ind in n#
+	parent1 <- sample(inds, prob = ifelse(inds <=6, 0.97, 0.03))#
+##choose parent 2 for each ind in n#
+	parent2 <- sample(inds, prob = ifelse(inds <=6, 0.97, 0.03))#
+#
+## make color j if you want each gen to be a diff color#
+segments(inds, j, parent1, j+1, col="gray")#
+segments(inds, j, parent2, j+1, col="gray")#
+}
+which(parent1==inds)
+############### 2 pops 20 inds RI#
+ngens = 2#
+#
+## setup and empty plot#
+	plot(1, type = "n",                        #
+     xlab = "ind", ylab = "gen",#
+     xlim = c(0, 12), ylim = c(0, ngens+1), bty="n", axes = FALSE) ## make xlim max == to max value of individuals#
+#
+##make n individuals#
+	inds <-seq(1:12) #
+#
+##make n gens#
+	gens <- seq(1:ngens)#
+#
+###### uncomment if you want points for each individual	#
+for (i in gens) {#
+y <- rep(i, each=12) ### set to number of individuals#
+points(inds,y, pch="_")#
+}#
+#
+for (j in gens) { #
+##choose parent 1 for each ind in n#
+	parent1 <- sample(inds, prob = ifelse(inds <=6, 0.97, 0.03))#
+##choose parent 2 for each ind in n#
+	parent2 <- sample(inds, prob = ifelse(inds <=6, 0.97, 0.03))#
+#
+## make color j if you want each gen to be a diff color#
+segments(inds, j, parent1, j+1, col="gray")#
+segments(inds, j, parent2, j+1, col="gray")#
+}
+which(parent1==inds)
+inds
+parent
+parent1
+parent2
+which(parent1==parent2)
+############### 2 pops 20 inds RI#
+ngens = 2#
+#
+## setup and empty plot#
+	plot(1, type = "n",                        #
+     xlab = "ind", ylab = "gen",#
+     xlim = c(0, 12), ylim = c(0, ngens+1), bty="n", axes = FALSE) ## make xlim max == to max value of individuals#
+#
+##make n individuals#
+	inds <-seq(1:12) #
+#
+##make n gens#
+	gens <- seq(1:ngens)#
+#
+###### uncomment if you want points for each individual	#
+for (i in gens) {#
+y <- rep(i, each=12) ### set to number of individuals#
+points(inds,y, pch="_")#
+}#
+#
+for (j in gens) { #
+##choose parent 1 for each ind in n#
+	parent1 <- sample(inds, prob = ifelse(inds <=6, 0.97, 0.03))#
+##choose parent 2 for each ind in n#
+	parent2 <- sample(inds, prob = ifelse(inds <=6, 0.97, 0.03))#
+#
+## make color j if you want each gen to be a diff color#
+segments(inds, j, parent1, j+1, col="gray")#
+segments(inds, j, parent2, j+1, col="gray")#
+}
+which(parent1==parent2)
+parent2
+parent1
+inds
+############### 2 pops 20 inds RI#
+ngens = 1#
+#
+## setup and empty plot#
+	plot(1, type = "n",                        #
+     xlab = "ind", ylab = "gen",#
+     xlim = c(0, 12), ylim = c(0, ngens+1), bty="n", axes = FALSE) ## make xlim max == to max value of individuals#
+#
+##make n individuals#
+	inds <-seq(1:12) #
+#
+##make n gens#
+	gens <- seq(1:ngens)#
+#
+###### uncomment if you want points for each individual	#
+for (i in gens) {#
+y <- rep(i, each=12) ### set to number of individuals#
+points(inds,y, pch="_")#
+}#
+#
+for (j in gens) { #
+##choose parent 1 for each ind in n#
+	parent1 <- sample(inds, prob = ifelse(inds <=6, 0.97, 0.03))#
+##choose parent 2 for each ind in n#
+	parent2 <- sample(inds, prob = ifelse(inds <=6, 0.97, 0.03))#
+#
+## make color j if you want each gen to be a diff color#
+segments(inds, j, parent1, j+1, col="gray")#
+segments(inds, j, parent2, j+1, col="gray")#
+}
+which(parent1==parent2)
+parent
+parent1
+parent2
+which(parent1==parent2)
+help(sample)
+############### 2 pops 20 inds RI#
+ngens = 2#
+#
+## setup and empty plot#
+	plot(1, type = "n",                        #
+     xlab = "ind", ylab = "gen",#
+     xlim = c(0, 12), ylim = c(0, ngens+1), bty="n", axes = FALSE) ## make xlim max == to max value of individuals#
+#
+##make n individuals#
+	inds <-seq(1:12) #
+#
+##make n gens#
+	gens <- seq(1:ngens)#
+#
+###### uncomment if you want points for each individual	#
+for (i in gens) {#
+y <- rep(i, each=12) ### set to number of individuals#
+points(inds,y, pch="_")#
+}#
+#
+for (j in gens) { #
+##choose parent 1 for each ind in n#
+	parent1 <- sample(inds, prob = ifelse(inds <=6, 0.97, 0.03), replace=TRUE)#
+##choose parent 2 for each ind in n#
+	parent2 <- sample(inds, prob = ifelse(inds <=6, 0.97, 0.03),replace=TRUE)#
+#
+## make color j if you want each gen to be a diff color#
+segments(inds, j, parent1, j+1, col="gray")#
+segments(inds, j, parent2, j+1, col="gray")#
+}
+parent1
+############### 2 pops 20 inds RI#
+ngens = 2#
+#
+## setup and empty plot#
+	plot(1, type = "n",                        #
+     xlab = "ind", ylab = "gen",#
+     xlim = c(0, 12), ylim = c(0, ngens+1), bty="n", axes = FALSE) ## make xlim max == to max value of individuals#
+#
+##make n individuals#
+	inds <-seq(1:12) #
+#
+##make n gens#
+	gens <- seq(1:ngens)#
+#
+###### uncomment if you want points for each individual	#
+for (i in gens) {#
+y <- rep(i, each=12) ### set to number of individuals#
+points(inds,y, pch="_")#
+}#
+#
+for (j in gens) { #
+##choose parent 1 for each ind in n#
+	parent1 <- sample(inds, prob = ifelse(inds <=6, 0.97, 0.03))#
+##choose parent 2 for each ind in n#
+	parent2 <- sample(inds, prob = ifelse(inds <=6, 0.97, 0.03))#
+#
+## make color j if you want each gen to be a diff color#
+segments(inds, j, parent1, j+1, col="gray")#
+segments(inds, j, parent2, j+1, col="gray")#
+}
+which(parent1==parent2)
+############### 2 pops 20 inds RI#
+ngens = 1#
+#
+## setup and empty plot#
+	plot(1, type = "n",                        #
+     xlab = "ind", ylab = "gen",#
+     xlim = c(0, 12), ylim = c(0, ngens+1), bty="n", axes = FALSE) ## make xlim max == to max value of individuals#
+#
+##make n individuals#
+	inds <-seq(1:12) #
+#
+##make n gens#
+	gens <- seq(1:ngens)#
+#
+###### uncomment if you want points for each individual	#
+for (i in gens) {#
+y <- rep(i, each=12) ### set to number of individuals#
+points(inds,y, pch="_")#
+}#
+#
+for (j in gens) { #
+##choose parent 1 for each ind in n#
+	parent1 <- sample(inds, prob = ifelse(inds <=6, 0.97, 0.03))#
+##choose parent 2 for each ind in n#
+	parent2 <- sample(inds, prob = ifelse(inds <=6, 0.97, 0.03))#
+#
+## make color j if you want each gen to be a diff color#
+segments(inds, j, parent1, j+1, col="gray")#
+segments(inds, j, parent2, j+1, col="gray")#
+}
+which(parent1==parent2)
+matches <- which(parent1==parent2)
+matches
+############### 2 pops 20 inds RI#
+ngens = 2#
+#
+## setup and empty plot#
+	plot(1, type = "n",                        #
+     xlab = "ind", ylab = "gen",#
+     xlim = c(0, 12), ylim = c(0, ngens+1), bty="n", axes = FALSE) ## make xlim max == to max value of individuals#
+#
+##make n individuals#
+	inds <-seq(1:12) #
+#
+##make n gens#
+	gens <- seq(1:ngens)#
+#
+###### uncomment if you want points for each individual	#
+for (i in gens) {#
+y <- rep(i, each=12) ### set to number of individuals#
+points(inds,y, pch="_")#
+}#
+#
+for (j in gens) { #
+##choose parent 1 for each ind in n#
+	parent1 <- sample(inds, prob = ifelse(inds <=6, 0.97, 0.03))#
+##choose parent 2 for each ind in n#
+	parent2 <- sample(inds, prob = ifelse(inds <=6, 0.97, 0.03))#
+#
+matches <- which(parent1==parent2)#
+	for (m in matches){#
+			if (parent1[m]<=6) {#
+			parent1[m]<-m+1#
+	  		} else {#
+	  		parent1[m]<-m-1#
+			}#
+		}#
+#
+## make color j if you want each gen to be a diff color#
+segments(inds, j, parent1, j+1, col="gray")#
+segments(inds, j, parent2, j+1, col="gray")#
+}
+parent1
+parent2
+matches(parent1==parent2)
+which(parent1==parent2)
+############### 2 pops 20 inds RI#
+ngens = 20#
+#
+## setup and empty plot#
+	plot(1, type = "n",                        #
+     xlab = "ind", ylab = "gen",#
+     xlim = c(0, 12), ylim = c(0, ngens+1), bty="n", axes = FALSE) ## make xlim max == to max value of individuals#
+#
+##make n individuals#
+	inds <-seq(1:12) #
+#
+##make n gens#
+	gens <- seq(1:ngens)#
+#
+###### uncomment if you want points for each individual	#
+for (i in gens) {#
+y <- rep(i, each=12) ### set to number of individuals#
+points(inds,y, pch="_")#
+}#
+#
+for (j in gens) { #
+##choose parent 1 for each ind in n#
+	parent1 <- sample(inds, prob = ifelse(inds <=6, 0.97, 0.03))#
+##choose parent 2 for each ind in n#
+	parent2 <- sample(inds, prob = ifelse(inds <=6, 0.97, 0.03))#
+#
+matches <- which(parent1==parent2)#
+	for (m in matches){#
+			if (parent1[m]<=6) {#
+			parent1[m]<-m+1#
+	  		} else {#
+	  		parent1[m]<-m-1#
+			}#
+		}#
+#
+## make color j if you want each gen to be a diff color#
+segments(inds, j, parent1, j+1, col="gray")#
+segments(inds, j, parent2, j+1, col="gray")#
+}
+############### 2 pops 20 inds RI#
+ngens = 20#
+#
+## setup and empty plot#
+	plot(1, type = "n",                        #
+     xlab = "ind", ylab = "gen",#
+     xlim = c(0, 12), ylim = c(0, ngens+1), bty="n", axes = FALSE) ## make xlim max == to max value of individuals#
+#
+##make n individuals#
+	inds <-seq(1:12) #
+#
+##make n gens#
+	gens <- seq(1:ngens)#
+#
+###### uncomment if you want points for each individual	#
+for (i in gens) {#
+y <- rep(i, each=12) ### set to number of individuals#
+points(inds,y, pch="_")#
+}#
+#
+for (j in gens) { #
+##choose parent 1 for each ind in n#
+	parent1 <- sample(inds, prob = ifelse(inds <=6, 0.97, 0.03))#
+##choose parent 2 for each ind in n#
+	parent2 <- sample(inds, prob = ifelse(inds <=6, 0.97, 0.03))#
+#
+matches <- which(parent1==parent2)#
+	for (m in matches){#
+			if (parent1[m]<=6) {#
+			parent1[m]<-m+1#
+	  		} else {#
+	  		parent1[m]<-m-1#
+			}#
+		}#
+#
+## make color j if you want each gen to be a diff color#
+segments(inds, j, parent1, j+1, col="gray")#
+segments(inds, j, parent2, j+1, col="gray")#
+}############### 2 pops 20 inds RI#
+ngens = 20#
+#
+## setup and empty plot#
+	plot(1, type = "n",                        #
+     xlab = "ind", ylab = "gen",#
+     xlim = c(0, 13), ylim = c(0, ngens+1), bty="n", axes = FALSE) ## make xlim max == to max value of individuals#
+#
+##make n individuals#
+	inds <-seq(1,2,3,4,5,6,8,9,10,11,12,13) #
+#
+##make n gens#
+	gens <- seq(1:ngens)#
+#
+###### uncomment if you want points for each individual	#
+for (i in gens) {#
+y <- rep(i, each=12) ### set to number of individuals#
+points(inds,y, pch="_")#
+}#
+#
+for (j in gens) { #
+##choose parent 1 for each ind in n#
+	parent1 <- sample(inds, prob = ifelse(inds <=6, 0.97, 0.03))#
+##choose parent 2 for each ind in n#
+	parent2 <- sample(inds, prob = ifelse(inds <=6, 0.97, 0.03))#
+#
+matches <- which(parent1==parent2)#
+	for (m in matches){#
+			if (parent1[m]<=6) {#
+			parent1[m]<-m+1#
+	  		} else {#
+	  		parent1[m]<-m-1#
+			}#
+		}#
+#
+## make color j if you want each gen to be a diff color#
+segments(inds, j, parent1, j+1, col="gray")#
+segments(inds, j, parent2, j+1, col="gray")#
+}
+############### 2 pops 20 inds RI#
+ngens = 20#
+#
+## setup and empty plot#
+	plot(1, type = "n",                        #
+     xlab = "ind", ylab = "gen",#
+     xlim = c(0, 13), ylim = c(0, ngens+1), bty="n", axes = FALSE) ## make xlim max == to max value of individuals#
+#
+##make n individuals#
+	inds <-c(1,2,3,4,5,6,8,9,10,11,12,13) #
+#
+##make n gens#
+	gens <- seq(1:ngens)#
+#
+###### uncomment if you want points for each individual	#
+for (i in gens) {#
+y <- rep(i, each=12) ### set to number of individuals#
+points(inds,y, pch="_")#
+}#
+#
+for (j in gens) { #
+##choose parent 1 for each ind in n#
+	parent1 <- sample(inds, prob = ifelse(inds <=6, 0.97, 0.03))#
+##choose parent 2 for each ind in n#
+	parent2 <- sample(inds, prob = ifelse(inds <=6, 0.97, 0.03))#
+#
+matches <- which(parent1==parent2)#
+	for (m in matches){#
+			if (parent1[m]<=6) {#
+			parent1[m]<-m+1#
+	  		} else {#
+	  		parent1[m]<-m-1#
+			}#
+		}#
+#
+## make color j if you want each gen to be a diff color#
+segments(inds, j, parent1, j+1, col="gray")#
+segments(inds, j, parent2, j+1, col="gray")#
+}
+############### 2 pops 20 inds RI#
+ngens = 20#
+#
+## setup and empty plot#
+	plot(1, type = "n",                        #
+     xlab = "ind", ylab = "gen",#
+     xlim = c(0, 13), ylim = c(0, ngens+1), bty="n", axes = FALSE) ## make xlim max == to max value of individuals#
+#
+##make n individuals#
+	inds <-c(1,2,3,4,5,6,8,9,10,11,12,13) #
+#
+##make n gens#
+	gens <- seq(1:ngens)#
+#
+###### uncomment if you want points for each individual	#
+for (i in gens) {#
+y <- rep(i, each=12) ### set to number of individuals#
+points(inds,y, pch="_")#
+}#
+#
+for (j in gens) { #
+##choose parent 1 for each ind in n#
+	parent1 <- sample(inds, prob = ifelse(inds <=6, 0.97, 0.03))#
+##choose parent 2 for each ind in n#
+	parent2 <- sample(inds, prob = ifelse(inds <=6, 0.97, 0.03))#
+#
+matches <- which(parent1==parent2)#
+	for (m in matches){#
+			if (parent1[m]<=5) {#
+			parent1[m]<-m+1#
+	  		} if (parent1[m]==6) {#
+	  		parent1[m]<-m-1#
+	  		} if (parent1[m]==12) {#
+	  		parent1[m]<-m-1#
+	  		} else {#
+	  		parent1[m]<-m+1#
+			}#
+		}#
+#
+## make color j if you want each gen to be a diff color#
+segments(inds, j, parent1, j+1, col="gray")#
+segments(inds, j, parent2, j+1, col="gray")#
+}
+############### 2 pops 20 inds RI#
+ngens = 20#
+#
+## setup and empty plot#
+	plot(1, type = "n",                        #
+     xlab = "ind", ylab = "gen",#
+     xlim = c(0, 13), ylim = c(0, ngens+1), bty="n", axes = FALSE) ## make xlim max == to max value of individuals#
+#
+##make n individuals#
+	inds <-c(1,2,3,4,5,6,8,9,10,11,12,13) #
+#
+##make n gens#
+	gens <- seq(1:ngens)#
+#
+###### uncomment if you want points for each individual	#
+for (i in gens) {#
+y <- rep(i, each=12) ### set to number of individuals#
+points(inds,y, pch="_")#
+}#
+#
+for (j in gens) { #
+##choose parent 1 for each ind in n#
+	parent1 <- sample(inds, prob = ifelse(inds <=6, 0.97, 0.03))#
+##choose parent 2 for each ind in n#
+	parent2 <- sample(inds, prob = ifelse(inds <=6, 0.97, 0.03))#
+#
+matches <- which(parent1==parent2)#
+	for (m in matches){#
+			if (parent1[m]<=5) {#
+			parent1[m]<-m+1#
+	  		} or (parent1[m]==6) {#
+	  		parent1[m]<-m-1#
+	  		} or (parent1[m]==12) {#
+	  		parent1[m]<-m-1#
+	  		} else {#
+	  		parent1[m]<-m+1#
+			}#
+		}#
+#
+## make color j if you want each gen to be a diff color#
+segments(inds, j, parent1, j+1, col="gray")#
+segments(inds, j, parent2, j+1, col="gray")#
+}
+############### 2 pops 20 inds RI#
+ngens = 20#
+#
+## setup and empty plot#
+	plot(1, type = "n",                        #
+     xlab = "ind", ylab = "gen",#
+     xlim = c(0, 13), ylim = c(0, ngens+1), bty="n", axes = FALSE) ## make xlim max == to max value of individuals#
+#
+##make n individuals#
+	inds <-c(1,2,3,4,5,6,8,9,10,11,12,13) #
+#
+##make n gens#
+	gens <- seq(1:ngens)#
+#
+###### uncomment if you want points for each individual	#
+for (i in gens) {#
+y <- rep(i, each=12) ### set to number of individuals#
+points(inds,y, pch="_")#
+}#
+#
+for (j in gens) { #
+##choose parent 1 for each ind in n#
+	parent1 <- sample(inds, prob = ifelse(inds <=6, 0.97, 0.03))#
+##choose parent 2 for each ind in n#
+	parent2 <- sample(inds, prob = ifelse(inds <=6, 0.97, 0.03))#
+#
+matches <- which(parent1==parent2)#
+	for (m in matches){#
+			if (parent1[m]<=5) {#
+			parent1[m]<-m+1#
+	  		} else if (parent1[m]==6) {#
+	  		parent1[m]<-m-1#
+	  		} else if (parent1[m]==12) {#
+	  		parent1[m]<-m-1#
+	  		} else {#
+	  		parent1[m]<-m+1#
+			}#
+		}#
+#
+## make color j if you want each gen to be a diff color#
+segments(inds, j, parent1, j+1, col="gray")#
+segments(inds, j, parent2, j+1, col="gray")#
+}
+parent1
+ngens = 1#
+#
+## setup and empty plot#
+	plot(1, type = "n",                        #
+     xlab = "ind", ylab = "gen",#
+     xlim = c(0, 13), ylim = c(0, ngens+1), bty="n", axes = FALSE) ## make xlim max == to max value of individuals#
+#
+##make n individuals#
+	inds <-c(1,2,3,4,5,6,8,9,10,11,12,13) #
+#
+##make n gens#
+	gens <- seq(1:ngens)#
+#
+###### uncomment if you want points for each individual	#
+for (i in gens) {#
+y <- rep(i, each=12) ### set to number of individuals#
+points(inds,y, pch="_")#
+}#
+#
+for (j in gens) { #
+##choose parent 1 for each ind in n#
+	parent1 <- sample(inds, prob = ifelse(inds <=6, 0.97, 0.03))#
+##choose parent 2 for each ind in n#
+	parent2 <- sample(inds, prob = ifelse(inds <=6, 0.97, 0.03))#
+#
+matches <- which(parent1==parent2)#
+	for (m in matches){#
+			if (parent1[m]<=5) {#
+			parent1[m]<-m+1#
+	  		} else if (parent1[m]==6) {#
+	  		parent1[m]<-m-1#
+	  		} else if (parent1[m]==12) {#
+	  		parent1[m]<-m-1#
+	  		} else {#
+	  		parent1[m]<-m+1#
+			}#
+		}#
+#
+## make color j if you want each gen to be a diff color#
+segments(inds, j, parent1, j+1, col="gray")#
+segments(inds, j, parent2, j+1, col="gray")#
+}
+ngens = 20#
+#
+## setup and empty plot#
+	plot(1, type = "n",                        #
+     xlab = "ind", ylab = "gen",#
+     xlim = c(0, 13), ylim = c(0, ngens+1), bty="n", axes = FALSE) ## make xlim max == to max value of individuals#
+#
+##make n individuals#
+	inds <-c(1,2,3,4,5,6,8,9,10,11,12,13) #
+#
+##make n gens#
+	gens <- seq(1:ngens)#
+#
+###### uncomment if you want points for each individual	#
+for (i in gens) {#
+y <- rep(i, each=12) ### set to number of individuals#
+points(inds,y, pch="_")#
+}#
+#
+for (j in gens) { #
+##choose parent 1 for each ind in n#
+	parent1 <- sample(inds, prob = ifelse(inds <=6, 0.97, 0.03))#
+##choose parent 2 for each ind in n#
+	parent2 <- sample(inds, prob = ifelse(inds <=6, 0.97, 0.03))#
+#
+matches <- which(parent1==parent2)#
+	for (m in matches){#
+			if (parent1[m]<=5) {#
+			parent1[m]<-m+1#
+	  		} else if (parent1[m]==6) {#
+	  		parent1[m]<-m-1#
+	  		} else if (parent1[m]==12) {#
+	  		parent1[m]<-m-1#
+	  		} else {#
+	  		parent1[m]<-m+1#
+			}#
+		}#
+#
+## make color j if you want each gen to be a diff color#
+segments(inds, j, parent1, j+1, col="gray")#
+segments(inds, j, parent2, j+1, col="gray")#
+}
+ngens = 1#
+#
+## setup and empty plot#
+	plot(1, type = "n",                        #
+     xlab = "ind", ylab = "gen",#
+     xlim = c(0, 13), ylim = c(0, ngens+1), bty="n", axes = FALSE) ## make xlim max == to max value of individuals#
+#
+##make n individuals#
+	inds <-c(1,2,3,4,5,6,8,9,10,11,12,13) #
+#
+##make n gens#
+	gens <- seq(1:ngens)#
+#
+###### uncomment if you want points for each individual	#
+for (i in gens) {#
+y <- rep(i, each=12) ### set to number of individuals#
+points(inds,y, pch="_")#
+}#
+#
+for (j in gens) { #
+##choose parent 1 for each ind in n#
+	parent1 <- sample(inds, prob = ifelse(inds <=6, 0.97, 0.03))#
+##choose parent 2 for each ind in n#
+	parent2 <- sample(inds, prob = ifelse(inds <=6, 0.97, 0.03))#
+#
+matches <- which(parent1==parent2)#
+	for (m in matches){#
+			if (parent1[m]<=5) {#
+			parent1[m]<-m+1#
+	  		} else if (parent1[m]==6) {#
+	  		parent1[m]<-m-1#
+	  		} else if (parent1[m]==12) {#
+	  		parent1[m]<-m-1#
+	  		} else {#
+	  		parent1[m]<-m+1#
+			}#
+		}#
+#
+## make color j if you want each gen to be a diff color#
+segments(inds, j, parent1, j+1, col="gray")#
+segments(inds, j, parent2, j+1, col="gray")#
+}
+############### 2 pops 20 inds RI#
+ngens = 1#
+#
+## setup and empty plot#
+	plot(1, type = "n",                        #
+     xlab = "ind", ylab = "gen",#
+     xlim = c(0, 13), ylim = c(0, ngens+1), bty="n", axes = FALSE) ## make xlim max == to max value of individuals#
+#
+##make n individuals#
+	inds <-c(1,2,3,4,5,6,8,9,10,11,12,13) #
+#
+##make n gens#
+	gens <- seq(1:ngens)#
+#
+###### uncomment if you want points for each individual	#
+for (i in gens) {#
+y <- rep(i, each=12) ### set to number of individuals#
+points(inds,y, pch="_")#
+}#
+#
+for (j in gens) { #
+##choose parent 1 for each ind in n#
+	parent1 <- sample(inds, prob = ifelse(inds <=6, 0.97, 0.03))#
+##choose parent 2 for each ind in n#
+	parent2 <- sample(inds, prob = ifelse(inds <=6, 0.97, 0.03))#
+#
+matches <- which(parent1==parent2)#
+	for (m in matches){#
+			if (parent1[m]<=5) {#
+			parent1[m]<-m+1#
+	  		} else if (parent1[m]==6) {#
+	  		parent1[m]<-m-1#
+	  		} else if (parent1[m]==12) {#
+	  		parent1[m]<-m-1#
+	  		} else {#
+	  		parent1[m]<-m+1#
+			}#
+		}#
+#
+## make color j if you want each gen to be a diff color#
+segments(inds, j, parent1, j+1, col="gray")#
+segments(inds, j, parent2, j+1, col="gray")#
+}
+parent1
+parent2
+############### 2 pops 20 inds RI#
+ngens = 20#
+#
+## setup and empty plot#
+	plot(1, type = "n",                        #
+     xlab = "ind", ylab = "gen",#
+     xlim = c(0, 13), ylim = c(0, ngens+1), bty="n", axes = FALSE) ## make xlim max == to max value of individuals#
+#
+##make n individuals#
+	inds <-c(1,2,3,4,5,6,8,9,10,11,12,13) #
+#
+##make n gens#
+	gens <- seq(1:ngens)#
+#
+###### uncomment if you want points for each individual	#
+for (i in gens) {#
+y <- rep(i, each=12) ### set to number of individuals#
+points(inds,y, pch="_")#
+}#
+#
+for (j in gens) { #
+##choose parent 1 for each ind in n#
+	parent1 <- sample(inds, prob = ifelse(inds <=6, 0.97, 0.03))#
+##choose parent 2 for each ind in n#
+	parent2 <- sample(inds, prob = ifelse(inds <=6, 0.97, 0.03))#
+#
+matches <- which(parent1==parent2)#
+	for (m in matches){#
+			if (parent1[m]<=5) {#
+			parent1[m]<-m+1#
+	  		} else if (parent1[m]=6) {#
+	  		parent1[m]<-m-1#
+	  		} else if (parent1[m]==12) {#
+	  		parent1[m]<-m-1#
+	  		} else {#
+	  		parent1[m]<-m+1#
+			}#
+		}#
+#
+## make color j if you want each gen to be a diff color#
+segments(inds, j, parent1, j+1, col="gray")#
+segments(inds, j, parent2, j+1, col="gray")#
+}
+1-1
+101/2
+1-1/2
+(1-1)/2
+(1-05)/2
+(1-0.5)/2
+1-2*(200/(200+800)
+)
+1-2*(200/(200+800))
+1-2*(20/(20+80))
+1-2*(30/(30+70))
+0.4+(1-0.4)*0.4
+(0.4+(1-0.4))*0.4
+(0.4+(1-0.4)*0.4
+0.4+(1-0.4)*0.4
+(1-200/800)/(1+200/800)
+102/3
+102+34
+34-20/20
+(34-20)/20
+(20-34)/34
+(100-50)/50
+(60-50)/50
+0.9-0.5/0.5
+(0.9-0.5)/0.5
+0.8*0.8
+(0.9-0.5)
+(0.9-0.5)/5
+(0.9-0.5)/0.5
+0.8*0.8
+(0.65-0.45)/0.5
+100/50
+x = c
+x
+print(x)
+x = "c"
+print(x)
+x = c(1,2,3,4,5)
+x[1]
+x[:1]
+x[:]
+x[i]
+x[1:2]
+x[1:5]
+x[1]
+x = c(2,3,4,5,6)
+x[1]
+x[1]+x[2]
+x[1]+x[2]*(sum(x[1:5]))
+ID <- c("A","A","A","A","A","B","B","B","B","B")#
+x <- seq(1:10)#
+y <- sample(1:100, 10)#
+z <- sample(1:100, 10)#
+data <- data.frame(x,y,z)
+data
+summary_plot<-function(ID_code){#
+  d <- data[data$ID == ID_code, ]#
+  max_y <- max(d$y)           # max of y#
+  max_z <- max(d$z)           # max of z#
+  maximum <- c(max_y, max_z)  # both in a vector#
+  m <- max(maximum)           # find the higher max#
+  plot(d$x, d$y, xlim = c(0, 10), ylim = c(0, m))#
+  points(d$x, d$z, col = "red")#
+  m                           # return m#
+}
+summary_plot("A")
+m
+set.seed(45)#
+#
+ID <- c("A","A","A","A","A","B","B","B","B","B")#
+x <- seq(1:10)#
+y <- sample(1:100, 10)#
+z <- sample(1:100, 10)#
+data <- data.frame(x,y,z,ID)#
+#
+summary_plot<-function(ID_code){#
+  max_y <- max(data$y[data$ID==ID_code]) ## max of y#
+  max_z <- max(data$z[data$ID==ID_code]) ## max of z#
+  maximum <- c(as.numeric(max_y),as.numeric(max_z)) # both in a vector#
+  m <- as.numeric(max(maximum)) #find the higher max#
+  print(m)#
+  plot(data$x[data$ID==ID_code],data$y[data$ID==ID_code], xlim=c(0,10))#
+  points(data$x[data$ID==ID_code],data$z[data$ID==ID_code], col="red", ylim=c(0,m))#
+}#
+summary_plot("A")
+summary_plot("B")
+data
+set.seed(45)#
+#
+ID <- c("A","A","A","A","A","B","B","B","B","B")#
+x <- seq(1:10)#
+y <- sample(1:100, 10)#
+z <- sample(1:100, 10)#
+data <- data.frame(x,y,z,ID)#
+#
+summary_plot<-function(ID_code){#
+  max_y <- max(data$y[data$ID==ID_code]) ## max of y#
+  max_z <- max(data$z[data$ID==ID_code]) ## max of z#
+  maximum <- c(as.numeric(max_y),as.numeric(max_z)) # both in a vector#
+  m <- as.numeric(max(maximum)) #find the higher max#
+  print(m)#
+  plot(data$x[data$ID==ID_code],data$y[data$ID==ID_code], xlim=c(0,10))#
+  points(data$x[data$ID==ID_code],data$z[data$ID==ID_code], col="red", ylim=c(0,m))#
+}#
+summary_plot("A")
+ID <- c("A","A","A","A","A","B","B","B","B","B")#
+x <- seq(1:10)#
+y <- sample(1:100, 10)#
+z <- sample(1:100, 10)#
+data <- data.frame(x,y,z,ID)#
+#
+summary_plot<-function(ID_code){#
+  max_y <- max(data$y[data$ID==ID_code]) ## max of y#
+  max_z <- max(data$z[data$ID==ID_code]) ## max of z#
+  maximum <- c(as.numeric(max_y),as.numeric(max_z)) # both in a vector#
+  m <- as.numeric(max(maximum)) #find the higher max#
+  print(m)#
+  plot(data$x[data$ID==ID_code],data$y[data$ID==ID_code], xlim=c(0,10))#
+  points(data$x[data$ID==ID_code],data$z[data$ID==ID_code], col="red", ylim=c(0,m))#
+}#
+summary_plot("A")
+summary_plot<-function(ID_code){#
+  d <- data[data$ID == ID_code, ]#
+  max_y <- max(d$y)           # max of y#
+  max_z <- max(d$z)           # max of z#
+  maximum <- c(max_y, max_z)  # both in a vector#
+  m <- max(maximum)           # find the higher max#
+  plot(d$x, d$y, xlim = c(0, 10), ylim = c(0, m))#
+  points(d$x, d$z, col = "red")#
+  m                           # return m#
+}
+summary_plot("A")
+ID <- c("A","A","A","A","A","B","B","B","B","B")#
+x <- seq(1:10)#
+y <- sample(1:100, 10)#
+z <- sample(1:100, 10)#
+data <- data.frame(x,y,z)
+summary_plot<-function(ID_code){#
+  d <- data[data$ID == ID_code, ]#
+  max_y <- max(d$y)           # max of y#
+  max_z <- max(d$z)           # max of z#
+  maximum <- c(max_y, max_z)  # both in a vector#
+  m <- max(maximum)           # find the higher max#
+  plot(d$x, d$y, xlim = c(0, 10), ylim = c(0, m))#
+  points(d$x, d$z, col = "red")#
+  m                           # return m#
+}#
+#
+summary_plot("A")
+m
+data
+m
+summary_plot<-function(ID_code){#
+  max_y <- max(data$y[data$ID==ID_code]) ## max of y#
+  max_z <- max(data$z[data$ID==ID_code]) ## max of z#
+  maximum <- c(as.numeric(max_y),as.numeric(max_z)) # both in a vector#
+  m <- as.numeric(max(maximum)) #find the higher max#
+  print(m)#
+  plot(data$x[data$ID==ID_code],data$y[data$ID==ID_code], xlim=c(0,10))#
+  points(data$x[data$ID==ID_code],data$z[data$ID==ID_code], col="red", ylim=c(0,m))#
+}#
+summary_plot("A")
+set.seed(45)#
+#
+ID <- c("A","A","A","A","A","B","B","B","B","B")#
+x <- seq(1:10)#
+y <- sample(1:100, 10)#
+z <- sample(1:100, 10)#
+data <- data.frame(x,y,z,ID)
+summary_plot<-function(ID_code){#
+  max_y <- max(data$y[data$ID==ID_code]) ## max of y#
+  max_z <- max(data$z[data$ID==ID_code]) ## max of z#
+  maximum <- c(as.numeric(max_y),as.numeric(max_z)) # both in a vector#
+  m <- as.numeric(max(maximum)) #find the higher max#
+  print(m)#
+  plot(data$x[data$ID==ID_code],data$y[data$ID==ID_code], xlim=c(0,10))#
+  points(data$x[data$ID==ID_code],data$z[data$ID==ID_code], col="red", ylim=c(0,m))#
+}
+data
+summary_plot("A")
+ID <- c("A","A","A","A","A","B","B","B","B","B")#
+x <- seq(1:10)#
+y <- sample(1:100, 10)#
+z <- sample(1:100, 10)#
+data <- data.frame(x,y,z,ID)
+summary_plot<-function(ID_code){#
+  max_y <- max(data$y[data$ID==ID_code]) ## max of y#
+  max_z <- max(data$z[data$ID==ID_code]) ## max of z#
+  maximum <- c(as.numeric(max_y),as.numeric(max_z)) # both in a vector#
+  m <- as.numeric(max(maximum)) #find the higher max#
+  print(m)#
+  plot(data$x[data$ID==ID_code],data$y[data$ID==ID_code], xlim=c(0,10))#
+  points(data$x[data$ID==ID_code],data$z[data$ID==ID_code], col="red", ylim=c(0,m))#
+}
+summary_plot("B")
+data
+summary_plot("A")
+ID <- c("A","A","A","A","A","B","B","B","B","B")#
+x <- seq(1:10)#
+y <- sample(1:10000, 10)#
+z <- sample(1:10000, 10)#
+data <- data.frame(x,y,z,ID)
+ID <- c("A","A","A","A","A","B","B","B","B","B")#
+x <- seq(1:1000)#
+y <- sample(1:10000, 10000)#
+z <- sample(1:10000, 10000)#
+data <- data.frame(x,y,z,ID)
+summary_plot("A")
+ID <- c("A","A","A","A","A","B","B","B","B","B")#
+x <- seq(1:1000)#
+y <- sample(1:10000, 10000)#
+z <- sample(1:10000, 10000)#
+data <- data.frame(x,y,z,ID)
+summary_plot("A")
+hrad()data
+head(data)
+summary_plot<-function(ID_code){#
+  max_y <- max(data$y[data$ID==ID_code]) ## max of y#
+  max_z <- max(data$z[data$ID==ID_code]) ## max of z#
+  maximum <- c(as.numeric(max_y),as.numeric(max_z)) # both in a vector#
+  m <- as.numeric(max(maximum)) #find the higher max#
+  print(m)#
+  plot(data$x[data$ID==ID_code],data$y[data$ID==ID_code], xlim=c(0,10000))#
+  points(data$x[data$ID==ID_code],data$z[data$ID==ID_code], col="red", ylim=c(0,m))#
+}
+summary_plot("A")
+ID <- c("A","A","A","A","A","B","B","B","B","B")#
+x <- seq(1:1000)#
+y <- sample(1:10000, 10000)#
+z <- sample(1:10000, 10000)#
+data <- data.frame(x,y,z,ID)
+data
+24455034/73899877*100
+73899877/24455034*100
+73899877/98354911*100
+######## Curves for each plant 2021 ######
+install.packages("scales") # Install scales package#
+library("scales") #
+#
+"/Users/sstankow/Desktop"#
+#
+data <- read.csv("2021_prelim.csv",header=TRUE)#
+#
+### 3) make an empty plot#
+#
+type <- 'l'#
+lwd <-'1'#
+#
+ plot(data$day,data$flowers, col='white', xlim=c(-4,80), pch=2, type=type, ylim=c(0,150), lwd=lwd)#
+ ### 4) find unique#
+ plant_list <- unique(data$ID)#
+ ### 5) loop over ids to plot individual flower curves#
+ for (i in plant_list)#
+ {#
+ newdata <- subset(data, ID==i)#
+maxFl <- (max(newdata$TotFl))#
+points(newdata$day,newdata$TotFl, type='l', col='grey')#
+ }
+data <- read.csv("reproductive_mode_TWISST.popGenwins.csv", header=TRUE)
+ata <- read.csv("reproductive_mode_TWISST.popGenwins.csv", header=TRUE)#
+lengths <- read.csv("contigs_lengths.csv",header=TRUE)
+data <- read.csv("reproductive_mode_TWISST.popGenwins.csv", header=TRUE)
+head(data)
+mean(data$win_size )
+sd(data$win_size )
+hist(data$win_size)
+hist(data$win_size, breaks=1000)
+hist(data$win_size, breaks=1000)
+length(data$win_size )

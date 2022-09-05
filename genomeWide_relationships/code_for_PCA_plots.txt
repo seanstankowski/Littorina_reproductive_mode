@@ -1,0 +1,16 @@
+### script for plotting pca results
+data <- read.csv("pca_out.csv",header=TRUE)
+par(mfrow = c(2, 2))
+
+pointsize= 1.5 ## set the point size
+
+
+### full pca
+plot(data$PC1,data$PC2, pch=data$species, col=data$mode, cex=pointsize, xlab="PC1", ylab="PC2")
+## LD thinned
+plot(data$ld_PC1,data$ld_PC2, pch=data$species, col=data$mode, cex=pointsize, xlab="PC1", ylab="PC2")
+
+### full pca downsampled individuals
+plot(data$down_PC1,data$down_PC2, pch=data$species_down, col=data$mode_down, cex=pointsize, xlab="PC1", ylab="PC2")
+### LD thinned downsampled individuals
+plot(data$downLD_PC1,data$downLD_PC2, pch=data$species_down, col=data$mode_down, cex=pointsize, xlab="PC1", ylab="PC2")

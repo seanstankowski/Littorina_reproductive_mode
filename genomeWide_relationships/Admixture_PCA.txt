@@ -1,0 +1,44 @@
+############### PCAs
+
+### zip with bgzip
+/data/bo1srs/bcftools_dir/bcftools/bcftools view -Oz  /mnt/fastdata/bo1srs/final_working_VCFs/invariantANDvariant_sites_108_VCF_minQ50_maxmiss0.95.recode.vcf  -o /mnt/fastdata/bo1srs/final_working_VCFs/invariantANDvariant_sites_108_VCF_minQ50_maxmiss0.95.recode.vcf.gz
+
+/data/bo1srs/bcftools_dir/bcftools/bcftools tabix /mnt/fastdata/bo1srs/final_working_VCFs/invariantANDvariant_sites_108_VCF_minQ50_maxmiss0.95.recode.vcf.gz
+
+### extract 60,000 longest contigs
+/data/bo1srs/bcftools-1.15/bcftools view -R /mnt/fastdata/bo1srs/final_working_VCFs/chroms2.txt  /mnt/fastdata/bo1srs/final_working_VCFs/invariantANDvariant_sites_108_VCF_minQ50_maxmiss0.95.recode.vcf -o plink60Kcontigs.vcf.gz 
+
+### convert to plink format
+/data/bo1srs/plink_1.9_linux_x86_64/plink --vcf plink60Kcontigs.vcf.gz  --double-id --allow-extra-chr --out plink60Kcontigs 
+
+###  full pca
+/data/bo1srs/plink_1.9_linux_x86_64/plink --double-id --allow-extra-chr --bfile plink60Kcontigs --pca --out PCAplink60kcontigs
+
+
+### make bed with new ids
+/data/bo1srs/plink2  --double-id --allow-extra-chr --bfile plink60Kcontigs --out PCAplink60kcontigsNewIDS --set-missing-var-ids @:# --make-bed
+
+### LD prune
+/data/bo1srs/plink_1.9_linux_x86_64/plink --bfile PCAplink60kcontigsNewIDS --double-id --allow-extra-chr --indep-pairwise 50 10 0.1 --out LDpruned_plink60kcontigs
+
+### do pruned PCA
+/data/bo1srs/plink_1.9_linux_x86_64/plink --bfile PCAplink60kcontigsNewIDS --double-id --allow-extra-chr  --extract LDpruned_plink60kcontigs.prune.in --pca --out PrunedPCA
+
+### do subset pca with full dataset
+/data/bo1srs/plink_1.9_linux_x86_64/plink --double-id --allow-extra-chr --bfile plink60Kcontigs --pca --out PCAplink60kcontigsSUBSET --keep keep_samples
+
+### and for the downsampled dataset
+/data/bo1srs/plink_1.9_linux_x86_64/plink --bfile PCAplink60kcontigsNewIDS --double-id --allow-extra-chr  --extract LDpruned_plink60kcontigs.prune.in --pca --out PrunedPCASUBSET --keep keep_samples
+
+
+############## Admixture
+
+## made bed file of LD pruned full dataset
+/data/bo1srs/plink_1.9_linux_x86_64/plink --bfile PCAplink60kcontigsNewIDS --double-id --allow-extra-chr --extract LDpruned_plink60kcontigs.prune.in --make-bed --out admixture
+
+### Admixture k2 - k6
+/data/bo1srs/admixture_linux-1.3.0/admixture admixture.bed 2
+/data/bo1srs/admixture_linux-1.3.0/admixture admixture.bed 3
+/data/bo1srs/admixture_linux-1.3.0/admixture admixture.bed 4
+/data/bo1srs/admixture_linux-1.3.0/admixture admixture.bed 5
+/data/bo1srs/admixture_linux-1.3.0/admixture admixture.bed 6         

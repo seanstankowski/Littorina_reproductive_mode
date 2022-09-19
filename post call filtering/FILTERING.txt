@@ -84,7 +84,31 @@ vcftools --gzvcf 1808_Maxmiss0.1_softDP10_vcf.gz --out 1808 --012
 /data/bo1srs/bcftools-1.15/bcftools view --exclude-types snps --output-type z -o /fastdata/bo1srs/final_working_VCFs/sweep_contigs/indels_1808_Maxmiss0.1_softDP10_vcf.gz /fastdata/bo1srs/final_working_VCFs/sweep_contigs/1808_Maxmiss0.1_softDP10_vcf.gz
 
 
+#### sympatric twisst
+
+/nfs/scistore18/bartogrp/sstankow/TopologyWeightingFiles/snail_VCFs/sympatric_samples_SNPsonly.vcf.gz
 
 
 
+# SN    [2]id   [3]key  [4]value
+SN      0       number of samples:      35
+SN      0       number of records:      10154989
+SN      0       number of no-ALTs:      0
+SN      0       number of SNPs: 10154655
+SN      0       number of MNPs: 0
+SN      0       number of indels:       0
+SN      0       number of others:       0
+SN      0       number of multiallelic sites:   0
+SN      0       number of multiallelic SNP sites:       0
+# TSTV, transitions/transversions:
 
+/nfs/scistore18/bartogrp/sstankow/TopologyWeightingFiles/twisstScrips_newData
+
+
+#/data/bo1srs/bcftools_dir/bcftools/bcftools view -S /nfs/scistore18/bartogrp/sstankow/TopologyWeightingFiles/snail_VCFs/sympatric_samples.txt -o /nfs/scistore18/bartogrp/sstankow/TopologyWeightingFiles/sympatric_samples.vcf.gz --threads 4 --output-type z PHASED_variants_only_Maxmiss0.1_softDP10_minDP1500_all_sites_108_littorina.vcf.gz.vcf.gz
+
+
+/fastdata/bo1srs/twisst/sympatric_samples_SNPsonly.vcf.gz
+
+
+/data/bo1srs/phyml-3.3.20211231/src/phyml

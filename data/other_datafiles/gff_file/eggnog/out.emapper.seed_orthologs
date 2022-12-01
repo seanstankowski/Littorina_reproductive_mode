@@ -1,0 +1,38 @@
+## Wed Nov 30 19:43:41 2022
+## emapper-2.1.9
+## /data/shared/home/emapper/miniconda3/envs/eggnog-mapper-2.1/bin/emapper.py --cpu 20 --mp_start_method forkserver --data_dir /dev/shm/ -o out --output_dir /emapper_web_jobs/emapper_jobs/user_data/MM_j_edz6o6 --temp_dir /emapper_web_jobs/emapper_jobs/user_data/MM_j_edz6o6 --override -m diamond --dmnd_ignore_warnings -i /emapper_web_jobs/emapper_jobs/user_data/MM_j_edz6o6/queries.fasta --evalue 1 --score 5 --pident 20 --query_cover 5 --subject_cover 5 --itype genome --genepred search --dmnd_frameshift 15 --tax_scope auto --target_orthologs all --go_evidence non-electronic --pfam_realign none --report_orthologs --decorate_gff yes --excel
+##
+##/data/shared/home/emapper/miniconda3/envs/eggnog-mapper-2.1/lib/python3.7/site-packages/eggnogmapper/bin/diamond blastx -d /dev/shm/eggnog_proteins.dmnd -q /emapper_web_jobs/emapper_jobs/user_data/MM_j_edz6o6/queries.fasta --threads 20 -o /emapper_web_jobs/emapper_jobs/user_data/MM_j_edz6o6/out.emapper.hits --tmpdir /emapper_web_jobs/emapper_jobs/user_data/MM_j_edz6o6/emappertmp_dmdn_rs1s7n9u --sensitive --iterate --ignore-warnings -e 1.0 --min-score 5.0 --id 20.0 --query-cover 5.0 --subject-cover 5.0 --frameshift 15 --max-target-seqs 0 --max-hsps 0  --outfmt 6 qseqid sseqid pident length mismatch gapopen qstart qend sstart send evalue bitscore qcovhsp scovhsp
+#qseqid	sseqid	evalue	bitscore	qstart	qend	sstart	send	pident	qcov	scov
+Contig38463:100583-110952_0	61853.ENSNLEP00000017260	18.5	40.0	519	1	174	317	26.6	5.0	24.0
+Contig40792:22083-23378_0	1416760.AYMS01000161_gene2760	47.4	35.4	1	219	396	479	28.6	16.9	10.8
+Contig40792:22083-23378_1	6326.BUX.s00466.94	110.0	33.9	72	1	236	259	45.8	5.6	7.4
+Contig40792:22083-23378_2	1050202.KB913024_gene2516	182.0	32.0	177	1	27	90	35.9	13.7	48.9
+Contig40792:22083-23378_3	37727.XP_002149580.1	842.0	31.2	1	87	263	291	44.8	6.7	7.4
+Contig40792:22083-23378_4	1123251.ATWM01000006_gene2238	5330.0	28.5	69	1	171	199	44.8	5.3	10.0
+Contig40792:22083-23378_5	1210884.HG799463_gene9680	18900.0	26.6	93	1	4	34	41.9	7.2	14.6
+Contig40792:22083-23378_6	762376.AXYL_02288	22200.0	26.6	1	72	33	56	50.0	5.6	7.8
+Contig40792:22083-23378_7	1232446.BAIE02000003_gene980	23900.0	26.6	1	75	344	369	53.8	5.8	6.5
+Contig47939:37500-41418_0	6500.XP_005108416.1	0.083	46.2	1	231	147	220	39.0	5.9	12.2
+Contig47939:37500-41418_1	445335.CBN_1247	12900.0	28.9	244	1	51	142	34.7	6.2	37.9
+Contig47939:37500-41418_2	297246.lpp1842	37300.0	27.7	228	1	336	414	29.3	5.8	17.9
+Contig127109:2855-13776_0	7739.XP_002598118.1	3.59e-25	125.0	1	1290	3308	3705	31.2	11.8	8.9
+Contig70835:11595-39511_0	7029.ACYPI56547-PA	7.94e-90	337.0	1	3177	466	1529	28.4	11.4	68.1
+Contig70835:11595-39511_1	6500.XP_005105874.1	5.32e-45	191.0	1	1403	803	1273	34.0	5.0	36.0
+Contig59349:19907-41497_0	281687.CJA14795b	9.03e-18	101.0	1	1115	232	604	30.0	5.2	29.3
+Contig39155:3938-16999_0	10116.ENSRNOP00000039329	1.54	44.3	1	921	775	1088	21.2	7.1	12.3
+Contig69512:3835-10950_0	31033.ENSTRUP00000016749	7.16e-105	351.0	1	1240	3	408	49.6	17.4	94.2
+Contig61694:706-20167_0	10224.XP_006823664.1	1.85e-276	888.0	3176	1	401	1432	52.6	16.3	72.0
+Contig61694:706-20167_1	10224.XP_006822441.1	9.89e-45	189.0	1	2575	197	1047	30.1	13.2	80.0
+Contig57976:17569-22490_0	7739.XP_002604511.1	0.0378	47.8	267	1	345	430	34.1	5.4	12.6
+Contig57976:17569-22490_1	215358.XP_010753513.1	0.0491	47.0	288	1	241	348	28.7	5.9	26.7
+Contig9868:11-10627_0	7070.TC002110-PA	1.1e-44	175.0	1	838	64	344	40.5	7.9	81.2
+Contig115331:1411-6018_0	6087.XP_004211771.1	0.000149	55.8	1165	1	235	621	26.6	25.3	22.6
+Contig115331:1411-6018_1	88036.EFJ17853	2790.0	31.6	261	1	236	323	23.9	5.7	21.7
+Contig4635:2105-7512_0	10224.XP_002733728.1	0.0136	48.9	1	279	179	270	28.7	5.2	22.9
+Contig4635:2105-7512_1	469615.FGAG_01076	570.0	34.3	282	1	499	602	27.9	5.2	14.6
+Contig4635:2105-7512_2	225400.XP_006774241.1	771.0	33.5	273	1	114	199	27.5	5.0	25.6
+Contig4635:2105-7512_3	762051.LKI_04820	2330.0	32.0	1	353	74	189	25.0	6.5	34.5
+## 29 queries scanned
+## Total time (seconds): 0.10985088348388672
+## Rate: 263.99 q/s

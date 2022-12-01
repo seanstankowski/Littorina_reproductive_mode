@@ -1,0 +1,45 @@
+#  emapper-2.1.9
+# emapper.py  --cpu 20 --mp_start_method forkserver --data_dir /dev/shm/ -o out --output_dir /emapper_web_jobs/emapper_jobs/user_data/MM_j_edz6o6 --temp_dir /emapper_web_jobs/emapper_jobs/user_data/MM_j_edz6o6 --override -m diamond --dmnd_ignore_warnings -i /emapper_web_jobs/emapper_jobs/user_data/MM_j_edz6o6/queries.fasta --evalue 1 --score 5 --pident 20 --query_cover 5 --subject_cover 5 --itype genome --genepred search --dmnd_frameshift 15 --tax_scope auto --target_orthologs all --go_evidence non-electronic --pfam_realign none --report_orthologs --decorate_gff yes --excel
+[1;33m  /data/shared/home/emapper/miniconda3/envs/eggnog-mapper-2.1/lib/python3.7/site-packages/eggnogmapper/bin/diamond blastx -d /dev/shm/eggnog_proteins.dmnd -q /emapper_web_jobs/emapper_jobs/user_data/MM_j_edz6o6/queries.fasta --threads 20 -o /emapper_web_jobs/emapper_jobs/user_data/MM_j_edz6o6/out.emapper.hits --tmpdir /emapper_web_jobs/emapper_jobs/user_data/MM_j_edz6o6/emappertmp_dmdn_rs1s7n9u --sensitive --iterate --ignore-warnings -e 1.0 --min-score 5.0 --id 20.0 --query-cover 5.0 --subject-cover 5.0 --frameshift 15 --max-target-seqs 0 --max-hsps 0  --outfmt 6 qseqid sseqid pident length mismatch gapopen qstart qend sstart send evalue bitscore qcovhsp scovhsp[0m
+[1;32mCrafting GFF file of CDS ...[0m
+[1;32mCrafting fasta file of CDS ...[0m
+[32mDone[0m
+[1;33mResult files:[0m
+   /emapper_web_jobs/emapper_jobs/user_data/MM_j_edz6o6/out.emapper.genepred.fasta
+   /emapper_web_jobs/emapper_jobs/user_data/MM_j_edz6o6/out.emapper.genepred.gff
+   /emapper_web_jobs/emapper_jobs/user_data/MM_j_edz6o6/out.emapper.decorated.gff
+   /emapper_web_jobs/emapper_jobs/user_data/MM_j_edz6o6/out.emapper.hits
+   /emapper_web_jobs/emapper_jobs/user_data/MM_j_edz6o6/out.emapper.seed_orthologs
+   /emapper_web_jobs/emapper_jobs/user_data/MM_j_edz6o6/out.emapper.annotations
+   /emapper_web_jobs/emapper_jobs/user_data/MM_j_edz6o6/out.emapper.annotations.xlsx
+   /emapper_web_jobs/emapper_jobs/user_data/MM_j_edz6o6/out.emapper.orthologs
+
+================================================================================
+CITATION:
+If you use this software, please cite:
+
+[1] eggNOG-mapper v2: functional annotation, orthology assignments, and domain 
+      prediction at the metagenomic scale. Carlos P. Cantalapiedra, 
+      Ana Hernandez-Plaza, Ivica Letunic, Peer Bork, Jaime Huerta-Cepas. 2021.
+      Molecular Biology and Evolution, msab293, https://doi.org/10.1093/molbev/msab293
+
+[2] eggNOG 5.0: a hierarchical, functionally and phylogenetically annotated
+      orthology resource based on 5090 organisms and 2502 viruses. Jaime
+      Huerta-Cepas, Damian Szklarczyk, Davide Heller, Ana Hernandez-Plaza,
+      Sofia K Forslund, Helen Cook, Daniel R Mende, Ivica Letunic, Thomas
+      Rattei, Lars J Jensen, Christian von Mering and Peer Bork. Nucleic Acids
+      Research, Volume 47, Issue D1, 8 January 2019, Pages D309-D314,
+      https://doi.org/10.1093/nar/gky1085 
+
+[3] Sensitive protein alignments at tree-of-life scale using DIAMOND.
+       Buchfink B, Reuter K, Drost HG. 2021.
+       Nature Methods 18, 366–368 (2021). https://doi.org/10.1038/s41592-021-01101-x
+
+e.g. Functional annotation was performed using eggNOG-mapper (version emapper-2.1.9) [1]
+ based on eggNOG orthology data [2]. Sequence searches were performed using [3].
+
+================================================================================
+
+Total hits processed: 29
+Total time: 639 secs
+FINISHED

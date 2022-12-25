@@ -67,7 +67,8 @@ setwd("/Users/sstankow/Desktop")
 
 library(dplyr)
 
-data <- read.csv("reproductive_mode_TWISST.popGenwins.csv",header=TRUE)
+dataA <- read.csv("reproductive_mode_TWISST.popGenwins.csv",header=TRUE)
+data <- subset(dataA, in_map ==1)
 data2 <- subset(data, high_topo1 == 1)
 
 ## tabulate wins per map pos

@@ -1,0 +1,1726 @@
+############### 2 pops 20 inds RI#
+ngens = 2#
+#
+## setup and empty plot#
+	plot(1, type = "n",                        #
+     xlab = "ind", ylab = "gen",#
+     xlim = c(0, 12), ylim = c(0, ngens+1), bty="n", axes = FALSE) ## make xlim max == to max value of individuals#
+#
+##make n individuals#
+	inds <-seq(1:12) #
+#
+##make n gens#
+	gens <- seq(1:ngens)#
+#
+###### uncomment if you want points for each individual	#
+for (i in gens) {#
+y <- rep(i, each=12) ### set to number of individuals#
+points(inds,y, pch="_")#
+}#
+#
+for (j in gens) { #
+##choose parent 1 for each ind in n#
+	parent1 <- sample(inds, prob = ifelse(inds <=6, 0.97, 0.03))#
+##choose parent 2 for each ind in n#
+	parent2 <- sample(inds, prob = ifelse(inds <=6, 0.97, 0.03))#
+#
+## make color j if you want each gen to be a diff color#
+segments(inds, j, parent1, j+1, col="gray")#
+segments(inds, j, parent2, j+1, col="gray")#
+}
+which(parent1==inds)
+############### 2 pops 20 inds RI#
+ngens = 2#
+#
+## setup and empty plot#
+	plot(1, type = "n",                        #
+     xlab = "ind", ylab = "gen",#
+     xlim = c(0, 12), ylim = c(0, ngens+1), bty="n", axes = FALSE) ## make xlim max == to max value of individuals#
+#
+##make n individuals#
+	inds <-seq(1:12) #
+#
+##make n gens#
+	gens <- seq(1:ngens)#
+#
+###### uncomment if you want points for each individual	#
+for (i in gens) {#
+y <- rep(i, each=12) ### set to number of individuals#
+points(inds,y, pch="_")#
+}#
+#
+for (j in gens) { #
+##choose parent 1 for each ind in n#
+	parent1 <- sample(inds, prob = ifelse(inds <=6, 0.97, 0.03))#
+##choose parent 2 for each ind in n#
+	parent2 <- sample(inds, prob = ifelse(inds <=6, 0.97, 0.03))#
+#
+## make color j if you want each gen to be a diff color#
+segments(inds, j, parent1, j+1, col="gray")#
+segments(inds, j, parent2, j+1, col="gray")#
+}
+which(parent1==inds)
+############### 2 pops 20 inds RI#
+ngens = 2#
+#
+## setup and empty plot#
+	plot(1, type = "n",                        #
+     xlab = "ind", ylab = "gen",#
+     xlim = c(0, 12), ylim = c(0, ngens+1), bty="n", axes = FALSE) ## make xlim max == to max value of individuals#
+#
+##make n individuals#
+	inds <-seq(1:12) #
+#
+##make n gens#
+	gens <- seq(1:ngens)#
+#
+###### uncomment if you want points for each individual	#
+for (i in gens) {#
+y <- rep(i, each=12) ### set to number of individuals#
+points(inds,y, pch="_")#
+}#
+#
+for (j in gens) { #
+##choose parent 1 for each ind in n#
+	parent1 <- sample(inds, prob = ifelse(inds <=6, 0.97, 0.03))#
+##choose parent 2 for each ind in n#
+	parent2 <- sample(inds, prob = ifelse(inds <=6, 0.97, 0.03))#
+#
+## make color j if you want each gen to be a diff color#
+segments(inds, j, parent1, j+1, col="gray")#
+segments(inds, j, parent2, j+1, col="gray")#
+}
+which(parent1==inds)
+############### 2 pops 20 inds RI#
+ngens = 2#
+#
+## setup and empty plot#
+	plot(1, type = "n",                        #
+     xlab = "ind", ylab = "gen",#
+     xlim = c(0, 12), ylim = c(0, ngens+1), bty="n", axes = FALSE) ## make xlim max == to max value of individuals#
+#
+##make n individuals#
+	inds <-seq(1:12) #
+#
+##make n gens#
+	gens <- seq(1:ngens)#
+#
+###### uncomment if you want points for each individual	#
+for (i in gens) {#
+y <- rep(i, each=12) ### set to number of individuals#
+points(inds,y, pch="_")#
+}#
+#
+for (j in gens) { #
+##choose parent 1 for each ind in n#
+	parent1 <- sample(inds, prob = ifelse(inds <=6, 0.97, 0.03))#
+##choose parent 2 for each ind in n#
+	parent2 <- sample(inds, prob = ifelse(inds <=6, 0.97, 0.03))#
+#
+## make color j if you want each gen to be a diff color#
+segments(inds, j, parent1, j+1, col="gray")#
+segments(inds, j, parent2, j+1, col="gray")#
+}
+which(parent1==inds)
+inds
+parent
+parent1
+parent2
+which(parent1==parent2)
+############### 2 pops 20 inds RI#
+ngens = 2#
+#
+## setup and empty plot#
+	plot(1, type = "n",                        #
+     xlab = "ind", ylab = "gen",#
+     xlim = c(0, 12), ylim = c(0, ngens+1), bty="n", axes = FALSE) ## make xlim max == to max value of individuals#
+#
+##make n individuals#
+	inds <-seq(1:12) #
+#
+##make n gens#
+	gens <- seq(1:ngens)#
+#
+###### uncomment if you want points for each individual	#
+for (i in gens) {#
+y <- rep(i, each=12) ### set to number of individuals#
+points(inds,y, pch="_")#
+}#
+#
+for (j in gens) { #
+##choose parent 1 for each ind in n#
+	parent1 <- sample(inds, prob = ifelse(inds <=6, 0.97, 0.03))#
+##choose parent 2 for each ind in n#
+	parent2 <- sample(inds, prob = ifelse(inds <=6, 0.97, 0.03))#
+#
+## make color j if you want each gen to be a diff color#
+segments(inds, j, parent1, j+1, col="gray")#
+segments(inds, j, parent2, j+1, col="gray")#
+}
+which(parent1==parent2)
+parent2
+parent1
+inds
+############### 2 pops 20 inds RI#
+ngens = 1#
+#
+## setup and empty plot#
+	plot(1, type = "n",                        #
+     xlab = "ind", ylab = "gen",#
+     xlim = c(0, 12), ylim = c(0, ngens+1), bty="n", axes = FALSE) ## make xlim max == to max value of individuals#
+#
+##make n individuals#
+	inds <-seq(1:12) #
+#
+##make n gens#
+	gens <- seq(1:ngens)#
+#
+###### uncomment if you want points for each individual	#
+for (i in gens) {#
+y <- rep(i, each=12) ### set to number of individuals#
+points(inds,y, pch="_")#
+}#
+#
+for (j in gens) { #
+##choose parent 1 for each ind in n#
+	parent1 <- sample(inds, prob = ifelse(inds <=6, 0.97, 0.03))#
+##choose parent 2 for each ind in n#
+	parent2 <- sample(inds, prob = ifelse(inds <=6, 0.97, 0.03))#
+#
+## make color j if you want each gen to be a diff color#
+segments(inds, j, parent1, j+1, col="gray")#
+segments(inds, j, parent2, j+1, col="gray")#
+}
+which(parent1==parent2)
+parent
+parent1
+parent2
+which(parent1==parent2)
+help(sample)
+############### 2 pops 20 inds RI#
+ngens = 2#
+#
+## setup and empty plot#
+	plot(1, type = "n",                        #
+     xlab = "ind", ylab = "gen",#
+     xlim = c(0, 12), ylim = c(0, ngens+1), bty="n", axes = FALSE) ## make xlim max == to max value of individuals#
+#
+##make n individuals#
+	inds <-seq(1:12) #
+#
+##make n gens#
+	gens <- seq(1:ngens)#
+#
+###### uncomment if you want points for each individual	#
+for (i in gens) {#
+y <- rep(i, each=12) ### set to number of individuals#
+points(inds,y, pch="_")#
+}#
+#
+for (j in gens) { #
+##choose parent 1 for each ind in n#
+	parent1 <- sample(inds, prob = ifelse(inds <=6, 0.97, 0.03), replace=TRUE)#
+##choose parent 2 for each ind in n#
+	parent2 <- sample(inds, prob = ifelse(inds <=6, 0.97, 0.03),replace=TRUE)#
+#
+## make color j if you want each gen to be a diff color#
+segments(inds, j, parent1, j+1, col="gray")#
+segments(inds, j, parent2, j+1, col="gray")#
+}
+parent1
+############### 2 pops 20 inds RI#
+ngens = 2#
+#
+## setup and empty plot#
+	plot(1, type = "n",                        #
+     xlab = "ind", ylab = "gen",#
+     xlim = c(0, 12), ylim = c(0, ngens+1), bty="n", axes = FALSE) ## make xlim max == to max value of individuals#
+#
+##make n individuals#
+	inds <-seq(1:12) #
+#
+##make n gens#
+	gens <- seq(1:ngens)#
+#
+###### uncomment if you want points for each individual	#
+for (i in gens) {#
+y <- rep(i, each=12) ### set to number of individuals#
+points(inds,y, pch="_")#
+}#
+#
+for (j in gens) { #
+##choose parent 1 for each ind in n#
+	parent1 <- sample(inds, prob = ifelse(inds <=6, 0.97, 0.03))#
+##choose parent 2 for each ind in n#
+	parent2 <- sample(inds, prob = ifelse(inds <=6, 0.97, 0.03))#
+#
+## make color j if you want each gen to be a diff color#
+segments(inds, j, parent1, j+1, col="gray")#
+segments(inds, j, parent2, j+1, col="gray")#
+}
+which(parent1==parent2)
+############### 2 pops 20 inds RI#
+ngens = 1#
+#
+## setup and empty plot#
+	plot(1, type = "n",                        #
+     xlab = "ind", ylab = "gen",#
+     xlim = c(0, 12), ylim = c(0, ngens+1), bty="n", axes = FALSE) ## make xlim max == to max value of individuals#
+#
+##make n individuals#
+	inds <-seq(1:12) #
+#
+##make n gens#
+	gens <- seq(1:ngens)#
+#
+###### uncomment if you want points for each individual	#
+for (i in gens) {#
+y <- rep(i, each=12) ### set to number of individuals#
+points(inds,y, pch="_")#
+}#
+#
+for (j in gens) { #
+##choose parent 1 for each ind in n#
+	parent1 <- sample(inds, prob = ifelse(inds <=6, 0.97, 0.03))#
+##choose parent 2 for each ind in n#
+	parent2 <- sample(inds, prob = ifelse(inds <=6, 0.97, 0.03))#
+#
+## make color j if you want each gen to be a diff color#
+segments(inds, j, parent1, j+1, col="gray")#
+segments(inds, j, parent2, j+1, col="gray")#
+}
+which(parent1==parent2)
+matches <- which(parent1==parent2)
+matches
+############### 2 pops 20 inds RI#
+ngens = 2#
+#
+## setup and empty plot#
+	plot(1, type = "n",                        #
+     xlab = "ind", ylab = "gen",#
+     xlim = c(0, 12), ylim = c(0, ngens+1), bty="n", axes = FALSE) ## make xlim max == to max value of individuals#
+#
+##make n individuals#
+	inds <-seq(1:12) #
+#
+##make n gens#
+	gens <- seq(1:ngens)#
+#
+###### uncomment if you want points for each individual	#
+for (i in gens) {#
+y <- rep(i, each=12) ### set to number of individuals#
+points(inds,y, pch="_")#
+}#
+#
+for (j in gens) { #
+##choose parent 1 for each ind in n#
+	parent1 <- sample(inds, prob = ifelse(inds <=6, 0.97, 0.03))#
+##choose parent 2 for each ind in n#
+	parent2 <- sample(inds, prob = ifelse(inds <=6, 0.97, 0.03))#
+#
+matches <- which(parent1==parent2)#
+	for (m in matches){#
+			if (parent1[m]<=6) {#
+			parent1[m]<-m+1#
+	  		} else {#
+	  		parent1[m]<-m-1#
+			}#
+		}#
+#
+## make color j if you want each gen to be a diff color#
+segments(inds, j, parent1, j+1, col="gray")#
+segments(inds, j, parent2, j+1, col="gray")#
+}
+parent1
+parent2
+matches(parent1==parent2)
+which(parent1==parent2)
+############### 2 pops 20 inds RI#
+ngens = 20#
+#
+## setup and empty plot#
+	plot(1, type = "n",                        #
+     xlab = "ind", ylab = "gen",#
+     xlim = c(0, 12), ylim = c(0, ngens+1), bty="n", axes = FALSE) ## make xlim max == to max value of individuals#
+#
+##make n individuals#
+	inds <-seq(1:12) #
+#
+##make n gens#
+	gens <- seq(1:ngens)#
+#
+###### uncomment if you want points for each individual	#
+for (i in gens) {#
+y <- rep(i, each=12) ### set to number of individuals#
+points(inds,y, pch="_")#
+}#
+#
+for (j in gens) { #
+##choose parent 1 for each ind in n#
+	parent1 <- sample(inds, prob = ifelse(inds <=6, 0.97, 0.03))#
+##choose parent 2 for each ind in n#
+	parent2 <- sample(inds, prob = ifelse(inds <=6, 0.97, 0.03))#
+#
+matches <- which(parent1==parent2)#
+	for (m in matches){#
+			if (parent1[m]<=6) {#
+			parent1[m]<-m+1#
+	  		} else {#
+	  		parent1[m]<-m-1#
+			}#
+		}#
+#
+## make color j if you want each gen to be a diff color#
+segments(inds, j, parent1, j+1, col="gray")#
+segments(inds, j, parent2, j+1, col="gray")#
+}
+############### 2 pops 20 inds RI#
+ngens = 20#
+#
+## setup and empty plot#
+	plot(1, type = "n",                        #
+     xlab = "ind", ylab = "gen",#
+     xlim = c(0, 12), ylim = c(0, ngens+1), bty="n", axes = FALSE) ## make xlim max == to max value of individuals#
+#
+##make n individuals#
+	inds <-seq(1:12) #
+#
+##make n gens#
+	gens <- seq(1:ngens)#
+#
+###### uncomment if you want points for each individual	#
+for (i in gens) {#
+y <- rep(i, each=12) ### set to number of individuals#
+points(inds,y, pch="_")#
+}#
+#
+for (j in gens) { #
+##choose parent 1 for each ind in n#
+	parent1 <- sample(inds, prob = ifelse(inds <=6, 0.97, 0.03))#
+##choose parent 2 for each ind in n#
+	parent2 <- sample(inds, prob = ifelse(inds <=6, 0.97, 0.03))#
+#
+matches <- which(parent1==parent2)#
+	for (m in matches){#
+			if (parent1[m]<=6) {#
+			parent1[m]<-m+1#
+	  		} else {#
+	  		parent1[m]<-m-1#
+			}#
+		}#
+#
+## make color j if you want each gen to be a diff color#
+segments(inds, j, parent1, j+1, col="gray")#
+segments(inds, j, parent2, j+1, col="gray")#
+}############### 2 pops 20 inds RI#
+ngens = 20#
+#
+## setup and empty plot#
+	plot(1, type = "n",                        #
+     xlab = "ind", ylab = "gen",#
+     xlim = c(0, 13), ylim = c(0, ngens+1), bty="n", axes = FALSE) ## make xlim max == to max value of individuals#
+#
+##make n individuals#
+	inds <-seq(1,2,3,4,5,6,8,9,10,11,12,13) #
+#
+##make n gens#
+	gens <- seq(1:ngens)#
+#
+###### uncomment if you want points for each individual	#
+for (i in gens) {#
+y <- rep(i, each=12) ### set to number of individuals#
+points(inds,y, pch="_")#
+}#
+#
+for (j in gens) { #
+##choose parent 1 for each ind in n#
+	parent1 <- sample(inds, prob = ifelse(inds <=6, 0.97, 0.03))#
+##choose parent 2 for each ind in n#
+	parent2 <- sample(inds, prob = ifelse(inds <=6, 0.97, 0.03))#
+#
+matches <- which(parent1==parent2)#
+	for (m in matches){#
+			if (parent1[m]<=6) {#
+			parent1[m]<-m+1#
+	  		} else {#
+	  		parent1[m]<-m-1#
+			}#
+		}#
+#
+## make color j if you want each gen to be a diff color#
+segments(inds, j, parent1, j+1, col="gray")#
+segments(inds, j, parent2, j+1, col="gray")#
+}
+############### 2 pops 20 inds RI#
+ngens = 20#
+#
+## setup and empty plot#
+	plot(1, type = "n",                        #
+     xlab = "ind", ylab = "gen",#
+     xlim = c(0, 13), ylim = c(0, ngens+1), bty="n", axes = FALSE) ## make xlim max == to max value of individuals#
+#
+##make n individuals#
+	inds <-c(1,2,3,4,5,6,8,9,10,11,12,13) #
+#
+##make n gens#
+	gens <- seq(1:ngens)#
+#
+###### uncomment if you want points for each individual	#
+for (i in gens) {#
+y <- rep(i, each=12) ### set to number of individuals#
+points(inds,y, pch="_")#
+}#
+#
+for (j in gens) { #
+##choose parent 1 for each ind in n#
+	parent1 <- sample(inds, prob = ifelse(inds <=6, 0.97, 0.03))#
+##choose parent 2 for each ind in n#
+	parent2 <- sample(inds, prob = ifelse(inds <=6, 0.97, 0.03))#
+#
+matches <- which(parent1==parent2)#
+	for (m in matches){#
+			if (parent1[m]<=6) {#
+			parent1[m]<-m+1#
+	  		} else {#
+	  		parent1[m]<-m-1#
+			}#
+		}#
+#
+## make color j if you want each gen to be a diff color#
+segments(inds, j, parent1, j+1, col="gray")#
+segments(inds, j, parent2, j+1, col="gray")#
+}
+############### 2 pops 20 inds RI#
+ngens = 20#
+#
+## setup and empty plot#
+	plot(1, type = "n",                        #
+     xlab = "ind", ylab = "gen",#
+     xlim = c(0, 13), ylim = c(0, ngens+1), bty="n", axes = FALSE) ## make xlim max == to max value of individuals#
+#
+##make n individuals#
+	inds <-c(1,2,3,4,5,6,8,9,10,11,12,13) #
+#
+##make n gens#
+	gens <- seq(1:ngens)#
+#
+###### uncomment if you want points for each individual	#
+for (i in gens) {#
+y <- rep(i, each=12) ### set to number of individuals#
+points(inds,y, pch="_")#
+}#
+#
+for (j in gens) { #
+##choose parent 1 for each ind in n#
+	parent1 <- sample(inds, prob = ifelse(inds <=6, 0.97, 0.03))#
+##choose parent 2 for each ind in n#
+	parent2 <- sample(inds, prob = ifelse(inds <=6, 0.97, 0.03))#
+#
+matches <- which(parent1==parent2)#
+	for (m in matches){#
+			if (parent1[m]<=5) {#
+			parent1[m]<-m+1#
+	  		} if (parent1[m]==6) {#
+	  		parent1[m]<-m-1#
+	  		} if (parent1[m]==12) {#
+	  		parent1[m]<-m-1#
+	  		} else {#
+	  		parent1[m]<-m+1#
+			}#
+		}#
+#
+## make color j if you want each gen to be a diff color#
+segments(inds, j, parent1, j+1, col="gray")#
+segments(inds, j, parent2, j+1, col="gray")#
+}
+############### 2 pops 20 inds RI#
+ngens = 20#
+#
+## setup and empty plot#
+	plot(1, type = "n",                        #
+     xlab = "ind", ylab = "gen",#
+     xlim = c(0, 13), ylim = c(0, ngens+1), bty="n", axes = FALSE) ## make xlim max == to max value of individuals#
+#
+##make n individuals#
+	inds <-c(1,2,3,4,5,6,8,9,10,11,12,13) #
+#
+##make n gens#
+	gens <- seq(1:ngens)#
+#
+###### uncomment if you want points for each individual	#
+for (i in gens) {#
+y <- rep(i, each=12) ### set to number of individuals#
+points(inds,y, pch="_")#
+}#
+#
+for (j in gens) { #
+##choose parent 1 for each ind in n#
+	parent1 <- sample(inds, prob = ifelse(inds <=6, 0.97, 0.03))#
+##choose parent 2 for each ind in n#
+	parent2 <- sample(inds, prob = ifelse(inds <=6, 0.97, 0.03))#
+#
+matches <- which(parent1==parent2)#
+	for (m in matches){#
+			if (parent1[m]<=5) {#
+			parent1[m]<-m+1#
+	  		} or (parent1[m]==6) {#
+	  		parent1[m]<-m-1#
+	  		} or (parent1[m]==12) {#
+	  		parent1[m]<-m-1#
+	  		} else {#
+	  		parent1[m]<-m+1#
+			}#
+		}#
+#
+## make color j if you want each gen to be a diff color#
+segments(inds, j, parent1, j+1, col="gray")#
+segments(inds, j, parent2, j+1, col="gray")#
+}
+############### 2 pops 20 inds RI#
+ngens = 20#
+#
+## setup and empty plot#
+	plot(1, type = "n",                        #
+     xlab = "ind", ylab = "gen",#
+     xlim = c(0, 13), ylim = c(0, ngens+1), bty="n", axes = FALSE) ## make xlim max == to max value of individuals#
+#
+##make n individuals#
+	inds <-c(1,2,3,4,5,6,8,9,10,11,12,13) #
+#
+##make n gens#
+	gens <- seq(1:ngens)#
+#
+###### uncomment if you want points for each individual	#
+for (i in gens) {#
+y <- rep(i, each=12) ### set to number of individuals#
+points(inds,y, pch="_")#
+}#
+#
+for (j in gens) { #
+##choose parent 1 for each ind in n#
+	parent1 <- sample(inds, prob = ifelse(inds <=6, 0.97, 0.03))#
+##choose parent 2 for each ind in n#
+	parent2 <- sample(inds, prob = ifelse(inds <=6, 0.97, 0.03))#
+#
+matches <- which(parent1==parent2)#
+	for (m in matches){#
+			if (parent1[m]<=5) {#
+			parent1[m]<-m+1#
+	  		} else if (parent1[m]==6) {#
+	  		parent1[m]<-m-1#
+	  		} else if (parent1[m]==12) {#
+	  		parent1[m]<-m-1#
+	  		} else {#
+	  		parent1[m]<-m+1#
+			}#
+		}#
+#
+## make color j if you want each gen to be a diff color#
+segments(inds, j, parent1, j+1, col="gray")#
+segments(inds, j, parent2, j+1, col="gray")#
+}
+parent1
+ngens = 1#
+#
+## setup and empty plot#
+	plot(1, type = "n",                        #
+     xlab = "ind", ylab = "gen",#
+     xlim = c(0, 13), ylim = c(0, ngens+1), bty="n", axes = FALSE) ## make xlim max == to max value of individuals#
+#
+##make n individuals#
+	inds <-c(1,2,3,4,5,6,8,9,10,11,12,13) #
+#
+##make n gens#
+	gens <- seq(1:ngens)#
+#
+###### uncomment if you want points for each individual	#
+for (i in gens) {#
+y <- rep(i, each=12) ### set to number of individuals#
+points(inds,y, pch="_")#
+}#
+#
+for (j in gens) { #
+##choose parent 1 for each ind in n#
+	parent1 <- sample(inds, prob = ifelse(inds <=6, 0.97, 0.03))#
+##choose parent 2 for each ind in n#
+	parent2 <- sample(inds, prob = ifelse(inds <=6, 0.97, 0.03))#
+#
+matches <- which(parent1==parent2)#
+	for (m in matches){#
+			if (parent1[m]<=5) {#
+			parent1[m]<-m+1#
+	  		} else if (parent1[m]==6) {#
+	  		parent1[m]<-m-1#
+	  		} else if (parent1[m]==12) {#
+	  		parent1[m]<-m-1#
+	  		} else {#
+	  		parent1[m]<-m+1#
+			}#
+		}#
+#
+## make color j if you want each gen to be a diff color#
+segments(inds, j, parent1, j+1, col="gray")#
+segments(inds, j, parent2, j+1, col="gray")#
+}
+ngens = 20#
+#
+## setup and empty plot#
+	plot(1, type = "n",                        #
+     xlab = "ind", ylab = "gen",#
+     xlim = c(0, 13), ylim = c(0, ngens+1), bty="n", axes = FALSE) ## make xlim max == to max value of individuals#
+#
+##make n individuals#
+	inds <-c(1,2,3,4,5,6,8,9,10,11,12,13) #
+#
+##make n gens#
+	gens <- seq(1:ngens)#
+#
+###### uncomment if you want points for each individual	#
+for (i in gens) {#
+y <- rep(i, each=12) ### set to number of individuals#
+points(inds,y, pch="_")#
+}#
+#
+for (j in gens) { #
+##choose parent 1 for each ind in n#
+	parent1 <- sample(inds, prob = ifelse(inds <=6, 0.97, 0.03))#
+##choose parent 2 for each ind in n#
+	parent2 <- sample(inds, prob = ifelse(inds <=6, 0.97, 0.03))#
+#
+matches <- which(parent1==parent2)#
+	for (m in matches){#
+			if (parent1[m]<=5) {#
+			parent1[m]<-m+1#
+	  		} else if (parent1[m]==6) {#
+	  		parent1[m]<-m-1#
+	  		} else if (parent1[m]==12) {#
+	  		parent1[m]<-m-1#
+	  		} else {#
+	  		parent1[m]<-m+1#
+			}#
+		}#
+#
+## make color j if you want each gen to be a diff color#
+segments(inds, j, parent1, j+1, col="gray")#
+segments(inds, j, parent2, j+1, col="gray")#
+}
+ngens = 1#
+#
+## setup and empty plot#
+	plot(1, type = "n",                        #
+     xlab = "ind", ylab = "gen",#
+     xlim = c(0, 13), ylim = c(0, ngens+1), bty="n", axes = FALSE) ## make xlim max == to max value of individuals#
+#
+##make n individuals#
+	inds <-c(1,2,3,4,5,6,8,9,10,11,12,13) #
+#
+##make n gens#
+	gens <- seq(1:ngens)#
+#
+###### uncomment if you want points for each individual	#
+for (i in gens) {#
+y <- rep(i, each=12) ### set to number of individuals#
+points(inds,y, pch="_")#
+}#
+#
+for (j in gens) { #
+##choose parent 1 for each ind in n#
+	parent1 <- sample(inds, prob = ifelse(inds <=6, 0.97, 0.03))#
+##choose parent 2 for each ind in n#
+	parent2 <- sample(inds, prob = ifelse(inds <=6, 0.97, 0.03))#
+#
+matches <- which(parent1==parent2)#
+	for (m in matches){#
+			if (parent1[m]<=5) {#
+			parent1[m]<-m+1#
+	  		} else if (parent1[m]==6) {#
+	  		parent1[m]<-m-1#
+	  		} else if (parent1[m]==12) {#
+	  		parent1[m]<-m-1#
+	  		} else {#
+	  		parent1[m]<-m+1#
+			}#
+		}#
+#
+## make color j if you want each gen to be a diff color#
+segments(inds, j, parent1, j+1, col="gray")#
+segments(inds, j, parent2, j+1, col="gray")#
+}
+############### 2 pops 20 inds RI#
+ngens = 1#
+#
+## setup and empty plot#
+	plot(1, type = "n",                        #
+     xlab = "ind", ylab = "gen",#
+     xlim = c(0, 13), ylim = c(0, ngens+1), bty="n", axes = FALSE) ## make xlim max == to max value of individuals#
+#
+##make n individuals#
+	inds <-c(1,2,3,4,5,6,8,9,10,11,12,13) #
+#
+##make n gens#
+	gens <- seq(1:ngens)#
+#
+###### uncomment if you want points for each individual	#
+for (i in gens) {#
+y <- rep(i, each=12) ### set to number of individuals#
+points(inds,y, pch="_")#
+}#
+#
+for (j in gens) { #
+##choose parent 1 for each ind in n#
+	parent1 <- sample(inds, prob = ifelse(inds <=6, 0.97, 0.03))#
+##choose parent 2 for each ind in n#
+	parent2 <- sample(inds, prob = ifelse(inds <=6, 0.97, 0.03))#
+#
+matches <- which(parent1==parent2)#
+	for (m in matches){#
+			if (parent1[m]<=5) {#
+			parent1[m]<-m+1#
+	  		} else if (parent1[m]==6) {#
+	  		parent1[m]<-m-1#
+	  		} else if (parent1[m]==12) {#
+	  		parent1[m]<-m-1#
+	  		} else {#
+	  		parent1[m]<-m+1#
+			}#
+		}#
+#
+## make color j if you want each gen to be a diff color#
+segments(inds, j, parent1, j+1, col="gray")#
+segments(inds, j, parent2, j+1, col="gray")#
+}
+parent1
+parent2
+############### 2 pops 20 inds RI#
+ngens = 20#
+#
+## setup and empty plot#
+	plot(1, type = "n",                        #
+     xlab = "ind", ylab = "gen",#
+     xlim = c(0, 13), ylim = c(0, ngens+1), bty="n", axes = FALSE) ## make xlim max == to max value of individuals#
+#
+##make n individuals#
+	inds <-c(1,2,3,4,5,6,8,9,10,11,12,13) #
+#
+##make n gens#
+	gens <- seq(1:ngens)#
+#
+###### uncomment if you want points for each individual	#
+for (i in gens) {#
+y <- rep(i, each=12) ### set to number of individuals#
+points(inds,y, pch="_")#
+}#
+#
+for (j in gens) { #
+##choose parent 1 for each ind in n#
+	parent1 <- sample(inds, prob = ifelse(inds <=6, 0.97, 0.03))#
+##choose parent 2 for each ind in n#
+	parent2 <- sample(inds, prob = ifelse(inds <=6, 0.97, 0.03))#
+#
+matches <- which(parent1==parent2)#
+	for (m in matches){#
+			if (parent1[m]<=5) {#
+			parent1[m]<-m+1#
+	  		} else if (parent1[m]=6) {#
+	  		parent1[m]<-m-1#
+	  		} else if (parent1[m]==12) {#
+	  		parent1[m]<-m-1#
+	  		} else {#
+	  		parent1[m]<-m+1#
+			}#
+		}#
+#
+## make color j if you want each gen to be a diff color#
+segments(inds, j, parent1, j+1, col="gray")#
+segments(inds, j, parent2, j+1, col="gray")#
+}
+1-1
+101/2
+1-1/2
+(1-1)/2
+(1-05)/2
+(1-0.5)/2
+1-2*(200/(200+800)
+)
+1-2*(200/(200+800))
+1-2*(20/(20+80))
+1-2*(30/(30+70))
+0.4+(1-0.4)*0.4
+(0.4+(1-0.4))*0.4
+(0.4+(1-0.4)*0.4
+0.4+(1-0.4)*0.4
+(1-200/800)/(1+200/800)
+102/3
+102+34
+34-20/20
+(34-20)/20
+(20-34)/34
+(100-50)/50
+(60-50)/50
+0.9-0.5/0.5
+(0.9-0.5)/0.5
+0.8*0.8
+(0.9-0.5)
+(0.9-0.5)/5
+(0.9-0.5)/0.5
+0.8*0.8
+(0.65-0.45)/0.5
+100/50
+x = c
+x
+print(x)
+x = "c"
+print(x)
+x = c(1,2,3,4,5)
+x[1]
+x[:1]
+x[:]
+x[i]
+x[1:2]
+x[1:5]
+x[1]
+x = c(2,3,4,5,6)
+x[1]
+x[1]+x[2]
+x[1]+x[2]*(sum(x[1:5]))
+ID <- c("A","A","A","A","A","B","B","B","B","B")#
+x <- seq(1:10)#
+y <- sample(1:100, 10)#
+z <- sample(1:100, 10)#
+data <- data.frame(x,y,z)
+data
+summary_plot<-function(ID_code){#
+  d <- data[data$ID == ID_code, ]#
+  max_y <- max(d$y)           # max of y#
+  max_z <- max(d$z)           # max of z#
+  maximum <- c(max_y, max_z)  # both in a vector#
+  m <- max(maximum)           # find the higher max#
+  plot(d$x, d$y, xlim = c(0, 10), ylim = c(0, m))#
+  points(d$x, d$z, col = "red")#
+  m                           # return m#
+}
+summary_plot("A")
+m
+set.seed(45)#
+#
+ID <- c("A","A","A","A","A","B","B","B","B","B")#
+x <- seq(1:10)#
+y <- sample(1:100, 10)#
+z <- sample(1:100, 10)#
+data <- data.frame(x,y,z,ID)#
+#
+summary_plot<-function(ID_code){#
+  max_y <- max(data$y[data$ID==ID_code]) ## max of y#
+  max_z <- max(data$z[data$ID==ID_code]) ## max of z#
+  maximum <- c(as.numeric(max_y),as.numeric(max_z)) # both in a vector#
+  m <- as.numeric(max(maximum)) #find the higher max#
+  print(m)#
+  plot(data$x[data$ID==ID_code],data$y[data$ID==ID_code], xlim=c(0,10))#
+  points(data$x[data$ID==ID_code],data$z[data$ID==ID_code], col="red", ylim=c(0,m))#
+}#
+summary_plot("A")
+summary_plot("B")
+data
+set.seed(45)#
+#
+ID <- c("A","A","A","A","A","B","B","B","B","B")#
+x <- seq(1:10)#
+y <- sample(1:100, 10)#
+z <- sample(1:100, 10)#
+data <- data.frame(x,y,z,ID)#
+#
+summary_plot<-function(ID_code){#
+  max_y <- max(data$y[data$ID==ID_code]) ## max of y#
+  max_z <- max(data$z[data$ID==ID_code]) ## max of z#
+  maximum <- c(as.numeric(max_y),as.numeric(max_z)) # both in a vector#
+  m <- as.numeric(max(maximum)) #find the higher max#
+  print(m)#
+  plot(data$x[data$ID==ID_code],data$y[data$ID==ID_code], xlim=c(0,10))#
+  points(data$x[data$ID==ID_code],data$z[data$ID==ID_code], col="red", ylim=c(0,m))#
+}#
+summary_plot("A")
+ID <- c("A","A","A","A","A","B","B","B","B","B")#
+x <- seq(1:10)#
+y <- sample(1:100, 10)#
+z <- sample(1:100, 10)#
+data <- data.frame(x,y,z,ID)#
+#
+summary_plot<-function(ID_code){#
+  max_y <- max(data$y[data$ID==ID_code]) ## max of y#
+  max_z <- max(data$z[data$ID==ID_code]) ## max of z#
+  maximum <- c(as.numeric(max_y),as.numeric(max_z)) # both in a vector#
+  m <- as.numeric(max(maximum)) #find the higher max#
+  print(m)#
+  plot(data$x[data$ID==ID_code],data$y[data$ID==ID_code], xlim=c(0,10))#
+  points(data$x[data$ID==ID_code],data$z[data$ID==ID_code], col="red", ylim=c(0,m))#
+}#
+summary_plot("A")
+summary_plot<-function(ID_code){#
+  d <- data[data$ID == ID_code, ]#
+  max_y <- max(d$y)           # max of y#
+  max_z <- max(d$z)           # max of z#
+  maximum <- c(max_y, max_z)  # both in a vector#
+  m <- max(maximum)           # find the higher max#
+  plot(d$x, d$y, xlim = c(0, 10), ylim = c(0, m))#
+  points(d$x, d$z, col = "red")#
+  m                           # return m#
+}
+summary_plot("A")
+ID <- c("A","A","A","A","A","B","B","B","B","B")#
+x <- seq(1:10)#
+y <- sample(1:100, 10)#
+z <- sample(1:100, 10)#
+data <- data.frame(x,y,z)
+summary_plot<-function(ID_code){#
+  d <- data[data$ID == ID_code, ]#
+  max_y <- max(d$y)           # max of y#
+  max_z <- max(d$z)           # max of z#
+  maximum <- c(max_y, max_z)  # both in a vector#
+  m <- max(maximum)           # find the higher max#
+  plot(d$x, d$y, xlim = c(0, 10), ylim = c(0, m))#
+  points(d$x, d$z, col = "red")#
+  m                           # return m#
+}#
+#
+summary_plot("A")
+m
+data
+m
+summary_plot<-function(ID_code){#
+  max_y <- max(data$y[data$ID==ID_code]) ## max of y#
+  max_z <- max(data$z[data$ID==ID_code]) ## max of z#
+  maximum <- c(as.numeric(max_y),as.numeric(max_z)) # both in a vector#
+  m <- as.numeric(max(maximum)) #find the higher max#
+  print(m)#
+  plot(data$x[data$ID==ID_code],data$y[data$ID==ID_code], xlim=c(0,10))#
+  points(data$x[data$ID==ID_code],data$z[data$ID==ID_code], col="red", ylim=c(0,m))#
+}#
+summary_plot("A")
+set.seed(45)#
+#
+ID <- c("A","A","A","A","A","B","B","B","B","B")#
+x <- seq(1:10)#
+y <- sample(1:100, 10)#
+z <- sample(1:100, 10)#
+data <- data.frame(x,y,z,ID)
+summary_plot<-function(ID_code){#
+  max_y <- max(data$y[data$ID==ID_code]) ## max of y#
+  max_z <- max(data$z[data$ID==ID_code]) ## max of z#
+  maximum <- c(as.numeric(max_y),as.numeric(max_z)) # both in a vector#
+  m <- as.numeric(max(maximum)) #find the higher max#
+  print(m)#
+  plot(data$x[data$ID==ID_code],data$y[data$ID==ID_code], xlim=c(0,10))#
+  points(data$x[data$ID==ID_code],data$z[data$ID==ID_code], col="red", ylim=c(0,m))#
+}
+data
+summary_plot("A")
+ID <- c("A","A","A","A","A","B","B","B","B","B")#
+x <- seq(1:10)#
+y <- sample(1:100, 10)#
+z <- sample(1:100, 10)#
+data <- data.frame(x,y,z,ID)
+summary_plot<-function(ID_code){#
+  max_y <- max(data$y[data$ID==ID_code]) ## max of y#
+  max_z <- max(data$z[data$ID==ID_code]) ## max of z#
+  maximum <- c(as.numeric(max_y),as.numeric(max_z)) # both in a vector#
+  m <- as.numeric(max(maximum)) #find the higher max#
+  print(m)#
+  plot(data$x[data$ID==ID_code],data$y[data$ID==ID_code], xlim=c(0,10))#
+  points(data$x[data$ID==ID_code],data$z[data$ID==ID_code], col="red", ylim=c(0,m))#
+}
+summary_plot("B")
+data
+summary_plot("A")
+ID <- c("A","A","A","A","A","B","B","B","B","B")#
+x <- seq(1:10)#
+y <- sample(1:10000, 10)#
+z <- sample(1:10000, 10)#
+data <- data.frame(x,y,z,ID)
+ID <- c("A","A","A","A","A","B","B","B","B","B")#
+x <- seq(1:1000)#
+y <- sample(1:10000, 10000)#
+z <- sample(1:10000, 10000)#
+data <- data.frame(x,y,z,ID)
+summary_plot("A")
+ID <- c("A","A","A","A","A","B","B","B","B","B")#
+x <- seq(1:1000)#
+y <- sample(1:10000, 10000)#
+z <- sample(1:10000, 10000)#
+data <- data.frame(x,y,z,ID)
+summary_plot("A")
+hrad()data
+head(data)
+summary_plot<-function(ID_code){#
+  max_y <- max(data$y[data$ID==ID_code]) ## max of y#
+  max_z <- max(data$z[data$ID==ID_code]) ## max of z#
+  maximum <- c(as.numeric(max_y),as.numeric(max_z)) # both in a vector#
+  m <- as.numeric(max(maximum)) #find the higher max#
+  print(m)#
+  plot(data$x[data$ID==ID_code],data$y[data$ID==ID_code], xlim=c(0,10000))#
+  points(data$x[data$ID==ID_code],data$z[data$ID==ID_code], col="red", ylim=c(0,m))#
+}
+summary_plot("A")
+ID <- c("A","A","A","A","A","B","B","B","B","B")#
+x <- seq(1:1000)#
+y <- sample(1:10000, 10000)#
+z <- sample(1:10000, 10000)#
+data <- data.frame(x,y,z,ID)
+data
+24455034/73899877*100
+73899877/24455034*100
+73899877/98354911*100
+######## Curves for each plant 2021 ######
+install.packages("scales") # Install scales package#
+library("scales") #
+#
+"/Users/sstankow/Desktop"#
+#
+data <- read.csv("2021_prelim.csv",header=TRUE)#
+#
+### 3) make an empty plot#
+#
+type <- 'l'#
+lwd <-'1'#
+#
+ plot(data$day,data$flowers, col='white', xlim=c(-4,80), pch=2, type=type, ylim=c(0,150), lwd=lwd)#
+ ### 4) find unique#
+ plant_list <- unique(data$ID)#
+ ### 5) loop over ids to plot individual flower curves#
+ for (i in plant_list)#
+ {#
+ newdata <- subset(data, ID==i)#
+maxFl <- (max(newdata$TotFl))#
+points(newdata$day,newdata$TotFl, type='l', col='grey')#
+ }
+TajimaD <- function(sfs){#
+    #' sfs (site frequency spectrum): number of singletons, doubletons, ..., etc#
+    n <- length(sfs) + 1#
+    ss <- sum(sfs)#
+    a1 <- sum(1 / seq_len(n-1))#
+    a2 <- sum(1 / seq_len(n-1)^2)#
+    b1 <- (n + 1) / (3 * (n - 1))#
+    b2 <- 2 * (n^2 + n + 3)/(9 * n * (n - 1))#
+    c1 <- b1 - 1/a1#
+    c2 <- b2 - (n + 2)/(a1 * n) + a2 / a1^2#
+    e1 <- c1 / a1#
+    e2 <- c2 / (a1^2 + a2)#
+    Vd <- e1 * ss + e2 * ss * (ss - 1) #
+    theta_pi <- sum(2 * seq_len(n-1) * (n - seq_len(n-1)) * sfs)/(n*(n-1))#
+    theta_w <- ss / a1#
+    res <- (theta_pi - theta_w) / sqrt(Vd)#
+    return(res)#
+}#
+#
+ example usage#
+S <- c(3, 2, 1, 0, 0, 0, 0, 1, 1)#
+TajimaD(S)
+TajimaD <- function(sfs){#
+    #' sfs (site frequency spectrum): number of singletons, doubletons, ..., etc#
+    n <- length(sfs) + 1#
+    ss <- sum(sfs)#
+    a1 <- sum(1 / seq_len(n-1))#
+    a2 <- sum(1 / seq_len(n-1)^2)#
+    b1 <- (n + 1) / (3 * (n - 1))#
+    b2 <- 2 * (n^2 + n + 3)/(9 * n * (n - 1))#
+    c1 <- b1 - 1/a1#
+    c2 <- b2 - (n + 2)/(a1 * n) + a2 / a1^2#
+    e1 <- c1 / a1#
+    e2 <- c2 / (a1^2 + a2)#
+    Vd <- e1 * ss + e2 * ss * (ss - 1) #
+    theta_pi <- sum(2 * seq_len(n-1) * (n - seq_len(n-1)) * sfs)/(n*(n-1))#
+    theta_w <- ss / a1#
+    res <- (theta_pi - theta_w) / sqrt(Vd)#
+    return(res)#
+}#
+#
+S <- c(3, 2, 1, 0, 0, 0, 0, 1, 1)#
+TajimaD(S)
+TajimaD <- function(sfs){#
+    #' sfs (site frequency spectrum): number of singletons, doubletons, ..., etc#
+    n <- length(sfs) + 1#
+    ss <- sum(sfs)#
+    a1 <- sum(1 / seq_len(n-1))#
+    a2 <- sum(1 / seq_len(n-1)^2)#
+    b1 <- (n + 1) / (3 * (n - 1))#
+    b2 <- 2 * (n^2 + n + 3)/(9 * n * (n - 1))#
+    c1 <- b1 - 1/a1#
+    c2 <- b2 - (n + 2)/(a1 * n) + a2 / a1^2#
+    e1 <- c1 / a1#
+    e2 <- c2 / (a1^2 + a2)#
+    Vd <- e1 * ss + e2 * ss * (ss - 1) #
+    theta_pi <- sum(2 * seq_len(n-1) * (n - seq_len(n-1)) * sfs)/(n*(n-1))#
+    theta_w <- ss / a1#
+    res <- (theta_pi - theta_w) / sqrt(Vd)#
+    return(res)#
+}#
+#
+S <- c(10, 12, 3, 4, 0, 0, 0, 1, 1)#
+TajimaD(S)
+TajimaD <- function(sfs){#
+    #' sfs (site frequency spectrum): number of singletons, doubletons, ..., etc#
+    n <- length(sfs) + 1#
+    ss <- sum(sfs)#
+    a1 <- sum(1 / seq_len(n-1))#
+    a2 <- sum(1 / seq_len(n-1)^2)#
+    b1 <- (n + 1) / (3 * (n - 1))#
+    b2 <- 2 * (n^2 + n + 3)/(9 * n * (n - 1))#
+    c1 <- b1 - 1/a1#
+    c2 <- b2 - (n + 2)/(a1 * n) + a2 / a1^2#
+    e1 <- c1 / a1#
+    e2 <- c2 / (a1^2 + a2)#
+    Vd <- e1 * ss + e2 * ss * (ss - 1) #
+    theta_pi <- sum(2 * seq_len(n-1) * (n - seq_len(n-1)) * sfs)/(n*(n-1))#
+    theta_w <- ss / a1#
+    res <- (theta_pi - theta_w) / sqrt(Vd)#
+    return(res)#
+}#
+#
+S <- c(100, 20, 10, 9, 8, 6, 5, 5, 4)#
+TajimaD(S)
+TajimaD <- function(sfs){#
+    #' sfs (site frequency spectrum): number of singletons, doubletons, ..., etc#
+    n <- length(sfs) + 1#
+    ss <- sum(sfs)#
+    a1 <- sum(1 / seq_len(n-1))#
+    a2 <- sum(1 / seq_len(n-1)^2)#
+    b1 <- (n + 1) / (3 * (n - 1))#
+    b2 <- 2 * (n^2 + n + 3)/(9 * n * (n - 1))#
+    c1 <- b1 - 1/a1#
+    c2 <- b2 - (n + 2)/(a1 * n) + a2 / a1^2#
+    e1 <- c1 / a1#
+    e2 <- c2 / (a1^2 + a2)#
+    Vd <- e1 * ss + e2 * ss * (ss - 1) #
+    theta_pi <- sum(2 * seq_len(n-1) * (n - seq_len(n-1)) * sfs)/(n*(n-1))#
+    theta_w <- ss / a1#
+    res <- (theta_pi - theta_w) / sqrt(Vd)#
+    return(res)#
+}#
+#
+S <- c(50, 20, 10, 9, 8, 6, 5, 5, 4)#
+TajimaD(S)
+TajimaD <- function(sfs){#
+    #' sfs (site frequency spectrum): number of singletons, doubletons, ..., etc#
+    n <- length(sfs) + 1#
+    ss <- sum(sfs)#
+    a1 <- sum(1 / seq_len(n-1))#
+    a2 <- sum(1 / seq_len(n-1)^2)#
+    b1 <- (n + 1) / (3 * (n - 1))#
+    b2 <- 2 * (n^2 + n + 3)/(9 * n * (n - 1))#
+    c1 <- b1 - 1/a1#
+    c2 <- b2 - (n + 2)/(a1 * n) + a2 / a1^2#
+    e1 <- c1 / a1#
+    e2 <- c2 / (a1^2 + a2)#
+    Vd <- e1 * ss + e2 * ss * (ss - 1) #
+    theta_pi <- sum(2 * seq_len(n-1) * (n - seq_len(n-1)) * sfs)/(n*(n-1))#
+    theta_w <- ss / a1#
+    res <- (theta_pi - theta_w) / sqrt(Vd)#
+    return(res)#
+}#
+#
+S <- c(30, 20, 10, 9, 8, 6, 5, 5, 4)#
+TajimaD(S)
+TajimaD <- function(sfs){#
+    #' sfs (site frequency spectrum): number of singletons, doubletons, ..., etc#
+    n <- length(sfs) + 1#
+    ss <- sum(sfs)#
+    a1 <- sum(1 / seq_len(n-1))#
+    a2 <- sum(1 / seq_len(n-1)^2)#
+    b1 <- (n + 1) / (3 * (n - 1))#
+    b2 <- 2 * (n^2 + n + 3)/(9 * n * (n - 1))#
+    c1 <- b1 - 1/a1#
+    c2 <- b2 - (n + 2)/(a1 * n) + a2 / a1^2#
+    e1 <- c1 / a1#
+    e2 <- c2 / (a1^2 + a2)#
+    Vd <- e1 * ss + e2 * ss * (ss - 1) #
+    theta_pi <- sum(2 * seq_len(n-1) * (n - seq_len(n-1)) * sfs)/(n*(n-1))#
+    theta_w <- ss / a1#
+    res <- (theta_pi - theta_w) / sqrt(Vd)#
+    return(res)#
+}#
+#
+S <- c(20, 20, 10, 9, 8, 6, 5, 5, 4)#
+TajimaD(S)
+TajimaD <- function(sfs){#
+    #' sfs (site frequency spectrum): number of singletons, doubletons, ..., etc#
+    n <- length(sfs) + 1#
+    ss <- sum(sfs)#
+    a1 <- sum(1 / seq_len(n-1))#
+    a2 <- sum(1 / seq_len(n-1)^2)#
+    b1 <- (n + 1) / (3 * (n - 1))#
+    b2 <- 2 * (n^2 + n + 3)/(9 * n * (n - 1))#
+    c1 <- b1 - 1/a1#
+    c2 <- b2 - (n + 2)/(a1 * n) + a2 / a1^2#
+    e1 <- c1 / a1#
+    e2 <- c2 / (a1^2 + a2)#
+    Vd <- e1 * ss + e2 * ss * (ss - 1) #
+    theta_pi <- sum(2 * seq_len(n-1) * (n - seq_len(n-1)) * sfs)/(n*(n-1))#
+    theta_w <- ss / a1#
+    res <- (theta_pi - theta_w) / sqrt(Vd)#
+    return(res)#
+}#
+#
+S <- c(30, 20, 10, 9, 8, 6, 5, 5, 4)#
+TajimaD(S)
+TajimaD <- function(sfs){#
+    #' sfs (site frequency spectrum): number of singletons, doubletons, ..., etc#
+    n <- length(sfs) + 1#
+    ss <- sum(sfs)#
+    a1 <- sum(1 / seq_len(n-1))#
+    a2 <- sum(1 / seq_len(n-1)^2)#
+    b1 <- (n + 1) / (3 * (n - 1))#
+    b2 <- 2 * (n^2 + n + 3)/(9 * n * (n - 1))#
+    c1 <- b1 - 1/a1#
+    c2 <- b2 - (n + 2)/(a1 * n) + a2 / a1^2#
+    e1 <- c1 / a1#
+    e2 <- c2 / (a1^2 + a2)#
+    Vd <- e1 * ss + e2 * ss * (ss - 1) #
+    theta_pi <- sum(2 * seq_len(n-1) * (n - seq_len(n-1)) * sfs)/(n*(n-1))#
+    theta_w <- ss / a1#
+    res <- (theta_pi - theta_w) / sqrt(Vd)#
+    return(res)#
+}#
+#
+S <- c(30, 15, 10, 9, 8, 6, 5, 5, 4)#
+TajimaD(S)
+TajimaD <- function(sfs){#
+    #' sfs (site frequency spectrum): number of singletons, doubletons, ..., etc#
+    n <- length(sfs) + 1#
+    ss <- sum(sfs)#
+    a1 <- sum(1 / seq_len(n-1))#
+    a2 <- sum(1 / seq_len(n-1)^2)#
+    b1 <- (n + 1) / (3 * (n - 1))#
+    b2 <- 2 * (n^2 + n + 3)/(9 * n * (n - 1))#
+    c1 <- b1 - 1/a1#
+    c2 <- b2 - (n + 2)/(a1 * n) + a2 / a1^2#
+    e1 <- c1 / a1#
+    e2 <- c2 / (a1^2 + a2)#
+    Vd <- e1 * ss + e2 * ss * (ss - 1) #
+    theta_pi <- sum(2 * seq_len(n-1) * (n - seq_len(n-1)) * sfs)/(n*(n-1))#
+    theta_w <- ss / a1#
+    res <- (theta_pi - theta_w) / sqrt(Vd)#
+    return(res)#
+}#
+#
+S <- c(30, 1, 10, 9, 8, 6, 5, 5, 4)#
+TajimaD(S)
+TajimaD <- function(sfs){#
+    #' sfs (site frequency spectrum): number of singletons, doubletons, ..., etc#
+    n <- length(sfs) + 1#
+    ss <- sum(sfs)#
+    a1 <- sum(1 / seq_len(n-1))#
+    a2 <- sum(1 / seq_len(n-1)^2)#
+    b1 <- (n + 1) / (3 * (n - 1))#
+    b2 <- 2 * (n^2 + n + 3)/(9 * n * (n - 1))#
+    c1 <- b1 - 1/a1#
+    c2 <- b2 - (n + 2)/(a1 * n) + a2 / a1^2#
+    e1 <- c1 / a1#
+    e2 <- c2 / (a1^2 + a2)#
+    Vd <- e1 * ss + e2 * ss * (ss - 1) #
+    theta_pi <- sum(2 * seq_len(n-1) * (n - seq_len(n-1)) * sfs)/(n*(n-1))#
+    theta_w <- ss / a1#
+    res <- (theta_pi - theta_w) / sqrt(Vd)#
+    return(res)#
+}#
+#
+S <- c(30, 13, 10, 9, 8, 6, 5, 5, 4)#
+TajimaD(S)
+TajimaD <- function(sfs){#
+    #' sfs (site frequency spectrum): number of singletons, doubletons, ..., etc#
+    n <- length(sfs) + 1#
+    ss <- sum(sfs)#
+    a1 <- sum(1 / seq_len(n-1))#
+    a2 <- sum(1 / seq_len(n-1)^2)#
+    b1 <- (n + 1) / (3 * (n - 1))#
+    b2 <- 2 * (n^2 + n + 3)/(9 * n * (n - 1))#
+    c1 <- b1 - 1/a1#
+    c2 <- b2 - (n + 2)/(a1 * n) + a2 / a1^2#
+    e1 <- c1 / a1#
+    e2 <- c2 / (a1^2 + a2)#
+    Vd <- e1 * ss + e2 * ss * (ss - 1) #
+    theta_pi <- sum(2 * seq_len(n-1) * (n - seq_len(n-1)) * sfs)/(n*(n-1))#
+    theta_w <- ss / a1#
+    res <- (theta_pi - theta_w) / sqrt(Vd)#
+    return(res)#
+}#
+#
+S <- c(22, 13, 10, 9, 8, 6, 5, 5, 4)#
+TajimaD(S)
+TajimaD <- function(sfs){#
+    #' sfs (site frequency spectrum): number of singletons, doubletons, ..., etc#
+    n <- length(sfs) + 1#
+    ss <- sum(sfs)#
+    a1 <- sum(1 / seq_len(n-1))#
+    a2 <- sum(1 / seq_len(n-1)^2)#
+    b1 <- (n + 1) / (3 * (n - 1))#
+    b2 <- 2 * (n^2 + n + 3)/(9 * n * (n - 1))#
+    c1 <- b1 - 1/a1#
+    c2 <- b2 - (n + 2)/(a1 * n) + a2 / a1^2#
+    e1 <- c1 / a1#
+    e2 <- c2 / (a1^2 + a2)#
+    Vd <- e1 * ss + e2 * ss * (ss - 1) #
+    theta_pi <- sum(2 * seq_len(n-1) * (n - seq_len(n-1)) * sfs)/(n*(n-1))#
+    theta_w <- ss / a1#
+    res <- (theta_pi - theta_w) / sqrt(Vd)#
+    return(res)#
+}#
+#
+S <- c(26, 13, 10, 9, 8, 6, 5, 5, 4)#
+TajimaD(S)
+TajimaD <- function(sfs){#
+    #' sfs (site frequency spectrum): number of singletons, doubletons, ..., etc#
+    n <- length(sfs) + 1#
+    ss <- sum(sfs)#
+    a1 <- sum(1 / seq_len(n-1))#
+    a2 <- sum(1 / seq_len(n-1)^2)#
+    b1 <- (n + 1) / (3 * (n - 1))#
+    b2 <- 2 * (n^2 + n + 3)/(9 * n * (n - 1))#
+    c1 <- b1 - 1/a1#
+    c2 <- b2 - (n + 2)/(a1 * n) + a2 / a1^2#
+    e1 <- c1 / a1#
+    e2 <- c2 / (a1^2 + a2)#
+    Vd <- e1 * ss + e2 * ss * (ss - 1) #
+    theta_pi <- sum(2 * seq_len(n-1) * (n - seq_len(n-1)) * sfs)/(n*(n-1))#
+    theta_w <- ss / a1#
+    res <- (theta_pi - theta_w) / sqrt(Vd)#
+    return(res)#
+}#
+#
+S <- c(27, 13, 10, 9, 8, 6, 5, 5, 4)#
+TajimaD(S)
+TajimaD <- function(sfs){#
+    #' sfs (site frequency spectrum): number of singletons, doubletons, ..., etc#
+    n <- length(sfs) + 1#
+    ss <- sum(sfs)#
+    a1 <- sum(1 / seq_len(n-1))#
+    a2 <- sum(1 / seq_len(n-1)^2)#
+    b1 <- (n + 1) / (3 * (n - 1))#
+    b2 <- 2 * (n^2 + n + 3)/(9 * n * (n - 1))#
+    c1 <- b1 - 1/a1#
+    c2 <- b2 - (n + 2)/(a1 * n) + a2 / a1^2#
+    e1 <- c1 / a1#
+    e2 <- c2 / (a1^2 + a2)#
+    Vd <- e1 * ss + e2 * ss * (ss - 1) #
+    theta_pi <- sum(2 * seq_len(n-1) * (n - seq_len(n-1)) * sfs)/(n*(n-1))#
+    theta_w <- ss / a1#
+    res <- (theta_pi - theta_w) / sqrt(Vd)#
+    return(res)#
+}#
+#
+S <- c(29, 13, 10, 9, 8, 6, 5, 5, 4)#
+TajimaD(S)
+TajimaD <- function(sfs){#
+    #' sfs (site frequency spectrum): number of singletons, doubletons, ..., etc#
+    n <- length(sfs) + 1#
+    ss <- sum(sfs)#
+    a1 <- sum(1 / seq_len(n-1))#
+    a2 <- sum(1 / seq_len(n-1)^2)#
+    b1 <- (n + 1) / (3 * (n - 1))#
+    b2 <- 2 * (n^2 + n + 3)/(9 * n * (n - 1))#
+    c1 <- b1 - 1/a1#
+    c2 <- b2 - (n + 2)/(a1 * n) + a2 / a1^2#
+    e1 <- c1 / a1#
+    e2 <- c2 / (a1^2 + a2)#
+    Vd <- e1 * ss + e2 * ss * (ss - 1) #
+    theta_pi <- sum(2 * seq_len(n-1) * (n - seq_len(n-1)) * sfs)/(n*(n-1))#
+    theta_w <- ss / a1#
+    res <- (theta_pi - theta_w) / sqrt(Vd)#
+    return(res)#
+}#
+#
+S <- c(30, 13, 10, 9, 8, 6, 5, 5, 4)#
+TajimaD(S)
+TajimaD <- function(sfs){#
+    #' sfs (site frequency spectrum): number of singletons, doubletons, ..., etc#
+    n <- length(sfs) + 1#
+    ss <- sum(sfs)#
+    a1 <- sum(1 / seq_len(n-1))#
+    a2 <- sum(1 / seq_len(n-1)^2)#
+    b1 <- (n + 1) / (3 * (n - 1))#
+    b2 <- 2 * (n^2 + n + 3)/(9 * n * (n - 1))#
+    c1 <- b1 - 1/a1#
+    c2 <- b2 - (n + 2)/(a1 * n) + a2 / a1^2#
+    e1 <- c1 / a1#
+    e2 <- c2 / (a1^2 + a2)#
+    Vd <- e1 * ss + e2 * ss * (ss - 1) #
+    theta_pi <- sum(2 * seq_len(n-1) * (n - seq_len(n-1)) * sfs)/(n*(n-1))#
+    theta_w <- ss / a1#
+    res <- (theta_pi - theta_w) / sqrt(Vd)#
+    return(res)#
+}#
+#
+S <- c(35, 13, 10, 9, 8, 6, 5, 5, 4)#
+TajimaD(S)
+TajimaD <- function(sfs){#
+    #' sfs (site frequency spectrum): number of singletons, doubletons, ..., etc#
+    n <- length(sfs) + 1#
+    ss <- sum(sfs)#
+    a1 <- sum(1 / seq_len(n-1))#
+    a2 <- sum(1 / seq_len(n-1)^2)#
+    b1 <- (n + 1) / (3 * (n - 1))#
+    b2 <- 2 * (n^2 + n + 3)/(9 * n * (n - 1))#
+    c1 <- b1 - 1/a1#
+    c2 <- b2 - (n + 2)/(a1 * n) + a2 / a1^2#
+    e1 <- c1 / a1#
+    e2 <- c2 / (a1^2 + a2)#
+    Vd <- e1 * ss + e2 * ss * (ss - 1) #
+    theta_pi <- sum(2 * seq_len(n-1) * (n - seq_len(n-1)) * sfs)/(n*(n-1))#
+    theta_w <- ss / a1#
+    res <- (theta_pi - theta_w) / sqrt(Vd)#
+    return(res)#
+}#
+#
+S <- c(36, 13, 10, 9, 8, 6, 5, 5, 4)#
+TajimaD(S)
+TajimaD <- function(sfs){#
+    #' sfs (site frequency spectrum): number of singletons, doubletons, ..., etc#
+    n <- length(sfs) + 1#
+    ss <- sum(sfs)#
+    a1 <- sum(1 / seq_len(n-1))#
+    a2 <- sum(1 / seq_len(n-1)^2)#
+    b1 <- (n + 1) / (3 * (n - 1))#
+    b2 <- 2 * (n^2 + n + 3)/(9 * n * (n - 1))#
+    c1 <- b1 - 1/a1#
+    c2 <- b2 - (n + 2)/(a1 * n) + a2 / a1^2#
+    e1 <- c1 / a1#
+    e2 <- c2 / (a1^2 + a2)#
+    Vd <- e1 * ss + e2 * ss * (ss - 1) #
+    theta_pi <- sum(2 * seq_len(n-1) * (n - seq_len(n-1)) * sfs)/(n*(n-1))#
+    theta_w <- ss / a1#
+    res <- (theta_pi - theta_w) / sqrt(Vd)#
+    return(res)#
+}#
+#
+S <- c(36, 13, 10, 9, 8, 6, 5, 5, 6)#
+TajimaD(S)
+TajimaD <- function(sfs){#
+    #' sfs (site frequency spectrum): number of singletons, doubletons, ..., etc#
+    n <- length(sfs) + 1#
+    ss <- sum(sfs)#
+    a1 <- sum(1 / seq_len(n-1))#
+    a2 <- sum(1 / seq_len(n-1)^2)#
+    b1 <- (n + 1) / (3 * (n - 1))#
+    b2 <- 2 * (n^2 + n + 3)/(9 * n * (n - 1))#
+    c1 <- b1 - 1/a1#
+    c2 <- b2 - (n + 2)/(a1 * n) + a2 / a1^2#
+    e1 <- c1 / a1#
+    e2 <- c2 / (a1^2 + a2)#
+    Vd <- e1 * ss + e2 * ss * (ss - 1) #
+    theta_pi <- sum(2 * seq_len(n-1) * (n - seq_len(n-1)) * sfs)/(n*(n-1))#
+    theta_w <- ss / a1#
+    res <- (theta_pi - theta_w) / sqrt(Vd)#
+    return(res)#
+}#
+#
+S <- c(36, 13, 10, 9, 8, 6, 5, 5, 6,5,2,3,4,5,2,3,4,5,2,3,3,4)#
+TajimaD(S)
+TajimaD <- function(sfs){#
+    #' sfs (site frequency spectrum): number of singletons, doubletons, ..., etc#
+    n <- length(sfs) + 1#
+    ss <- sum(sfs)#
+    a1 <- sum(1 / seq_len(n-1))#
+    a2 <- sum(1 / seq_len(n-1)^2)#
+    b1 <- (n + 1) / (3 * (n - 1))#
+    b2 <- 2 * (n^2 + n + 3)/(9 * n * (n - 1))#
+    c1 <- b1 - 1/a1#
+    c2 <- b2 - (n + 2)/(a1 * n) + a2 / a1^2#
+    e1 <- c1 / a1#
+    e2 <- c2 / (a1^2 + a2)#
+    Vd <- e1 * ss + e2 * ss * (ss - 1) #
+    theta_pi <- sum(2 * seq_len(n-1) * (n - seq_len(n-1)) * sfs)/(n*(n-1))#
+    theta_w <- ss / a1#
+    res <- (theta_pi - theta_w) / sqrt(Vd)#
+    return(res)#
+}#
+#
+S <- c(46, 13, 10, 9, 8, 6, 5, 5, 6,5,2,3,4,5,2,3,4,5,2,3,3,4)#
+TajimaD(S)
+TajimaD <- function(sfs){#
+    #' sfs (site frequency spectrum): number of singletons, doubletons, ..., etc#
+    n <- length(sfs) + 1#
+    ss <- sum(sfs)#
+    a1 <- sum(1 / seq_len(n-1))#
+    a2 <- sum(1 / seq_len(n-1)^2)#
+    b1 <- (n + 1) / (3 * (n - 1))#
+    b2 <- 2 * (n^2 + n + 3)/(9 * n * (n - 1))#
+    c1 <- b1 - 1/a1#
+    c2 <- b2 - (n + 2)/(a1 * n) + a2 / a1^2#
+    e1 <- c1 / a1#
+    e2 <- c2 / (a1^2 + a2)#
+    Vd <- e1 * ss + e2 * ss * (ss - 1) #
+    theta_pi <- sum(2 * seq_len(n-1) * (n - seq_len(n-1)) * sfs)/(n*(n-1))#
+    theta_w <- ss / a1#
+    res <- (theta_pi - theta_w) / sqrt(Vd)#
+    return(res)#
+}#
+#
+S <- c(510, 145, 75, 80, 30, 35, 25, 6, 10,13)#
+TajimaD(S)
+TajimaD <- function(sfs){#
+    #' sfs (site frequency spectrum): number of singletons, doubletons, ..., etc#
+    n <- length(sfs) + 1#
+    ss <- sum(sfs)#
+    a1 <- sum(1 / seq_len(n-1))#
+    a2 <- sum(1 / seq_len(n-1)^2)#
+    b1 <- (n + 1) / (3 * (n - 1))#
+    b2 <- 2 * (n^2 + n + 3)/(9 * n * (n - 1))#
+    c1 <- b1 - 1/a1#
+    c2 <- b2 - (n + 2)/(a1 * n) + a2 / a1^2#
+    e1 <- c1 / a1#
+    e2 <- c2 / (a1^2 + a2)#
+    Vd <- e1 * ss + e2 * ss * (ss - 1) #
+    theta_pi <- sum(2 * seq_len(n-1) * (n - seq_len(n-1)) * sfs)/(n*(n-1))#
+    theta_w <- ss / a1#
+    res <- (theta_pi - theta_w) / sqrt(Vd)#
+    return(res)#
+}#
+#
+S <- c(966, 162, 121,  90,  43,  45,  41,  38,  26,  53,  44)#
+TajimaD(S)
+TajimaD <- function(sfs){#
+    #' sfs (site frequency spectrum): number of singletons, doubletons, ..., etc#
+    n <- length(sfs) + 1#
+    ss <- sum(sfs)#
+    a1 <- sum(1 / seq_len(n-1))#
+    a2 <- sum(1 / seq_len(n-1)^2)#
+    b1 <- (n + 1) / (3 * (n - 1))#
+    b2 <- 2 * (n^2 + n + 3)/(9 * n * (n - 1))#
+    c1 <- b1 - 1/a1#
+    c2 <- b2 - (n + 2)/(a1 * n) + a2 / a1^2#
+    e1 <- c1 / a1#
+    e2 <- c2 / (a1^2 + a2)#
+    Vd <- e1 * ss + e2 * ss * (ss - 1) #
+    theta_pi <- sum(2 * seq_len(n-1) * (n - seq_len(n-1)) * sfs)/(n*(n-1))#
+    theta_w <- ss / a1#
+    res <- (theta_pi - theta_w) / sqrt(Vd)#
+    return(res)#
+}#
+#
+S <- c(838,  74,  45,  40,  68,  26,  20,  27,  48,  15,  26)#
+TajimaD(S)
+TajimaD <- function(sfs){#
+    #' sfs (site frequency spectrum): number of singletons, doubletons, ..., etc#
+    n <- length(sfs) + 1#
+    ss <- sum(sfs)#
+    a1 <- sum(1 / seq_len(n-1))#
+    a2 <- sum(1 / seq_len(n-1)^2)#
+    b1 <- (n + 1) / (3 * (n - 1))#
+    b2 <- 2 * (n^2 + n + 3)/(9 * n * (n - 1))#
+    c1 <- b1 - 1/a1#
+    c2 <- b2 - (n + 2)/(a1 * n) + a2 / a1^2#
+    e1 <- c1 / a1#
+    e2 <- c2 / (a1^2 + a2)#
+    Vd <- e1 * ss + e2 * ss * (ss - 1) #
+    theta_pi <- sum(2 * seq_len(n-1) * (n - seq_len(n-1)) * sfs)/(n*(n-1))#
+    theta_w <- ss / a1#
+    res <- (theta_pi - theta_w) / sqrt(Vd)#
+    return(res)#
+}#
+#
+S <- c(2326,  487,  379,  263,  216,  256,  206,  119,  134,  100,   84,   87,   72,   60,   82,  46,   60,   59,   44,   75,   66,   40,   46,   56,   35,   49,   29)#
+TajimaD(S)
+TajimaD <- function(sfs){#
+    #' sfs (site frequency spectrum): number of singletons, doubletons, ..., etc#
+    n <- length(sfs) + 1#
+    ss <- sum(sfs)#
+    a1 <- sum(1 / seq_len(n-1))#
+    a2 <- sum(1 / seq_len(n-1)^2)#
+    b1 <- (n + 1) / (3 * (n - 1))#
+    b2 <- 2 * (n^2 + n + 3)/(9 * n * (n - 1))#
+    c1 <- b1 - 1/a1#
+    c2 <- b2 - (n + 2)/(a1 * n) + a2 / a1^2#
+    e1 <- c1 / a1#
+    e2 <- c2 / (a1^2 + a2)#
+    Vd <- e1 * ss + e2 * ss * (ss - 1) #
+    theta_pi <- sum(2 * seq_len(n-1) * (n - seq_len(n-1)) * sfs)/(n*(n-1))#
+    theta_w <- ss / a1#
+    res <- (theta_pi - theta_w) / sqrt(Vd)#
+    return(res)#
+}#
+#
+S <- c(1630,  207,  188,   68,   46,   62,   35,   45,   24,   64,   20,   32,   18,    5,   17, 18,   15,  10,   11,   10,    6,    2,    7,   11,    8,   12,   11)#
+TajimaD(S)
+S
+matrix <- cbind(S,S)
+meatrix
+matrix
+library(DescTools)
+install.packages(DescTools)
+library(DescTools)
+GTest(matrix)
+g <- GTest(matrix)
+g
+g <- as.vector(GTest(matrix))
+g
+g <- as.vector(GTest(matrix))
+g[1]
+g[2]
+g[3]
+g <- GTest(matrix)
+g[3]
+help(var)
+data <- rnorm(20, 10, 3)
+data
+hist(data)
+var <- var(data)/(length$data)
+var <- var(data)/length(data)
+var
+thetaBar <- mean(data)
+n <- length(data)
+jack.SE <- sqrt(((n-1)/n) * sum((data-thetaBar)^2))
+jack.SE
+thetaBar
+n
+(data-thetaBar)^2
+(data-thetaBar)
+(data-thetaBar)^2
+(n-1)/n) * (data-thetaBar)^2
+(n-1)/n)
+(n-1)/n
+((n-1)/n)
+(((n-1)/n)*(data-thetaBar)^2)*1/2
+(((n-1)/n)*sum((data-thetaBar)^2))*1/2
+(((n-1)/n)*(sum((data-thetaBar)^2))*1/2
+)
+sum((data-thetaBar)^2))
+sum((data-thetaBar)^2)
+((n-1)/n)*sum((data-thetaBar)^2)
+(((n-1)/n)*sum((data-thetaBar)^2))^1/2
+sqrt(((n-1)/n)*sum((data-thetaBar)^2))
+hist(data)
+data
+thetaBar
+stdev(data)
+std(data)
+stdev(data)
+sd(data)
+sqrt(((n-1)/n)*sum((data-thetaBar)^2))
+data <- c(7.45, 7.45, 6.80, 7.45, 7.45, 7.45, 7.15, 6.80, 6.80, 7.45, 7.45, 7.45, 7.45, 7.15, 7.15, 7.15, 7.15, 6.80, 6.80, 6.80, 7.45, 7.30, 7.15, 7.15, 7.45, 6.80, 6.80, 6.80, 7.45, 7.45, 7.15, 7.45)
+thetaBar <- mean(data)
+thetaBar
+sqrt(((n-1)/n)*sum((data-thetaBar)^2))
+jack.mean.iqr <- mean(data)
+jack.iqr <- data
+jack.SE <- sqrt(((n-1)/n) * sum((jack.iqr-jack.mean.iqr)^2))
+jack.SE
+sqrt(((n-1)/n)*sum((data-thetaBar)^2))
+alpha <- 0.05#
+t.star <- qt(p=1-alpha/2,df=n-1)#
+jack.mean.iqr + c(-1,1)*t.star*jack.SE
+jack.iqr <- rnorm(50,20,2)
+jack.iqr
+jack.mean.iqr <- mean(jack.iqr)
+jack.mean.iqr
+n <- length(jack.iqr)
+n
+jack.SE <- sqrt(((n-1)/n) * sum((jack.iqr-jack.mean.iqr)^2))
+jack.SE
+alpha <- 0.05#
+t.star <- qt(p=1-alpha/2,df=n-1)#
+jack.mean.iqr + c(-1,1)*t.star*jack.SE
+seEst <- sqrt((n-1)*mean((jack.iqr-jack.mean.iqr)^2)))
+seEst <- sqrt((n-1)*mean((jack.iqr-jack.mean.iqr)^2))
+seEst
+load("/Users/sstankow/Documents/GitHub/Littorina_reproductive_mode/MSPrime_sims/1_output.weights.csv")
+.Machine$double.eps
+getwd()
+getwd()

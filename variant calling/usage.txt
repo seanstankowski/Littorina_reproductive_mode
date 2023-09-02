@@ -13,7 +13,7 @@ Running the gatk pipeline
 	setup.gatk.sh
 	do.gatk.sh
 
-./setup_gatk.sh /path_to_prepared_bams /path_to_genome number_of_contigs
+./setup_gatk.sh /path_to_prepared_bams /path_to_genome number_of_contigs_per_job
 
 
 ## 3. combine calls into a vcf

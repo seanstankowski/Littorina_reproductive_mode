@@ -1,0 +1,352 @@
+### plot of tc scores on one LG
+
+data <- read.csv("reproductive_mode_TWISST.popGenwins.csv", header=TRUE)
+lengths <- read.csv("contigs_lengths.csv",header=TRUE)
+
+par(mfrow=c(3,6))
+lg_list = seq(1:17)
+
+for(i in lg_list) {
+
+LG <- i
+
+data2 <- subset(data, topoC  > 0.7)
+data3 <- subset(data2, topoC  < 0.8)
+data4 <- subset(data2, topoC  > 0.8 & topoC < 0.9 | topoC == 0.8)
+data5 <- subset(data2, topoC  > 0.9 & topoC < 1 | topoC== 1)
+data6 <- subset(data2, topoC == 1)
+
+
+colourA<-"grey"
+colour1<-"grey"
+colour2<-"darkgoldenrod1"
+colour3<-"darkorange1"
+colour4<-"firebrick2"
+
+point<-20
+
+E0<-min(lengths$av[lengths$LG==LG], na.rm=TRUE)
+E1<-max(lengths$av[lengths$LG==LG], na.rm=TRUE)
+
+plot(data2$av[data2$LG==LG], data2$topoC[data2$LG==LG], pch=point, cex=0.7, col=colourA, frame=FALSE, yaxt = "n",  xlab = "", ylab = "", xlim = c(E0,100), ylim=c(0.69,1))
+points(data3$av[data3$LG==LG], data3$topoC[data3$LG==LG], pch=point, cex=0.9, col=colour1)
+points(data4$av[data4$LG==LG], data4$topoC[data4$LG==LG], pch=point, cex=1.1, col=colour2)
+points(data5$av[data5$LG==LG], data5$topoC[data5$LG==LG], pch=point, cex=1.3, col=colour3)
+points(data6$av[data6$LG==LG], data6$topoC[data6$LG==LG], pch=point, cex=1.7, col=colour4)
+abline(v=E1)
+
+}
+
+
+####### counts for contig level 
+
+data <- read.csv("reproductive_mode_TWISST.popGenwins_mapped.csv", header=TRUE)
+
+lg <- 1
+
+data3 <- subset(data2, topoC  < 0.8 & data2$LG==lg)
+data4 <- subset(data2, topoC  > 0.8 & topoC < 0.9 & LG==lg | topoC == 0.8 & LG==lg)
+data5 <- subset(data2, topoC  > 0.9 & topoC < 1 & LG==lg)
+data6 <- subset(data2, topoC == 1 & data2$LG==lg)
+
+ 
+length(data3$topoC)
+length(data4$topoC)
+length(data5$topoC)
+length(data6$topoC)
+length(total$topoC)
+
+################
+
+#####################################################################################################################################################
+################################### permutation test for enrichment of high Tc windows for each LG  #################################################
+#####################################################################################################################################################
+
+start.time <- Sys.time()
+setwd("/Users/sstankow/Desktop")
+
+library(dplyr)
+
+dataA <- read.csv("reproductive_mode_TWISST.popGenwins.csv",header=TRUE)
+data <- subset(dataA, in_map ==1)
+data2 <- subset(data, high_topo1 == 1)
+
+## tabulate wins per map pos
+wins_per_map <- table(data$LG)
+
+## make data frame
+n_map_pos <- as.data.frame(wins_per_map)
+
+## tabulate observed number high Tc wins per map pos
+high_tc_per_map <- table(data2$LG)
+
+## make data frame
+n_high_tc <- as.data.frame(high_tc_per_map)
+
+
+## rename variables in both dataframes
+
+n_high_tc <- n_high_tc %>% 
+  rename(
+    map_pos = Var1,
+    n_high_tc = Freq
+    )
+
+n_map_pos <- n_map_pos %>% 
+  rename(
+    map_pos = Var1,
+    n_wins = Freq
+    )
+    
+### merge the dataframes
+data3 <- merge(n_map_pos, n_high_tc, by = "map_pos", all = TRUE)
+
+######### now have a dataset
+
+##################################################### permutation test outer loop   ########################################################
+
+all_p_values_greater <- vector("numeric",length(nrow(data3))) ### make dataframe to catch p values
+
+############################################################################################################################################
+
+for (row in 1:nrow(data3)) {
+number_of_windows <- data3[row,2]
+obs_counts <- data3[row,3]
+
+		######################################################## permutation test setup and control: inner loop  ###########################
+
+		n_perms <- 9999 ######## number of permutations
+		permuted_counts <- vector("numeric",length(n_perms)) ####### create a vector to catch all of the permutations
+
+		####################################################################################################################################
+
+
+		for(i in 1:n_perms)
+{
+
+		## randomly sample 'high_topo1' n times
+		rand_sample <- sample(data$high_topo1, number_of_windows, replace = FALSE)
+
+		## count the number of high topo wins
+		sum_high_wins <- sum(rand_sample==1)
+
+		## add count to the growing data frame
+		permuted_counts[i] <- sum_high_wins
+
+}
+
+
+		p_value <- ((sum(permuted_counts >  obs_counts | permuted_counts==obs_counts)+1)/(n_perms+1))
+		
+		### inner loop end
+
+all_p_values_greater[row] <- p_value
+
+
+} ### outer loop end
+
+
+data3$p_values_greater <- all_p_values_greater
+
+
+#### less than test
+
+##################################################### permutation test outer loop   ########################################################
+
+all_p_values_less <- vector("numeric",length(nrow(data3))) ### make dataframe to catch p values
+
+############################################################################################################################################
+
+for (row in 1:nrow(data3)) {
+number_of_windows <- data3[row,2]
+obs_counts <- data3[row,3]
+
+		######################################################## permutation test setup and control: inner loop  ###########################
+
+		n_perms <- 9999 ######## number of permutations
+		permuted_counts <- vector("numeric",length(n_perms)) ####### create a vector to catch all of the permutations
+
+		####################################################################################################################################
+
+
+		for(i in 1:n_perms)
+{
+
+		## randomly sample 'high_topo1' n times
+		rand_sample <- sample(data$high_topo1, number_of_windows, replace = FALSE)
+
+		## count the number of high topo wins
+		sum_high_wins <- sum(rand_sample==1)
+
+		## add count to the growing data frame
+		permuted_counts[i] <- sum_high_wins
+
+}
+
+
+		p_value <- ((sum(permuted_counts <  obs_counts | permuted_counts==obs_counts)+1)/(n_perms+1))
+		
+		### inner loop end
+
+all_p_values_less[row] <- p_value
+
+
+} ### outer loop end
+
+
+
+########################################################################################### time to run #####################################
+end.time <- Sys.time()
+time.taken <- end.time - start.time
+time.taken
+################################################################################################# end #######################################
+
+data3$p_values_less <- all_p_values_less
+write.csv(data3, "LG_p_values.csv")
+
+
+
+
+#####################################################################################################################################################
+################################### permutation test for enrichment of high Tc windows for each map position #########################################
+#####################################################################################################################################################
+
+################################### permutation test for enrichment of high Tc windows for each map position #########################################
+start.time <- Sys.time()
+setwd("/Users/sstankow/Desktop")
+
+library(dplyr)
+
+data <- read.csv("reproductive_mode_TWISST.popGenwins.csv",header=TRUE)
+data2 <- subset(data, high_topo1 == 1)
+
+## tabulate wins per map pos
+wins_per_map <- table(data$LG_map_position)
+
+## make data frame
+n_map_pos <- as.data.frame(wins_per_map)
+
+## remove top row which is map pos NA
+n_map_pos = n_map_pos[-1,]
+
+## tabulate observed number high Tc wins per map pos
+high_tc_per_map <- table(data2$LG_map_position)
+
+## make data frame
+n_high_tc <- as.data.frame(high_tc_per_map)
+
+## rename variables in both dataframes
+
+n_high_tc <- n_high_tc %>% 
+  rename(
+    map_pos = Var1,
+    n_high_tc = Freq
+    )
+
+n_map_pos <- n_map_pos %>% 
+  rename(
+    map_pos = Var1,
+    n_wins = Freq
+    )
+    
+### merge the dataframes
+data3 <- merge(n_map_pos, n_high_tc, by = "map_pos", all = TRUE)
+
+## replace NA with 0s
+data3[is.na(data3)] <- 0
+
+######### now have a dataset
+
+##################################################### permutation test outer loop   ########################################################
+
+all_p_values <- vector("numeric",length(nrow(data3))) ### make dataframe to catch p values
+
+############################################################################################################################################
+
+for (row in 1:nrow(data3)) {
+number_of_windows <- data3[row,2]
+obs_counts <- data3[row,3]
+
+		######################################################## permutation test setup and control: inner loop  ###########################
+
+		n_perms <- 9999 ######## number of permutations
+		permuted_counts <- vector("numeric",length(n_perms)) ####### create a vector to catch all of the permutations
+
+		####################################################################################################################################
+
+
+		for(i in 1:n_perms)
+{
+
+		## randomly sample 'high_topo1' n times
+		rand_sample <- sample(data$high_topo1, number_of_windows, replace = FALSE)
+
+		## count the number of high topo wins
+		sum_high_wins <- sum(rand_sample==1)
+
+		## add count to the growing data frame
+		permuted_counts[i] <- sum_high_wins
+
+}
+
+
+		p_value <- ((sum(permuted_counts >  obs_counts | permuted_counts==obs_counts)+1)/(n_perms+1))
+
+		p_value
+		
+		### inner loop end
+
+all_p_values[row] <- p_value
+
+
+} ### outer loop end
+
+
+
+########################################################################################### time to run #####################################
+end.time <- Sys.time()
+time.taken <- end.time - start.time
+time.taken
+################################################################################################# end #######################################
+
+data3$p_values <- all_p_values
+write.csv(data3, "windows_with_p_values.csv")
+
+
+
+#####################################################################################################################################################
+################################################### plot p-values from the map position permutation test ############################################
+#####################################################################################################################################################
+
+### plot of tc scores on one LG
+setwd("/Users/sstankow/Desktop")
+
+lengths <- read.csv("contigs_lengths.csv",header=TRUE)
+data <- read.csv("windows_with_p_values.csv", header=TRUE)
+dataB <- subset(data, p_values < 0.05 | p_values == 0.05)
+
+par(mfrow=c(3,6))
+lg_list = seq(1:17)
+
+for(i in lg_list)
+
+{
+
+LG <- i
+map_pos_list <- dataB$map_position[dataB$LG==LG]
+
+E0<-min(lengths$av[lengths$LG==LG], na.rm=TRUE)
+E1<-max(lengths$av[lengths$LG==LG], na.rm=TRUE)
+
+plot(data$map_position[data$LG==LG], data$p_values[data$LG==LG], cex=0.5, col="white", frame=FALSE, yaxt = "n",  xlab = "", ylab = "", xlim = c(0,100), ylim=c(0,1))
+
+for(i in map_pos_list)
+{
+abline(v = i, col="blue")
+}
+
+abline(v=E1, col="red")
+
+}
+
+

@@ -1,7 +1,0 @@
-[1;32mFunctional annotation of hits...[0m
-0 5.4836273193359375e-06 0.00 q/s (% mem usage: 27.00, % mem avail: 73.01)
-[1;32mCreating diamond gff file /emapper_web_jobs/emapper_jobs/user_data/MM_j_edz6o6/out.emapper.decorated.gff...[0m
-Parsing fasta file /emapper_web_jobs/emapper_jobs/user_data/MM_j_edz6o6/queries.fasta...
-Fasta file /emapper_web_jobs/emapper_jobs/user_data/MM_j_edz6o6/queries.fasta parsing complete.
-[1;32mCreating gff file /emapper_web_jobs/emapper_jobs/user_data/MM_j_edz6o6/out.emapper.genepred.gff...[0m
-29 2.2361698150634766 12.97 q/s (% mem usage: 27.10, % mem avail: 72.93)

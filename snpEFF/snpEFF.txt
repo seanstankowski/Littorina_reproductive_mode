@@ -1,4 +1,0 @@
-## SNPeff
-
-java -jar /home/bo1srs/snpEff/snpEff.jar 
-

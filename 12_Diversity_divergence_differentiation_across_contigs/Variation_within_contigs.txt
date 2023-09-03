@@ -1,0 +1,680 @@
+#data <- read.csv("TC1_Contig1808_popgenOut.csv",header=TRUE)
+data <- read.csv("TC1_3kb_popgenOut.csv",header=TRUE)
+
+par(mfrow=c(2,1))
+
+## find y lim for pi
+min_egg <- min(data$pi_Egglayer)
+min_brood <- min(data$pi_Brooder)
+min_pi_B <- min(data$dxy_Egglayer_Brooder)
+
+miny <- min(min_egg, min_brood, min_pi_B)
+
+max_egg <- max(data$pi_Egglayer)
+max_brood <- max(data$pi_Brooder)
+max_pi_B <- max(data$dxy_Egglayer_Brooder)
+
+maxy <- max(max_egg, max_brood, max_pi_B)
+
+
+
+###
+
+data <- read.csv("TC1_3kb_popgenOut.csv",header=TRUE)
+
+par(mfrow=c(2,1))
+contig <- "Contig1261"
+
+data2 <- subset(data,scaffold==contig)
+
+size = 0.7
+plot(data2$mid,data2$Fst_Egglayer_Brooder, col="red", cex=size)
+
+
+plot(data2$mid,data2$pi_Egglayer, col="darkgoldenrod2", cex=size)
+points(data2$mid,data2$pi_Brooder, col="cyan3", cex=size)
+points(data2$mid,data2$dxy_Egglayer_Brooder, col="black", cex=size)
+
+
+
+########################## Contig1808 ############################
+
+data <- read.csv("TC1_3kb_popgenOut.csv",header=TRUE)
+
+par(mfrow=c(2,1))
+contig <- "Contig1808"
+
+data2 <- subset(data,scaffold==contig)
+
+size = 0.7
+plot(data2$mid,data2$Fst_Egglayer_Brooder, col="red", cex=size, xlim=c(7200,19000), ylim=c(0,0.65))
+plot(data2$mid,data2$pi_Egglayer, col="darkgoldenrod2", cex=size,  xlim=c(7200,19000), ylim=c(0,0.02))
+points(data2$mid,data2$pi_Brooder, col="cyan3", cex=size)
+points(data2$mid,data2$dxy_Egglayer_Brooder, col="black", cex=size)
+
+########################## Contig3201 #############################
+data <- read.csv("TC1_3kb_popgenOut.csv",header=TRUE)
+
+par(mfrow=c(2,1))
+contig <- "Contig3201"
+
+data2 <- subset(data,scaffold==contig)
+
+size = 0.7
+plot(data2$mid,data2$Fst_Egglayer_Brooder, col="red", cex=size, xlim=c(50000,67000), ylim=c(0,0.65))
+plot(data2$mid,data2$pi_Egglayer, col="darkgoldenrod2", cex=size,  xlim=c(50000,67000), ylim=c(0,0.02))
+points(data2$mid,data2$pi_Brooder, col="cyan3", cex=size)
+points(data2$mid,data2$dxy_Egglayer_Brooder, col="black", cex=size)
+
+######################## 48348 ##################################
+data <- read.csv("TC1_3kb_popgenOut.csv",header=TRUE)
+
+par(mfrow=c(2,1))
+contig <- "Contig48348"
+
+data2 <- subset(data,scaffold==contig)
+
+size = 0.7
+plot(data2$mid,data2$Fst_Egglayer_Brooder, col="red", cex=size, xlim=c(25000,45000), ylim=c(0,0.75))
+plot(data2$mid,data2$pi_Egglayer, col="darkgoldenrod2", cex=size,  xlim=c(25000,45000), ylim=c(0,0.025))
+points(data2$mid,data2$pi_Brooder, col="cyan3", cex=size)
+points(data2$mid,data2$dxy_Egglayer_Brooder, col="black", cex=size)
+
+
+############# making plots of 0,1,2 genotypes after exporting from vcftools
+
+## read the data frame
+data <-read.csv("3201_geno.csv", header=FALSE)
+## make a transposed matrix
+transposed <- t(as.matrix(data))
+## make a genotype by pos matrix
+image(transposed)
+
+
+############################## all contigs ############################
+
+contig <- "Contig115331"
+
+data2 <- subset(data,scaffold==contig)
+
+size = 0.7
+plot(data2$mid,data2$Fst_Egglayer_Brooder, col="gray", cex=size, xlim=c(), ylim=c(0,0.5), xlab="Genomic position (bp)",ylab = "Fst", main=contig)
+plot(data2$mid,data2$pi_Egglayer, col="darkgoldenrod2", cex=size,  xlim=c(), ylim=c(0,0.02), ylab = "pi", xlab="Genomic position (bp)")
+points(data2$mid,data2$pi_Brooder, col="cyan3", cex=size)
+points(data2$mid,data2$dxy_Egglayer_Brooder, col="black", cex=size)
+
+###################
+
+par(mfrow=c(2,1))
+contig <- "Contig52509"
+
+data2 <- subset(data,scaffold==contig)
+
+size = 0.7
+plot(data2$mid,data2$Fst_Egglayer_Brooder, col="gray", cex=size, xlim=c(25000,40000), ylim=c(0,0.7), xlab="Genomic position (bp)",ylab = "Fst", main=contig)
+plot(data2$mid,data2$pi_Egglayer, col="darkgoldenrod2", cex=size,  xlim=c(25000,40000), ylim=c(0,0.03), ylab = "pi", xlab="Genomic position (bp)")
+points(data2$mid,data2$pi_Brooder, col="cyan3", cex=size)
+points(data2$mid,data2$dxy_Egglayer_Brooder, col="black", cex=size)
+
+##################
+
+contig <- "Contig1261"
+
+data2 <- subset(data,scaffold==contig)
+
+size = 0.7
+plot(data2$mid,data2$Fst_Egglayer_Brooder, col="gray", cex=size, xlim=c(110000,140000), ylim=c(0,0.8), xlab="Genomic position (bp)",ylab = "Fst", main=contig)
+plot(data2$mid,data2$pi_Egglayer, col="darkgoldenrod2", cex=size,  xlim=c(110000,140000), ylim=c(0,0.05), ylab = "pi", xlab="Genomic position (bp)")
+points(data2$mid,data2$pi_Brooder, col="cyan3", cex=size)
+points(data2$mid,data2$dxy_Egglayer_Brooder, col="black", cex=size)
+
+#################
+
+contig <- "Contig3970"
+
+data2 <- subset(data,scaffold==contig)
+
+size = 0.7
+plot(data2$mid,data2$Fst_Egglayer_Brooder, col="gray", cex=size, xlim=c(), ylim=c(0,0.3), xlab="Genomic position (bp)",ylab = "Fst", main=contig)
+plot(data2$mid,data2$pi_Egglayer, col="darkgoldenrod2", cex=size,  xlim=c(), ylim=c(0,0.02), ylab = "pi", xlab="Genomic position (bp)")
+points(data2$mid,data2$pi_Brooder, col="cyan3", cex=size)
+points(data2$mid,data2$dxy_Egglayer_Brooder, col="black", cex=size)
+
+#################
+
+contig <- "Contig116989"
+
+data2 <- subset(data,scaffold==contig)
+
+size = 0.7
+plot(data2$mid,data2$Fst_Egglayer_Brooder, col="gray", cex=size, xlim=c(7000,15000), ylim=c(0,0.3), xlab="Genomic position (bp)",ylab = "Fst", main=contig)
+plot(data2$mid,data2$pi_Egglayer, col="darkgoldenrod2", cex=size,  xlim=c(7000,15000), ylim=c(0,0.0125), ylab = "pi", xlab="Genomic position (bp)")
+points(data2$mid,data2$pi_Brooder, col="cyan3", cex=size)
+points(data2$mid,data2$dxy_Egglayer_Brooder, col="black", cex=size)
+
+#################
+
+contig <- "Contig110028"
+
+data2 <- subset(data,scaffold==contig)
+
+size = 0.7
+plot(data2$mid,data2$Fst_Egglayer_Brooder, col="gray", cex=size, xlim=c(1500,8500), ylim=c(0,0.7), xlab="Genomic position (bp)",ylab = "Fst", main=contig)
+plot(data2$mid,data2$pi_Egglayer, col="darkgoldenrod2", cex=size,  xlim=c(1500,8500), ylim=c(0,0.016), ylab = "pi", xlab="Genomic position (bp)")
+points(data2$mid,data2$pi_Brooder, col="cyan3", cex=size)
+points(data2$mid,data2$dxy_Egglayer_Brooder, col="black", cex=size)
+
+#################
+
+contig <- "Contig217335"
+
+data2 <- subset(data,scaffold==contig)
+
+size = 0.7
+plot(data2$mid,data2$Fst_Egglayer_Brooder, col="gray", cex=size, xlim=c(2000,3500), ylim=c(0,0.7), xlab="Genomic position (bp)",ylab = "Fst", main=contig)
+plot(data2$mid,data2$pi_Egglayer, col="darkgoldenrod2", cex=size,  xlim=c(2000,3500), ylim=c(0,0.016), ylab = "pi", xlab="Genomic position (bp)")
+points(data2$mid,data2$pi_Brooder, col="cyan3", cex=size)
+points(data2$mid,data2$dxy_Egglayer_Brooder, col="black", cex=size)
+
+#################
+
+contig <- "Contig39155"
+
+data2 <- subset(data,scaffold==contig)
+
+size = 0.7
+plot(data2$mid,data2$Fst_Egglayer_Brooder, col="gray", cex=size, xlim=c(4000,20000), ylim=c(0,0.7), xlab="Genomic position (bp)",ylab = "Fst", main=contig)
+plot(data2$mid,data2$pi_Egglayer, col="darkgoldenrod2", cex=size,  xlim=c(4000,20000), ylim=c(0,0.016), ylab = "pi", xlab="Genomic position (bp)")
+points(data2$mid,data2$pi_Brooder, col="cyan3", cex=size)
+points(data2$mid,data2$dxy_Egglayer_Brooder, col="black", cex=size)
+
+################
+
+contig <- "Contig89329"
+
+data2 <- subset(data,scaffold==contig)
+
+size = 0.7
+plot(data2$mid,data2$Fst_Egglayer_Brooder, col="gray", cex=size, xlim=c(0,15000), ylim=c(0,0.35), xlab="Genomic position (bp)",ylab = "Fst", main=contig)
+plot(data2$mid,data2$pi_Egglayer, col="darkgoldenrod2", cex=size,  xlim=c(0,15000), ylim=c(0,0.022), ylab = "pi", xlab="Genomic position (bp)")
+points(data2$mid,data2$pi_Brooder, col="cyan3", cex=size)
+points(data2$mid,data2$dxy_Egglayer_Brooder, col="black", cex=size)
+
+##############
+contig <- "Contig7286"
+
+data2 <- subset(data,scaffold==contig)
+
+size = 0.7
+plot(data2$mid,data2$Fst_Egglayer_Brooder, col="gray", cex=size, xlim=c(3700,6100), ylim=c(0,0.5), xlab="Genomic position (bp)",ylab = "Fst", main=contig)
+plot(data2$mid,data2$pi_Egglayer, col="darkgoldenrod2", cex=size,  xlim=c(3700,6100), ylim=c(0,0.022), ylab = "pi", xlab="Genomic position (bp)")
+points(data2$mid,data2$pi_Brooder, col="cyan3", cex=size)
+points(data2$mid,data2$dxy_Egglayer_Brooder, col="black", cex=size)
+
+##############
+
+contig <- "Contig12403"
+
+data2 <- subset(data,scaffold==contig)
+
+size = 0.7
+plot(data2$mid,data2$Fst_Egglayer_Brooder, col="gray", cex=size, xlim=c(16000,32000), ylim=c(0,1.0), xlab="Genomic position (bp)",ylab = "Fst", main=contig)
+plot(data2$mid,data2$pi_Egglayer, col="darkgoldenrod2", cex=size,  xlim=c(16000,32000), ylim=c(0,0.022), ylab = "pi", xlab="Genomic position (bp)")
+points(data2$mid,data2$pi_Brooder, col="cyan3", cex=size)
+points(data2$mid,data2$dxy_Egglayer_Brooder, col="black", cex=size)
+
+###############
+
+contig <- "Contig38747"
+
+data2 <- subset(data,scaffold==contig)
+
+size = 0.7
+plot(data2$mid,data2$Fst_Egglayer_Brooder, col="gray", cex=size, xlim=c(25000,41000), ylim=c(0,0.7), xlab="Genomic position (bp)",ylab = "Fst", main=contig)
+plot(data2$mid,data2$pi_Egglayer, col="darkgoldenrod2", cex=size,  xlim=c(25000,41000), ylim=c(0,0.022), ylab = "pi", xlab="Genomic position (bp)")
+points(data2$mid,data2$pi_Brooder, col="cyan3", cex=size)
+points(data2$mid,data2$dxy_Egglayer_Brooder, col="black", cex=size)
+
+###############
+
+contig <- "Contig9868"
+
+data2 <- subset(data,scaffold==contig)
+
+size = 0.7
+plot(data2$mid,data2$Fst_Egglayer_Brooder, col="gray", cex=size, xlim=c(1000,13000), ylim=c(0,1.0), xlab="Genomic position (bp)",ylab = "Fst", main=contig)
+plot(data2$mid,data2$pi_Egglayer, col="darkgoldenrod2", cex=size,  xlim=c(1000,13000), ylim=c(0,0.025), ylab = "pi", xlab="Genomic position (bp)")
+points(data2$mid,data2$pi_Brooder, col="cyan3", cex=size)
+points(data2$mid,data2$dxy_Egglayer_Brooder, col="black", cex=size)
+
+###############
+
+contig <- "Contig51247"
+
+data2 <- subset(data,scaffold==contig)
+
+size = 0.7
+plot(data2$mid,data2$Fst_Egglayer_Brooder, col="gray", cex=size, xlim=c(1600,8000), ylim=c(0,0.6), xlab="Genomic position (bp)",ylab = "Fst", main=contig)
+plot(data2$mid,data2$pi_Egglayer, col="darkgoldenrod2", cex=size,  xlim=c(1600,8000), ylim=c(0,0.025), ylab = "pi", xlab="Genomic position (bp)")
+points(data2$mid,data2$pi_Brooder, col="cyan3", cex=size)
+points(data2$mid,data2$dxy_Egglayer_Brooder, col="black", cex=size)
+
+###############
+
+contig <- "Contig3201"
+
+data2 <- subset(data,scaffold==contig)
+
+size = 0.7
+plot(data2$mid,data2$Fst_Egglayer_Brooder, col="gray", cex=size, xlim=c(53000,64000), ylim=c(0,0.6), xlab="Genomic position (bp)",ylab = "Fst", main=contig)
+plot(data2$mid,data2$pi_Egglayer, col="darkgoldenrod2", cex=size,  xlim=c(53000,64000), ylim=c(0,0.025), ylab = "pi", xlab="Genomic position (bp)")
+points(data2$mid,data2$pi_Brooder, col="cyan3", cex=size)
+points(data2$mid,data2$dxy_Egglayer_Brooder, col="black", cex=size)
+
+###############
+
+ contig <- "Contig70615"
+
+data2 <- subset(data,scaffold==contig)
+
+size = 0.7
+plot(data2$mid,data2$Fst_Egglayer_Brooder, col="gray", cex=size, xlim=c(40000,64000), ylim=c(0,0.33), xlab="Genomic position (bp)",ylab = "Fst", main=contig)
+plot(data2$mid,data2$pi_Egglayer, col="darkgoldenrod2", cex=size,  xlim=c(40000,64000), ylim=c(0,0.025), ylab = "pi", xlab="Genomic position (bp)")
+points(data2$mid,data2$pi_Brooder, col="cyan3", cex=size)
+points(data2$mid,data2$dxy_Egglayer_Brooder, col="black", cex=size)
+
+###############
+
+contig <- "Contig43562"
+
+data2 <- subset(data,scaffold==contig)
+
+size = 0.7
+plot(data2$mid,data2$Fst_Egglayer_Brooder, col="gray", cex=size, xlim=c(36000,40000), ylim=c(0,0.8), xlab="Genomic position (bp)",ylab = "Fst", main=contig)
+plot(data2$mid,data2$pi_Egglayer, col="darkgoldenrod2", cex=size,  xlim=c(36000,40000), ylim=c(0,0.01), ylab = "pi", xlab="Genomic position (bp)")
+points(data2$mid,data2$pi_Brooder, col="cyan3", cex=size)
+points(data2$mid,data2$dxy_Egglayer_Brooder, col="black", cex=size)
+
+###############
+
+contig <- "Contig1808"
+
+data2 <- subset(data,scaffold==contig)
+
+size = 0.7
+plot(data2$mid,data2$Fst_Egglayer_Brooder, col="gray", cex=size, xlim=c(6100,20000), ylim=c(0,0.8), xlab="Genomic position (bp)",ylab = "Fst", main=contig)
+plot(data2$mid,data2$pi_Egglayer, col="darkgoldenrod2", cex=size,  xlim=c(6200,20000), ylim=c(0,0.025), ylab = "pi", xlab="Genomic position (bp)")
+points(data2$mid,data2$pi_Brooder, col="cyan3", cex=size)
+points(data2$mid,data2$dxy_Egglayer_Brooder, col="black", cex=size)
+
+################
+
+contig <- "Contig2118"
+
+data2 <- subset(data,scaffold==contig)
+
+size = 0.7
+plot(data2$mid,data2$Fst_Egglayer_Brooder, col="gray", cex=size, xlim=c(100000,110000), ylim=c(0,0.4), xlab="Genomic position (bp)",ylab = "Fst", main=contig)
+plot(data2$mid,data2$pi_Egglayer, col="darkgoldenrod2", cex=size,  xlim=c(100000,110000), ylim=c(0,0.01), ylab = "pi", xlab="Genomic position (bp)")
+points(data2$mid,data2$pi_Brooder, col="cyan3", cex=size)
+points(data2$mid,data2$dxy_Egglayer_Brooder, col="black", cex=size)
+
+################
+
+contig <- "Contig181579"
+
+data2 <- subset(data,scaffold==contig)
+
+size = 0.7
+plot(data2$mid,data2$Fst_Egglayer_Brooder, col="gray", cex=size, xlim=c(), ylim=c(0,0.7), xlab="Genomic position (bp)",ylab = "Fst", main=contig)
+plot(data2$mid,data2$pi_Egglayer, col="darkgoldenrod2", cex=size,  xlim=c(), ylim=c(0,0.0175), ylab = "pi", xlab="Genomic position (bp)")
+points(data2$mid,data2$pi_Brooder, col="cyan3", cex=size)
+points(data2$mid,data2$dxy_Egglayer_Brooder, col="black", cex=size)
+
+#################
+
+contig <- "Contig66365"
+
+data2 <- subset(data,scaffold==contig)
+
+size = 0.7
+plot(data2$mid,data2$Fst_Egglayer_Brooder, col="gray", cex=size, xlim=c(50000,70000), ylim=c(0,0.3), xlab="Genomic position (bp)",ylab = "Fst", main=contig)
+plot(data2$mid,data2$pi_Egglayer, col="darkgoldenrod2", cex=size,  xlim=c(50000,70000), ylim=c(0,0.0175), ylab = "pi", xlab="Genomic position (bp)")
+points(data2$mid,data2$pi_Brooder, col="cyan3", cex=size)
+points(data2$mid,data2$dxy_Egglayer_Brooder, col="black", cex=size)
+
+#################
+
+contig <- "Contig63723"
+
+data2 <- subset(data,scaffold==contig)
+
+size = 0.7
+plot(data2$mid,data2$Fst_Egglayer_Brooder, col="gray", cex=size, xlim=c(), ylim=c(0,0.8), xlab="Genomic position (bp)",ylab = "Fst", main=contig)
+plot(data2$mid,data2$pi_Egglayer, col="darkgoldenrod2", cex=size,  xlim=c(), ylim=c(0,0.015), ylab = "pi", xlab="Genomic position (bp)")
+points(data2$mid,data2$pi_Brooder, col="cyan3", cex=size)
+points(data2$mid,data2$dxy_Egglayer_Brooder, col="black", cex=size)
+
+#################
+
+ontig <- "Contig86117"
+
+data2 <- subset(data,scaffold==contig)
+
+size = 0.7
+plot(data2$mid,data2$Fst_Egglayer_Brooder, col="gray", cex=size, xlim=c(), ylim=c(0,0.15), xlab="Genomic position (bp)",ylab = "Fst", main=contig)
+plot(data2$mid,data2$pi_Egglayer, col="darkgoldenrod2", cex=size,  xlim=c(), ylim=c(0,0.02), ylab = "pi", xlab="Genomic position (bp)")
+points(data2$mid,data2$pi_Brooder, col="cyan3", cex=size)
+points(data2$mid,data2$dxy_Egglayer_Brooder, col="black", cex=size)
+
+#################
+
+contig <- "Contig81547"
+
+data2 <- subset(data,scaffold==contig)
+
+size = 0.7
+plot(data2$mid,data2$Fst_Egglayer_Brooder, col="gray", cex=size, xlim=c(), ylim=c(0,0.4), xlab="Genomic position (bp)",ylab = "Fst", main=contig)
+plot(data2$mid,data2$pi_Egglayer, col="darkgoldenrod2", cex=size,  xlim=c(), ylim=c(0,0.02), ylab = "pi", xlab="Genomic position (bp)")
+points(data2$mid,data2$pi_Brooder, col="cyan3", cex=size)
+points(data2$mid,data2$dxy_Egglayer_Brooder, col="black", cex=size)
+
+#################
+
+contig <- "Contig12341"
+
+data2 <- subset(data,scaffold==contig)
+
+size = 0.7
+plot(data2$mid,data2$Fst_Egglayer_Brooder, col="gray", cex=size, xlim=c(6500,8100), ylim=c(0,0.45), xlab="Genomic position (bp)",ylab = "Fst", main=contig)
+plot(data2$mid,data2$pi_Egglayer, col="darkgoldenrod2", cex=size,  xlim=c(6500,8100), ylim=c(0,0.04), ylab = "pi", xlab="Genomic position (bp)")
+points(data2$mid,data2$pi_Brooder, col="cyan3", cex=size)
+points(data2$mid,data2$dxy_Egglayer_Brooder, col="black", cex=size)
+
+##################
+
+contig <- "Contig3802"
+
+data2 <- subset(data,scaffold==contig)
+
+size = 0.7
+plot(data2$mid,data2$Fst_Egglayer_Brooder, col="gray", cex=size, xlim=c(3800,8100), ylim=c(0,0.6), xlab="Genomic position (bp)",ylab = "Fst", main=contig)
+plot(data2$mid,data2$pi_Egglayer, col="darkgoldenrod2", cex=size,  xlim=c(3800,8100), ylim=c(0,0.012), ylab = "pi", xlab="Genomic position (bp)")
+points(data2$mid,data2$pi_Brooder, col="cyan3", cex=size)
+points(data2$mid,data2$dxy_Egglayer_Brooder, col="black", cex=size)
+
+##################
+
+contig <- "Contig173651"
+
+data2 <- subset(data,scaffold==contig)
+
+size = 0.7
+plot(data2$mid,data2$Fst_Egglayer_Brooder, col="gray", cex=size, xlim=c(1500,2500), ylim=c(0,0.35), xlab="Genomic position (bp)",ylab = "Fst", main=contig)
+plot(data2$mid,data2$pi_Egglayer, col="darkgoldenrod2", cex=size,  xlim=c(1500,2500), ylim=c(0,0.02), ylab = "pi", xlab="Genomic position (bp)")
+points(data2$mid,data2$pi_Brooder, col="cyan3", cex=size)
+points(data2$mid,data2$dxy_Egglayer_Brooder, col="black", cex=size)
+
+##################
+
+contig <- "Contig52055"
+
+data2 <- subset(data,scaffold==contig)
+
+size = 0.7
+plot(data2$mid,data2$Fst_Egglayer_Brooder, col="gray", cex=size, xlim=c(6787,30000), ylim=c(0,0.6), xlab="Genomic position (bp)",ylab = "Fst", main=contig)
+plot(data2$mid,data2$pi_Egglayer, col="darkgoldenrod2", cex=size,  xlim=c(6787,30000), ylim=c(0,0.025), ylab = "pi", xlab="Genomic position (bp)")
+points(data2$mid,data2$pi_Brooder, col="cyan3", cex=size)
+points(data2$mid,data2$dxy_Egglayer_Brooder, col="black", cex=size)
+
+##################
+
+contig <- "Contig128971"
+
+data2 <- subset(data,scaffold==contig)
+
+size = 0.7
+plot(data2$mid,data2$Fst_Egglayer_Brooder, col="gray", cex=size, xlim=c(), ylim=c(0,0.6), xlab="Genomic position (bp)",ylab = "Fst", main=contig)
+plot(data2$mid,data2$pi_Egglayer, col="darkgoldenrod2", cex=size,  xlim=c(), ylim=c(0,0.015), ylab = "pi", xlab="Genomic position (bp)")
+points(data2$mid,data2$pi_Brooder, col="cyan3", cex=size)
+points(data2$mid,data2$dxy_Egglayer_Brooder, col="black", cex=size)
+
+##################
+
+contig <- "Contig47534"
+
+data2 <- subset(data,scaffold==contig)
+
+size = 0.7
+plot(data2$mid,data2$Fst_Egglayer_Brooder, col="gray", cex=size, xlim=c(16000,25000), ylim=c(0,0.3), xlab="Genomic position (bp)",ylab = "Fst", main=contig)
+plot(data2$mid,data2$pi_Egglayer, col="darkgoldenrod2", cex=size,  xlim=c(16000,25000), ylim=c(0,0.015), ylab = "pi", xlab="Genomic position (bp)")
+points(data2$mid,data2$pi_Brooder, col="cyan3", cex=size)
+points(data2$mid,data2$dxy_Egglayer_Brooder, col="black", cex=size)
+
+##################
+
+contig <- "Contig79517"
+
+data2 <- subset(data,scaffold==contig)
+
+size = 0.7
+plot(data2$mid,data2$Fst_Egglayer_Brooder, col="gray", cex=size, xlim=c(0,20000), ylim=c(0,1.0), xlab="Genomic position (bp)",ylab = "Fst", main=contig)
+plot(data2$mid,data2$pi_Egglayer, col="darkgoldenrod2", cex=size,  xlim=c(0,20000), ylim=c(0,0.020), ylab = "pi", xlab="Genomic position (bp)")
+points(data2$mid,data2$pi_Brooder, col="cyan3", cex=size)
+points(data2$mid,data2$dxy_Egglayer_Brooder, col="black", cex=size)
+
+##################
+
+contig <- "Contig40336"
+
+data2 <- subset(data,scaffold==contig)
+
+size = 0.7
+plot(data2$mid,data2$Fst_Egglayer_Brooder, col="gray", cex=size, xlim=c(20000,50000), ylim=c(0,0.45), xlab="Genomic position (bp)",ylab = "Fst", main=contig)
+plot(data2$mid,data2$pi_Egglayer, col="darkgoldenrod2", cex=size,  xlim=c(20000,50000), ylim=c(0,0.02), ylab = "pi", xlab="Genomic position (bp)")
+points(data2$mid,data2$pi_Brooder, col="cyan3", cex=size)
+points(data2$mid,data2$dxy_Egglayer_Brooder, col="black", cex=size)
+
+##################
+contig <- "Contig48348"
+
+data2 <- subset(data,scaffold==contig)
+
+size = 0.7
+plot(data2$mid,data2$Fst_Egglayer_Brooder, col="gray", cex=size, xlim=c(30000,45000), ylim=c(0,0.8), xlab="Genomic position (bp)",ylab = "Fst", main=contig)
+plot(data2$mid,data2$pi_Egglayer, col="darkgoldenrod2", cex=size,  xlim=c(30000,45000), ylim=c(0,0.0155), ylab = "pi", xlab="Genomic position (bp)")
+points(data2$mid,data2$pi_Brooder, col="cyan3", cex=size)
+points(data2$mid,data2$dxy_Egglayer_Brooder, col="black", cex=size)
+
+#################
+
+contig <- "Contig76820"
+
+data2 <- subset(data,scaffold==contig)
+
+size = 0.7
+plot(data2$mid,data2$Fst_Egglayer_Brooder, col="gray", cex=size, xlim=c(), ylim=c(0,0.5), xlab="Genomic position (bp)",ylab = "Fst", main=contig)
+plot(data2$mid,data2$pi_Egglayer, col="darkgoldenrod2", cex=size,  xlim=c(), ylim=c(0,0.015), ylab = "pi", xlab="Genomic position (bp)")
+points(data2$mid,data2$pi_Brooder, col="cyan3", cex=size)
+points(data2$mid,data2$dxy_Egglayer_Brooder, col="black", cex=size)
+
+#################
+
+contig <- "Contig61890"
+
+data2 <- subset(data,scaffold==contig)
+
+size = 0.7
+plot(data2$mid,data2$Fst_Egglayer_Brooder, col="gray", cex=size, xlim=c(), ylim=c(0,0.8), xlab="Genomic position (bp)",ylab = "Fst", main=contig)
+plot(data2$mid,data2$pi_Egglayer, col="darkgoldenrod2", cex=size,  xlim=c(), ylim=c(0,0.025), ylab = "pi", xlab="Genomic position (bp)")
+points(data2$mid,data2$pi_Brooder, col="cyan3", cex=size)
+points(data2$mid,data2$dxy_Egglayer_Brooder, col="black", cex=size)
+
+###################
+
+contig <- "Contig41237"
+
+data2 <- subset(data,scaffold==contig)
+
+size = 0.7
+plot(data2$mid,data2$Fst_Egglayer_Brooder, col="gray", cex=size, xlim=c(130000,160000), ylim=c(0,0.6), xlab="Genomic position (bp)",ylab = "Fst", main=contig)
+plot(data2$mid,data2$pi_Egglayer, col="darkgoldenrod2", cex=size,  xlim=c(130000,160000), ylim=c(0,0.0175), ylab = "pi", xlab="Genomic position (bp)")
+points(data2$mid,data2$pi_Brooder, col="cyan3", cex=size)
+points(data2$mid,data2$dxy_Egglayer_Brooder, col="black", cex=size)
+
+###################
+
+contig <- "Contig3968"
+
+data2 <- subset(data,scaffold==contig)
+
+size = 0.7
+plot(data2$mid,data2$Fst_Egglayer_Brooder, col="gray", cex=size, xlim=c(), ylim=c(0,1.0), xlab="Genomic position (bp)",ylab = "Fst", main=contig)
+plot(data2$mid,data2$pi_Egglayer, col="darkgoldenrod2", cex=size,  xlim=c(), ylim=c(0,0.02), ylab = "pi", xlab="Genomic position (bp)")
+points(data2$mid,data2$pi_Brooder, col="cyan3", cex=size)
+points(data2$mid,data2$dxy_Egglayer_Brooder, col="black", cex=size)
+
+###################
+
+contig <- "Contig2032"
+
+data2 <- subset(data,scaffold==contig)
+
+size = 0.7
+plot(data2$mid,data2$Fst_Egglayer_Brooder, col="gray", cex=size, xlim=c(40000,57000), ylim=c(0,0.5), xlab="Genomic position (bp)",ylab = "Fst", main=contig)
+plot(data2$mid,data2$pi_Egglayer, col="darkgoldenrod2", cex=size,  xlim=c(40000,57000), ylim=c(0,0.0275), ylab = "pi", xlab="Genomic position (bp)")
+points(data2$mid,data2$pi_Brooder, col="cyan3", cex=size)
+points(data2$mid,data2$dxy_Egglayer_Brooder, col="black", cex=size)
+
+#####################
+
+contig <- "Contig61156"
+
+data2 <- subset(data,scaffold==contig)
+
+size = 0.7
+plot(data2$mid,data2$Fst_Egglayer_Brooder, col="gray", cex=size, xlim=c(38000,55000), ylim=c(0,0.45), xlab="Genomic position (bp)",ylab = "Fst", main=contig)
+plot(data2$mid,data2$pi_Egglayer, col="darkgoldenrod2", cex=size,  xlim=c(38000,55000), ylim=c(0,0.0175), ylab = "pi", xlab="Genomic position (bp)")
+points(data2$mid,data2$pi_Brooder, col="cyan3", cex=size)
+points(data2$mid,data2$dxy_Egglayer_Brooder, col="black", cex=size)
+
+#####################
+
+contig <- "Contig76495"
+
+data2 <- subset(data,scaffold==contig)
+
+size = 0.7
+plot(data2$mid,data2$Fst_Egglayer_Brooder, col="gray", cex=size, xlim=c(), ylim=c(0,0.7), xlab="Genomic position (bp)",ylab = "Fst", main=contig)
+plot(data2$mid,data2$pi_Egglayer, col="darkgoldenrod2", cex=size,  xlim=c(), ylim=c(0,0.04), ylab = "pi", xlab="Genomic position (bp)")
+points(data2$mid,data2$pi_Brooder, col="cyan3", cex=size)
+points(data2$mid,data2$dxy_Egglayer_Brooder, col="black", cex=size)
+
+######################
+
+contig <- "Contig47979"
+
+data2 <- subset(data,scaffold==contig)
+
+size = 0.7
+plot(data2$mid,data2$Fst_Egglayer_Brooder, col="gray", cex=size, xlim=c(1500,17000), ylim=c(0,0.45), xlab="Genomic position (bp)",ylab = "Fst", main=contig)
+plot(data2$mid,data2$pi_Egglayer, col="darkgoldenrod2", cex=size,  xlim=c(1500,17000), ylim=c(0,0.04), ylab = "pi", xlab="Genomic position (bp)")
+points(data2$mid,data2$pi_Brooder, col="cyan3", cex=size)
+points(data2$mid,data2$dxy_Egglayer_Brooder, col="black", cex=size)
+
+#####################
+
+contig <- "Contig60406"
+
+data2 <- subset(data,scaffold==contig)
+
+size = 0.7
+plot(data2$mid,data2$Fst_Egglayer_Brooder, col="gray", cex=size, xlim=c(1000,45000), ylim=c(0,0.85), xlab="Genomic position (bp)",ylab = "Fst", main=contig)
+plot(data2$mid,data2$pi_Egglayer, col="darkgoldenrod2", cex=size,  xlim=c(1500,17000), ylim=c(0,0.015), ylab = "pi", xlab="Genomic position (bp)")
+points(data2$mid,data2$pi_Brooder, col="cyan3", cex=size)
+points(data2$mid,data2$dxy_Egglayer_Brooder, col="black", cex=size)
+
+####################
+
+contig <- "Contig181768"
+
+data2 <- subset(data,scaffold==contig)
+
+size = 0.7
+plot(data2$mid,data2$Fst_Egglayer_Brooder, col="gray", cex=size, xlim=c(), ylim=c(0,0.65), xlab="Genomic position (bp)",ylab = "Fst", main=contig)
+plot(data2$mid,data2$pi_Egglayer, col="darkgoldenrod2", cex=size,  xlim=c(), ylim=c(0,0.015), ylab = "pi", xlab="Genomic position (bp)")
+points(data2$mid,data2$pi_Brooder, col="cyan3", cex=size)
+points(data2$mid,data2$dxy_Egglayer_Brooder, col="black", cex=size)
+
+
+#####################
+
+contig <- "Contig54667"
+
+data2 <- subset(data,scaffold==contig)
+
+size = 0.7
+plot(data2$mid,data2$Fst_Egglayer_Brooder, col="gray", cex=size, xlim=c(5000,52000), ylim=c(0,1.0), xlab="Genomic position (bp)",ylab = "Fst", main=contig)
+plot(data2$mid,data2$pi_Egglayer, col="darkgoldenrod2", cex=size,  xlim=c(5000,52000), ylim=c(0,0.035), ylab = "pi", xlab="Genomic position (bp)")
+points(data2$mid,data2$pi_Brooder, col="cyan3", cex=size)
+points(data2$mid,data2$dxy_Egglayer_Brooder, col="black", cex=size)
+
+
+######################
+
+contig <- "Contig59771"
+
+data2 <- subset(data,scaffold==contig)
+
+size = 0.7
+plot(data2$mid,data2$Fst_Egglayer_Brooder, col="gray", cex=size, xlim=c(), ylim=c(0,1.0), xlab="Genomic position (bp)",ylab = "Fst", main=contig)
+plot(data2$mid,data2$pi_Egglayer, col="darkgoldenrod2", cex=size,  xlim=c(), ylim=c(0,0.045), ylab = "pi", xlab="Genomic position (bp)")
+points(data2$mid,data2$pi_Brooder, col="cyan3", cex=size)
+points(data2$mid,data2$dxy_Egglayer_Brooder, col="black", cex=size)
+
+
+######################
+
+contig <- "Contig83530"
+
+data2 <- subset(data,scaffold==contig)
+
+size = 0.7
+plot(data2$mid,data2$Fst_Egglayer_Brooder, col="gray", cex=size, xlim=c(), ylim=c(0,1.0), xlab="Genomic position (bp)",ylab = "Fst", main=contig)
+plot(data2$mid,data2$pi_Egglayer, col="darkgoldenrod2", cex=size,  xlim=c(), ylim=c(0,0.027), ylab = "pi", xlab="Genomic position (bp)")
+points(data2$mid,data2$pi_Brooder, col="cyan3", cex=size)
+points(data2$mid,data2$dxy_Egglayer_Brooder, col="black", cex=size)
+
+######################
+
+contig <- "Contig81225"
+
+data2 <- subset(data,scaffold==contig)
+
+size = 0.7
+plot(data2$mid,data2$Fst_Egglayer_Brooder, col="gray", cex=size, xlim=c(), ylim=c(0,1.0), xlab="Genomic position (bp)",ylab = "Fst", main=contig)
+plot(data2$mid,data2$pi_Egglayer, col="darkgoldenrod2", cex=size,  xlim=c(), ylim=c(0,0.032), ylab = "pi", xlab="Genomic position (bp)")
+points(data2$mid,data2$pi_Brooder, col="cyan3", cex=size)
+points(data2$mid,data2$dxy_Egglayer_Brooder, col="black", cex=size)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

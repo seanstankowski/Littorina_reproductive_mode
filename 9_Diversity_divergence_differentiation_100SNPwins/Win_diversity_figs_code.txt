@@ -20,20 +20,6 @@ ggplot(long_data, aes(x = values, y = conditions)) +
   xlim(0, 0.02)
 
 
-############ density plot ###
-
-data <- read.csv('pi_brood_egg_joy.csv',header=TRUE)
-
-long_data <- data %>% 
-    rownames_to_column("id") %>%
-    gather(conditions, values, -id)
-    
-ggplot(long_data, aes(x = values, y = conditions)) +
-  geom_density_ridges(quantile_lines=TRUE,
-                      quantile_fun=function(x,...)mean(x))+
-  theme(legend.position = "none") + 
-  xlim(0, 0.02)
-
 
 ############################## topo weights and diversity & divergence
 ### 

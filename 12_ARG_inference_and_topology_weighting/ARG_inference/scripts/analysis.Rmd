@@ -1,0 +1,929 @@
+---
+title: "Haplotype Block Analysis for Littorina"
+output: html_notebook
+---
+
+```{r, setup, include=FALSE}
+knitr::opts_knit$set(root.dir = "/nfs/scistore18/bartogrp/apal/Littorina/HaploBlocks/")
+library("argweaver")
+source(file = "~/Littorina/HaploBlocks/scripts/bin/functions_v2.R")
+source(file = "~/Littorina/HaploBlocks/scripts/bin/functions_from_argweaver.R")
+```
+
+```{r fig1, fig.width=5, fig.height=5}
+## Make plot for ARGweaver time points
+timepoints=function(K, delta, tmax){(exp((seq(K)-1)/(K-1)*log(1+delta*(tmax)))-1)/delta} 
+
+par(mar = c(5, 4, 4, 4) + 1)
+Ne=20000; K=30; tmax=20*Ne; 
+#data.frame(Ne2 = timepoints(K, 1e-2, tmax2)/Ne2, time = timepoints(K, 1e-2, tmax2))
+plot(seq(K),timepoints(K, 1e-2, tmax)/Ne, ylim=c(0,20), ylab = "Time (Ne)", xlab = "Time steps", type = 'o', pch=20, col="black", lwd=3, main="Discrete Time Points for ARGweaver Analysis") +
+  abline(h=1, lwd=2, col="red")
+```
+
+
+
+```{r}
+#Read sample IDs (automate _1 and _2 for haplotypes)
+egg_layers <- read.table("./sample/egg_hap.txt")
+egg_layers[,2] <- "egg"
+egg_layers[,3] <- "gold4"
+brooders <- read.table("./sample/brood_hap.txt")
+brooders[,2] <- "brooder"
+brooders[,3] <- "blue"
+
+snail <- rbind(brooders, egg_layers)
+colnames(snail)<-c("ID","type","col")
+snail$order <- seq(nrow(snail))
+
+argID <- read.table("./sample/Contig1808_argID_hap.txt", header=T)
+argID$argID <- 0:(nrow(argID)-1)
+colnames(argID) <- c("ID", "argID")
+snail <- merge(snail, argID, by = "ID")
+snail <- snail[order(snail$order),]
+
+eggID <- snail[which(snail$type == "egg"), "argID"] 
+broodID <- snail[which(snail$type == "brooder"), "argID"] 
+```
+
+```{r}
+# Make list of inidviduals to asign colours for plotting trees ----
+indColour=list()
+for (id in snail$ID){indColour[[id]] <- snail[which(snail$ID == id),"col"]}
+#indColour
+
+indColour_argIDs <- indColour 
+names(indColour_argIDs) <- as.character(snail[,"argID"])
+#indColour_argIDs
+```
+
+# Contig 1808
+```{r}
+# Read sites (automate process)
+c1_sites <- readSites("VCFs/Contig1808.sites") #577sites
+#str(c1_sites)
+c1_sites <- data.frame(pos=c1_sites$pos, c1_sites$sites)
+c1_sites$snpID <- seq(nrow(c1_sites))
+c1_sites <- c1_sites[,c("snpID","pos",snail$ID)]
+
+for (snpID in c(1:nrow(c1_sites))){
+  cat(snpID, c1_sites[snpID,'pos'])
+  alleles <- c1_sites[snpID,snail$ID]
+
+  majAllele <- levels(as.factor(alleles))[which.max(table(as.factor(alleles)))]
+  minAllele <- levels(as.factor(alleles))[which.min(table(as.factor(alleles)))]
+  
+  c1_sites[snpID,which(c1_sites[snpID,] == majAllele)] <- 1
+  c1_sites[snpID,which(c1_sites[snpID,] == minAllele)] <- 0
+}
+
+str(c1_sites)
+```
+
+```{r}
+### FUNCTION ###
+plot_snps <- function(snps, clade, colour_name){
+  nsites <- nrow(snps)
+  for(i in c(1:nsites)){
+      majClade <- which(snps[i,3:ncol(snps)] == clade)
+      count <- length(majClade)
+      points(rep(snps[i,'pos'],count), majClade-2, col=adjustcolor(colour_name, alpha = 0.7), cex = 0.7)
+    }
+}
+```
+
+```{r fig2, fig.width=20, fig.height=8}
+par(mfrow=c(2,1))
+
+nsites <- nrow(c1_sites)
+plot(c1_sites$pos, rep(1, nsites), type='n', ylim=c(1,100), xlab = "Position", ylab = "Individual ID") +
+  plot_snps(c1_sites, 1, "grey") +
+  plot_snps(c1_sites, 0, "blue") +
+  abline(v=c(7200, 19000), lwd=2)
+  # for(i in 1:100){lines(1:30000, rep(i, 30000), lty=2, col="grey70")}
+
+plot(c1_sites$pos, rep(1, nsites), type='n', ylim=c(1,100), xlim=c(7200, 19000), xlab = "Position", ylab = "Individual ID") +
+  plot_snps(c1_sites, 1, "grey") +
+  plot_snps(c1_sites, 0, "blue") #+
+  # for(i in 1:100){lines(1:30000, rep(i, 30000), lty=2, col="grey70")}
+```
+
+
+# Contig 1808 FULL
+```{r}
+c1_mcmc <- "./Contig1808_run1/sample/Contig1808.stats"
+plotTraces(c1_mcmc, stats=c("prior", "likelihood", "joint", "recombs", "arglen", "noncompats"))
+#burnin4000 used 
+
+```
+
+```{r}
+c1_tmrca_all <- readArgSummary("./Contig1808_run1/Contig1808.tmrca.samples_Haplo.bed.gz")
+c1_tmrca_egg <- readArgSummary("./Contig1808_run1/Contig1808.tmrca.egg.bed.gz")
+c1_tmrca_brood <- readArgSummary("./Contig1808_run1/Contig1808.tmrca.brood.bed.gz")
+Ne=2e5
+```
+
+```{r fig1, fig.width=20, fig.height=16}
+par(mfrow=c(4,1))
+
+plot(c1_tmrca_egg$chromStart/1e3, c1_tmrca_egg$tmrca_quantile_0.500/Ne, type="l", log="y", ylim=c(0.1,10), col="gold4", lwd=3, xlab="Position (kb)", main="Contig1808 FULL", ylab="TMRCA median (Ne)")
+lines(c1_tmrca_brood$chromStart/1e3, c1_tmrca_brood$tmrca_quantile_0.500/Ne, type="l",  col="blue", lwd=3)
+#lines(c1_tmrca_all$chromStart/1e3, c1_tmrca_all$tmrca_quantile_0.500/Ne, type="l", col="black", lwd=1)
+polygon(x = c(c1_tmrca_brood$chromStart/1e3, rev(c1_tmrca_brood$chromStart/1e3)),
+        y = c(c1_tmrca_brood$tmrca_quantile_0.050/Ne, rev(c1_tmrca_brood$tmrca_quantile_0.950)/Ne),
+        col = adjustcolor("blue",alpha=0.3), border=F) 
+polygon(x = c(c1_tmrca_egg$chromStart/1e3, rev(c1_tmrca_egg$chromStart/1e3)),
+        y = c(c1_tmrca_egg$tmrca_quantile_0.050/Ne, rev(c1_tmrca_egg$tmrca_quantile_0.950)/Ne),
+        col = adjustcolor("gold4",alpha=0.3), border=F) 
+abline(v=c(11, 16), lwd=2, lty=2)
+
+plot(c1_sites$pos, rep(1, nrow(c1_sites)), type='n', ylim=c(1,100), xlab = "Position", ylab = "Individual ID") +
+  plot_snps(c1_sites, 1, "grey") +
+  plot_snps(c1_sites, 0, "blue")
+```
+
+```{r fig, fig.width=20, fig.height=8}
+par(mfrow=c(2,1))
+plot(c1_tmrca_egg$chromStart/1e3, c1_tmrca_egg$tmrca_quantile_0.500/Ne, type="l", ylim=c(0.1,10), xlim=c(7.2, 19), log="y", col="gold4", lwd=3, xlab="Position (kb)", main="Contig1808 FULL", ylab="TMRCA median (Ne)")
+lines(c1_tmrca_brood$chromStart/1e3, c1_tmrca_brood$tmrca_quantile_0.500/Ne, type="l", col="blue", lwd=3)
+#lines(c1_tmrca_all$chromStart/1e3, c1_tmrca_all$tmrca_quantile_0.500/Ne, type="l", log="y", col="black", lwd=1)
+polygon(x = c(c1_tmrca_brood$chromStart/1e3, rev(c1_tmrca_brood$chromStart/1e3)),
+        y = c(c1_tmrca_brood$tmrca_quantile_0.050/Ne, rev(c1_tmrca_brood$tmrca_quantile_0.950)/Ne),
+        col = adjustcolor("blue",alpha=0.3), border=F) 
+polygon(x = c(c1_tmrca_egg$chromStart/1e3, rev(c1_tmrca_egg$chromStart/1e3)),
+        y = c(c1_tmrca_egg$tmrca_quantile_0.050/Ne, rev(c1_tmrca_egg$tmrca_quantile_0.950)/Ne),
+        col = adjustcolor("gold4",alpha=0.3), border=F) 
+
+plot(c1_sites$pos, rep(1, nsites), type='n', ylim=c(1,100), xlim=c(7200, 19000), xlab = "Position", ylab = "Individual ID") +
+  plot_snps(c1_sites, 1, "grey80") +
+  plot_snps(c1_sites, 0, "blue")
+```
+
+```{r}
+### Check how many unique classes brooder individuals share allele type
+#which(c1_sites)
+```
+
+
+```{r}
+## Read trees and SPRs
+# Read trees in the whole region
+tr1 <- read.table("./Contig1808_run1/sample/Contig1808.10000_trees.txt")
+colnames(tr1) <- c("event","chromStart","chromEnd","tree")
+str(tr1) #892 trees in 30kb region
+
+# Read SPRs in the whole region
+spr1 <- read.table("./Contig1808_run1/sample/Contig1808.10000_SPR.txt")
+colnames(spr1) <- c("event","position", "recomb_node", "recomb_time", "coal_node", "coal_time")
+str(spr1)
+```
+
+
+
+```{r}
+## Trees in focal region
+chromStart <- 7200
+chromEnd <- 19000
+
+tr1_sub <- subset_genomic_interval(tr1, chromStart = chromStart, chromEnd = chromEnd)
+nrow(tr1_sub) #506 trees in 6kb region
+
+c1_sites_sub <- c1_sites[which(c1_sites$pos>=chromStart & c1_sites$pos<=chromEnd),]
+nrow(c1_sites_sub) #299 SNPs - snpID 96-241
+```
+
+```{r}
+## Extracting edge information from each tree, and store them as a list
+tr1_sub_list <- extract_edges(tr1_sub, Ne)
+```
+
+```{r}
+## Extract trees at each SNP position
+tr1_snps <- extract_trees_at_SNPs(c1_sites_sub, tr1_sub, spr1)
+#rownames(tr1_snps) <- seq(nrow(tr1_snps))
+```
+
+```{r fig, fig.height=5, fig.width=20}
+## Plot all Trees
+par(mfrow=c(2, 7))
+for(i in 1:nrow(tr1_snps)){plotTree(tr1_snps$tree[i], leafCol = indColour_argIDs,  logScale = T, timeScale = 1/Ne, ylim=c(0.1,5))}
+# lapply(tr1_snps$tree, function(x){plotTree(x, leafCol = indColour_argIDs)})
+```
+
+```{r}
+## 
+timeScale = 1/Ne
+tr1_snps_list <- list()
+
+for (rowID in c(1:nrow(tr1_snps))){
+  
+  cat (rowID, tr1_snps$snpID[rowID], tr1_snps$pos[rowID],"\n")
+  alleles <- tr1_snps[rowID, snail$ID]
+  
+  #majAllele <- levels(as.factor(alleles))[which.max(table(as.factor(alleles)))]
+  #minAllele <- levels(as.factor(alleles))[which.min(table(as.factor(alleles)))]
+  majClade_brood <- setdiff(names(alleles[which(alleles == 1)]), egg_layers[,1])
+  minClade_brood <- setdiff(brooders[,1], majClade_brood)
+  
+  majClade_broodID <- snail[which(snail$ID %in% majClade_brood),"argID"] # 0-indexed
+  tr1_snps$majClade_broodID[rowID] <- list(majClade_broodID)
+  tr1_snps$majAlleleCount_brood[rowID] <- length(tr1_snps$majClade_broodID[rowID][[1]]) 
+  
+  minClade_broodID <- snail[which(snail$ID %in% minClade_brood),"argID"] # 0-indexed
+  tr1_snps$minClade_broodID[rowID] <- list(minClade_broodID)
+  tr1_snps$minAlleleCount_brood[rowID] <- 50-tr1_snps$majAlleleCount_brood[rowID]
+  
+  ## make a function 
+  tr <- tr1_snps[rowID,"tree"]
+  tr.egg <- pruneTree(tree = tr, seqs = as.character(eggID)) # 0-indexed
+  tr.brood <- pruneTree(tree = tr, seqs = as.character(broodID)) # 0-indexed
+  
+  tr1_snps_list$tree[rowID] <- tr.brood
+  apeTree <- read.tree(text=tr.brood)
+  
+  ## Tree
+  nleaf <- length(apeTree$tip.label)
+  rootage <- getTreeDepth(apeTree)*timeScale
+  rootNode <- getRootNode(apeTree)
+  edge <- as.data.frame(apeTree$edge)
+  names(edge) <- c("anc", "dec")
+  edge$anc.label <- sapply(apeTree$edge[,1], select.tip.or.node, tree = apeTree)
+  edge$dec.label <- sapply(apeTree$edge[,2], select.tip.or.node, tree = apeTree)
+  
+  edge <- rbind(edge, data.frame(anc=-1, dec=rootNode, anc.label=-1, dec.label=rootNode))
+  nnode <- nrow(edge)
+  edge$length <- c(apeTree$edge.length*timeScale, max(maxtime - rootage, 1))
+  edge$depth <- rep(rootage, nnode)
+  for (i in 1:nnode) {j <- i
+    while (1) {if (edge$dec[j] == rootNode) break
+        edge$depth[i] <- edge$depth[i] - edge$length[j]
+        j <- which(edge[,"dec"] == edge[j,"anc"])}}
+  
+  edge[which(edge$anc == -1),"dec.label"] <- edge[1,"anc.label"]
+  # edge$tip.label <- rep("", nrow(edge))
+  # for (i in 1:length(apeTree$tip.label)){edge[edge$dec==i,"tip.label"] <- apeTree$tip.label[i]}
+
+  for (dec.nodeID in c(1:nrow(edge))){
+    decs <- Descendants(apeTree, edge$dec[dec.nodeID],"tips")[[1]]
+    edge$tips.from.dec[dec.nodeID] <- list(apeTree$tip.label[decs])
+    edge$majClade.node[dec.nodeID] <- all(as.character(majClade_broodID) %in% apeTree$tip.label[decs])
+    edge$minClade.node[dec.nodeID] <- ifelse(length(minClade_broodID) != 0, all(as.character(minClade_broodID) %in% apeTree$tip.label[decs]),'NA')
+  }
+  
+  tr1_snps_list$tree.attributes[[rowID]] <- data.frame(edge)
+  tr1_snps_list$snpID[[rowID]] <- tr1_snps$snpID[rowID]
+  majClade.node <- edge[which(edge$majClade.node==T),'dec.label']
+  #if (length(majClade.node)!=1){majClade.node <- edge[which(edge$anc != -1 & edge$majClade.node==T),'dec.label']}
+  if (length(majClade.node)!=1){majClade.node <- edge[which(edge$anc != -1 & edge$majClade.node==T),'dec.label']}
+  if (length(majClade.node)!=1){
+     for (i in majClade.node){
+      if (length(edge$tips.from.dec[i][[1]]) == length(minClade_broodID)){
+        majClade.node.final <- i
+      }
+    }
+  }else{majClade.node.final <- majClade.node}
+  
+  tr1_snps$majClade.node.depth[rowID] <- edge[which(edge$dec.label == majClade.node.final),'depth']
+  #tr1_snps$snpID[rowID] <- snpID
+}
+tr1_snps$node.jump <- c('NA',diff(floor(as.numeric(tr1_snps$majClade.node))))
+tr1_snps$depth.jump <- c('NA',diff(floor(tr1_snps$majClade.node.depth)))
+```
+
+```{r}
+# all allele frequency classes
+table(tr1_snps$majAlleleCount_brood)
+# for now, i am plotting SNP frequencies = 47,48,49
+```
+
+```{r}
+#str(tr1_snps[,c(1,102,104,105,112:119)])
+# tr1_af45 <- tr1_snps[which(tr1_snps$majAlleleCount_brood == 45),-c(3:102,106)] 
+# tr1_af46 <- tr1_snps[which(tr1_snps$majAlleleCount_brood == 46),-c(3:102,106)]
+# tr1_af47 <- tr1_snps[which(tr1_snps$majAlleleCount_brood == 47),-c(3:102,106)] #YES
+# tr1_af48 <- tr1_snps[which(tr1_snps$majAlleleCount_brood == 48),-c(3:102,106)]
+# tr1_af49 <- tr1_snps[which(tr1_snps$majAlleleCount_brood == 49),-c(3:102,106)] #YES
+
+tr1_af41 <- tr1_snps[which(tr1_snps$majAlleleCount_brood == 41),-c(3:102,106)] #YES
+tr1_af45 <- tr1_snps[which(tr1_snps$majAlleleCount_brood == 45),-c(3:102,106)] #YES
+tr1_af47 <- tr1_snps[which(tr1_snps$majAlleleCount_brood == 47),-c(3:102,106)] #YES
+tr1_af48 <- tr1_snps[which(tr1_snps$majAlleleCount_brood == 48),-c(3:102,106)] #YES
+tr1_af50 <- tr1_snps[which(tr1_snps$majAlleleCount_brood == 50),-c(3:102,106)] #YES
+
+```
+
+```{r}
+#tr1_af47
+#tr1_af49
+#tr1_af50
+```
+
+```{r}
+## finding unique edges
+subset_clades <- function(snp, alleleCount){snp[which(snp$majAlleleCount_brood==alleleCount),-c(3:102,106)]}
+
+edges1<- data.frame()
+for(i in 47){
+  cat(i,"\n")
+  nodes <- subset_clades(tr1_snps, i)
+  if(nrow(nodes)!=0){
+      nodes %>%
+        dplyr::distinct(minClade_broodID) -> uniqueInds
+    for (j in seq(nrow(uniqueInds))){
+      cat("\t",j,"\n")
+      inds = uniqueInds[j,][[1]]
+      edges_raw <- find_clade_depths(nodes, tr1_snps_list, count = i, inds)
+      
+      if(nrow(edges_raw) == 0){
+        edges_raw <- data.frame(depth = NA)
+        edges_raw$tips.from.dec[1] <- list(inds)
+        rowID <- sapply(nodes$minClade_broodID, function(decs) all(inds %in% decs))
+        edges_raw$snpID <- list(nodes[rowID,"snpID"])
+        edges_raw$No.of.SNPs <- nrow(edges_raw)
+      }else{
+        edges_raw$snpID <- list(edges_raw$snpID)
+        edges_raw$depth <- round(edges_raw$depth,4)
+        edges_raw$No.of.SNPs <- nrow(edges_raw)
+        edges_raw <- edges_raw[1,c("depth", "tips.from.dec","snpID","No.of.SNPs")]
+      }
+      edges1 <- rbind(edges1, edges_raw)
+    }
+  }else{
+    edges1 <- edges1
+  }
+}
+
+nodes <- subset_clades(tr1_snps,20)
+nodes$majClade.node.depth <- round(nodes$majClade.node.depth,4)
+nodes %>%
+  dplyr::distinct(majClade.node.depth) -> uniqueCoalTime
+for (i in seq(nrow(uniqueCoalTime))){
+  edges_raw <- nodes[which(nodes$majClade.node.depth == uniqueCoalTime[i,]),]
+  edges_raw$snpID <- list(edges_raw$snpID)
+  edges_raw$No.of.SNPs <- nrow(edges_raw)
+  edges_raw$tips.from.dec <- "ALL"
+  edges_raw$depth  <- edges_raw$majClade.node.depth
+  edges_raw <- edges_raw[1,c("depth", "tips.from.dec","snpID","No.of.SNPs")]
+  edges1<- rbind(edges1, edges_raw)
+}
+row.names(edges1) <- seq(nrow(edges1))
+edges1$edgeID <- seq(nrow(edges1))
+```
+
+
+```{r}
+## getting uniqie edges for fixed alleles af50
+tr1_af50$majClade.node.depth <- round(tr1_af50$majClade.node.depth,3)
+
+table(tr1_af50$majClade.node.depth) #considering 1,2,4,5,6 at least >2 SNPs
+
+node_depths50 <- sort(unique(tr1_af50$majClade.node.depth))
+indsALL <- broodID
+
+c1_bl50 <- list()
+c1_hap50 <- list()
+c1_hap50_all <- list()
+
+for (i in seq(length(node_depths50))){
+  c1_bl50[[i]] <- tr1_af50[which(tr1_af50$majClade.node.depth == node_depths50[i]), c("pos","snpID")]
+  c1_hap50[[i]] <- find_hapblocks(indsALL, node_depths50[i], FALSE, tr1_sub_list)
+  c1_hap50_all[[i]] <- find_disjunct_hapblocks(c1_hap50[[i]]) 
+}
+```
+
+```{r}
+## getting uniqie edges for fixed alleles af48
+tr1_af48$majClade.node.depth <- round(tr1_af48$majClade.node.depth,3)
+table(tr1_af48$majClade.node.depth)
+
+c1_bl48 <- tr1_af48[which(tr1_af48$majClade.node.depth == 0.746), c("pos","snpID")]
+c1_hap48 <- find_hapblocks(c(30, 2), 0.746, FALSE, tr1_sub_list)
+#c1_hap48_all <- list()
+c1_hap48_all <- find_disjunct_hapblocks(c1_hap48)
+```
+
+
+```{r}
+## getting uniqie edges for fixed alleles af47
+tr1_af47$majClade.node.depth <- round(tr1_af47$majClade.node.depth,3)
+c1_bl47 <- tr1_af47[which(round(tr1_af47$majClade.node.depth,3) == 0.359), c("pos","snpID")]
+c1_hap47 <- find_hapblocks(c(12,23,51), 0.359, FALSE, tr1_sub_list)
+#c1_hap47_all <- list()
+c1_hap47_all <- find_disjunct_hapblocks(c1_hap47)
+```
+
+```{r}
+## getting uniqie edges for fixed alleles af47
+tr1_af45$majClade.node.depth <- round(tr1_af45$majClade.node.depth,3)
+c1_bl45 <- tr1_af45[which(tr1_af45$majClade.node.depth == 0.359), c("pos","snpID")]
+c1_hap45 <- find_hapblocks(c(81,82,30,70,84), 0.359, FALSE, tr1_sub_list)
+#c1_hap47_all <- list()
+c1_hap45_all <- find_disjunct_hapblocks(c1_hap45)
+```
+
+```{r}
+## getting uniqie edges for fixed alleles af47
+tr1_af41$majClade.node.depth <- round(tr1_af41$majClade.node.depth,3)
+c1_bl41 <- tr1_af41[which(tr1_af45$majClade.node.depth == 1.075), c("pos","snpID")]
+c1_hap41 <- find_hapblocks(c(87, 56, 81, 82, 16, 53, 84, 33, 68), 0.359, FALSE, tr1_sub_list)
+#c1_hap47_all <- list()
+c1_hap41_all <- find_disjunct_hapblocks(c1_hap41)
+```
+
+```{r}
+#read tmrca from iter 10000
+c1_tmrca10000_all <- readArgSummary("./Contig1808_run1/Contig1808.10000.tmrca.samples_Haplo.bed.gz")
+c1_tmrca10000_egg <- readArgSummary("./Contig1808_run1/Contig1808.10000.tmrca.egg.bed.gz")
+c1_tmrca10000_brood <- readArgSummary("./Contig1808_run1/Contig1808.10000.tmrca.brood.bed.gz")
+```
+
+
+```{r fig, fig.height=12, fig.width=20}
+par(mfrow=c(3,1))
+plot(c1_tmrca10000_egg$chromStart/1e3, c1_tmrca10000_egg$tmrca_quantile_0.500/Ne, type="s", ylim=c(0.1,10), xlim=c(7.2, 19), log="y", col="gold4", lwd=3, xlab="Position (kb)", main="Contig1808 FULL", ylab="TMRCA median (Ne)")
+lines(c1_tmrca10000_brood$chromStart/1e3, c1_tmrca10000_brood$tmrca_quantile_0.500/Ne, type="s", col="blue", lwd=3)
+#lines(c1_tmrca_all$chromStart/1e3, c1_tmrca_all$tmrca_quantile_0.500/Ne, type="l", log="y", col="black", lwd=1)
+polygon(x = c(c1_tmrca_brood$chromStart/1e3, rev(c1_tmrca_brood$chromStart/1e3)),
+        y = c(c1_tmrca_brood$tmrca_quantile_0.050/Ne, rev(c1_tmrca_brood$tmrca_quantile_0.950)/Ne),
+        col = adjustcolor("blue",alpha=0.3), border=F) 
+polygon(x = c(c1_tmrca_egg$chromStart/1e3, rev(c1_tmrca_egg$chromStart/1e3)),
+        y = c(c1_tmrca_egg$tmrca_quantile_0.050/Ne, rev(c1_tmrca_egg$tmrca_quantile_0.950)/Ne),
+        col = adjustcolor("gold4",alpha=0.3), border=F) 
+
+plot(c1_sites$pos, rep(1, nsites), type='n', ylim=c(1,50), xlim=c(7200, 19000), xlab = "Position", ylab = "Individual ID") +
+  # plot_snps(c1_sites, 1, "darkgrey") +
+  # plot_snps(c1_sites, 0, "grey") +
+  points(rep(c1_bl50[[1]]$pos, each = 50), rep(1:50, nrow(c1_bl50[[1]])) , col=adjustcolor('red', alpha=0.7), pch=19, cex = 0.7) +
+  points(rep(c1_bl50[[2]]$pos, each = 50), rep(1:50, nrow(c1_bl50[[2]])) , col=adjustcolor(col='yellow', alpha=0.7), pch=19, cex = 0.7) +
+  points(rep(c1_bl50[[4]]$pos, each = 50), rep(1:50, nrow(c1_bl50[[4]])) , col=adjustcolor(col='pink', alpha=0.7), pch=19, cex = 0.7) +
+  points(rep(c1_bl50[[5]]$pos, each = 50), rep(1:50, nrow(c1_bl50[[5]])) , col=adjustcolor(col='limegreen', alpha=0.7), pch=19, cex = 0.7) +
+  points(rep(c1_bl50[[6]]$pos, each = 50), rep(1:50, nrow(c1_bl50[[6]])) , col=adjustcolor(col='darkgreen', alpha=0.7), pch=19, cex = 0.7)
+    
+    
+plot((c1_hap50[[1]]$chromStart), c1_hap50[[1]]$length, type="n", log="y", ylim=c(0.1,10), xlab="", ylab="Time (Ne)") +
+  plot_hapblock(c1_hap50_all[[1]], "red", F) +
+  plot_hapblock(c1_hap50_all[[2]], "yellow", F) +
+  plot_hapblock(c1_hap50_all[[4]], "pink", F) +
+  plot_hapblock(c1_hap50_all[[5]], "limegreen", F) +
+  plot_hapblock(c1_hap50_all[[6]], "darkgreen", F) #+
+  #plot_hapblock(c1_hap47_all, "red", F)
+```
+
+
+
+
+
+# Contig 1808 MASKED
+```{r}
+c1_masked_mcmc <- "./Contig1808_masked_run1/sample/Contig1808.stats"
+plotTraces(c1_masked_mcmc, stats=c("prior", "likelihood", "joint", "recombs", "arglen", "noncompats"))
+#burin5000 used
+```
+```{r}
+c1_masked_tmrca_all <- readArgSummary("./Contig1808_masked_run1/Contig1808.tmrca.samples_Haplo.bed.gz")
+c1_masked_tmrca_egg <- readArgSummary("./Contig1808_masked_run1/Contig1808.tmrca.egg.bed.gz")
+c1_masked_tmrca_brood <- readArgSummary("./Contig1808_masked_run1/Contig1808.tmrca.brood.bed.gz")
+Ne=2e5
+```
+
+```{r fig1, fig.width=15, fig.height=5}
+plot(c1_masked_tmrca_egg$chromStart/1e3, c1_masked_tmrca_egg$tmrca_quantile_0.500/Ne, type="l", log="y", ylim=c(0.1,10), col="gold4", lwd=3, xlab="Position (kb)", main="Contig1808 masked", ylab="TMRCA median (Ne)")
+lines(c1_masked_tmrca_brood$chromStart/1e3, c1_masked_tmrca_brood$tmrca_quantile_0.500/Ne, type="l", log="y", col="blue", lwd=3)
+#lines(c1_masked_tmrca_all$chromStart/1e3, c1_masked_tmrca_all$tmrca_quantile_0.500/Ne, type="l", log="y", col="black", lwd=1)
+polygon(x = c(c1_masked_tmrca_brood$chromStart/1e3, rev(c1_masked_tmrca_brood$chromStart/1e3)),
+        y = c(c1_masked_tmrca_brood$tmrca_quantile_0.050/Ne, rev(c1_masked_tmrca_brood$tmrca_quantile_0.950)/Ne),
+        col = adjustcolor("blue",alpha=0.3), border=F) 
+polygon(x = c(c1_masked_tmrca_egg$chromStart/1e3, rev(c1_masked_tmrca_egg$chromStart/1e3)),
+        y = c(c1_masked_tmrca_egg$tmrca_quantile_0.050/Ne, rev(c1_masked_tmrca_egg$tmrca_quantile_0.950)/Ne),
+        col = adjustcolor("gold4",alpha=0.3), border=F) 
+```
+
+
+```{r}
+c1_tmrca_all <- readArgSummary("./Contig1808_run1/Contig1808.tmrca.samples_Haplo.bed.gz")
+c1_tmrca_egg <- readArgSummary("./Contig1808_run1/Contig1808.tmrca.egg.bed.gz")
+c1_tmrca_brood <- readArgSummary("./Contig1808_run1/Contig1808.tmrca.brood.bed.gz")
+Ne=2e5
+```
+
+```{r fig1, fig.width=15, fig.height=5}
+plot(c1_tmrca_egg$chromStart/1e3, c1_tmrca_egg$tmrca_quantile_0.500/Ne, type="l", log="y", ylim=c(0.05,7), lwd=1, xlab="Position (kb)", main="Contig1808 FULL", ylab="TMRCA median (Ne)")
+lines(c1_tmrca_brood$chromStart/1e3, c1_tmrca_brood$tmrca_quantile_0.500/Ne, type="l", log="y", col="blue", lwd=3)
+lines(c1_tmrca_all$chromStart/1e3, c1_tmrca_all$tmrca_quantile_0.500/Ne, type="l", log="y", col="gold4", lwd=3)
+
+```
+
+```{r fig1, fig.width=15, fig.height=5}
+plot(con1_all$chromStart/1e3, con1_all$tmrca_quantile_0.500/Ne, type="l", log="y", ylim=c(0.3,7), lwd=1, xlab="Position (kb)", main="Contig1808", ylab="TMRCA median (Ne)")
+lines(con1_brood$chromStart/1e3, con1_brood$tmrca_quantile_0.500/Ne, type="l", log="y", col="blue", lwd=3)
+lines(con1_all$chromStart/1e3, con1_all$tmrca_quantile_0.500/Ne, type="l", log="y", col="gold4", lwd=3)
+lines(con1_all$chromStart/1e3, con1_all$tmrca_quantile_0.500/Ne, type="l", log="y", lwd=1)
+```
+
+
+# Contig 3201 FULL
+
+```{r}
+#Read sample IDs (automate _1 and _2 for haplotypes)
+
+c2_argID <- read.table("./sample/Contig3201_argID_hap.txt", header=T)
+c2_argID$argID <- 0:(nrow(c2_argID)-1)
+colnames(c2_argID) <- c("ID", "argID")
+c2_snail <- merge(snail[,1:4], c2_argID, by = "ID")
+c2_snail <- c2_snail[order(c2_snail$order),]
+
+c2_eggID <- c2_snail[which(c2_snail$type == "egg"), "argID"]
+c2_broodID <- c2_snail[which(c2_snail$type == "brooder"), "argID"]
+```
+
+```{r}
+# Make list of inidviduals to asign colours for plotting trees ----
+c2_indColour=list()
+for (id in c2_snail$ID){c2_indColour[[id]] <- c2_snail[which(c2_snail$ID == id),"col"]}
+#indColour
+
+c2_indColour_argIDs <- c2_indColour
+names(c2_indColour_argIDs) <- as.character(c2_snail[,"argID"])
+#indColour_argIDs
+```
+
+
+```{r}
+# Read sites (automate process)
+c2_sites <- readSites("VCFs/Contig3201.sites") #847sites
+#str(c2_sites)
+c2_sites <- data.frame(pos=c2_sites$pos, c2_sites$sites)
+c2_sites$snpID <- seq(nrow(c2_sites))
+c2_sites <- c2_sites[,c("snpID","pos",snail$ID)]
+
+for (snpID in c(1:nrow(c2_sites))){
+  cat(snpID, c2_sites[snpID,'pos'])
+  alleles <- c2_sites[snpID,snail$ID]
+
+  majAllele <- levels(as.factor(alleles))[which.max(table(as.factor(alleles)))]
+  minAllele <- levels(as.factor(alleles))[which.min(table(as.factor(alleles)))]
+  
+  c2_sites[snpID,which(c2_sites[snpID,] == majAllele)] <- 1
+  c2_sites[snpID,which(c2_sites[snpID,] == minAllele)] <- 0
+}
+
+str(c2_sites)
+```
+
+```{r fig2, fig.width=20, fig.height=8}
+par(mfrow=c(2,1))
+
+nsites <- nrow(c2_sites)
+plot(c2_sites$pos, rep(1, nsites), type='n', ylim=c(1,100), xlab = "Position", ylab = "Individual ID") +
+  plot_snps(c2_sites, 1, "grey") +
+  plot_snps(c2_sites, 0, "blue") +
+  abline(v=c(56000, 61000), lwd=2)
+  # for(i in 1:100){lines(1:30000, rep(i, 30000), lty=2, col="grey70")}
+
+plot(c2_sites$pos, rep(1, nsites), type='n', ylim=c(1,100), xlim=c(56000, 61000), xlab = "Position", ylab = "Individual ID") +
+  plot_snps(c2_sites, 1, "grey") +
+  plot_snps(c2_sites, 0, "blue") #+
+  # for(i in 1:100){lines(1:30000, rep(i, 30000), lty=2, col="grey70")}
+```
+
+```{r}
+c2_mcmc <- "./Contig3201_run1/sample/Contig3201.stats"
+plotTraces(c2_mcmc, stats=c("prior", "likelihood", "joint", "recombs", "arglen", "noncompats"))
+#burin5000 used
+```
+
+```{r}
+c2_tmrca_all <- readArgSummary("./Contig3201_run1/Contig3201.tmrca.samples_Haplo.bed.gz")
+c2_tmrca_egg <- readArgSummary("./Contig3201_run1/Contig3201.tmrca.egg.bed.gz")
+c2_tmrca_brood <- readArgSummary("./Contig3201_run1/Contig3201.tmrca.brood.bed.gz")
+Ne=2e5
+```
+
+```{r fig1, fig.width=20, fig.height=4}
+par(mfrow=c(1,1))
+plot(c2_tmrca_egg$chromStart/1e3, c2_tmrca_egg$tmrca_quantile_0.500/Ne, type="l", log="y", ylim=c(0.1,10), col="gold4", lwd=3, xlab="Position (kb)", main="Contig3201 FULL", ylab="TMRCA median (Ne)")
+lines(c2_tmrca_brood$chromStart/1e3, c2_tmrca_brood$tmrca_quantile_0.500/Ne, type="l", log="y", col="blue", lwd=3)
+#lines(c2_tmrca_all$chromStart/1e3, c2_tmrca_all$tmrca_quantile_0.500/Ne, type="l", log="y", col="black", lwd=1)
+polygon(x = c(c2_tmrca_brood$chromStart/1e3, rev(c2_tmrca_brood$chromStart/1e3)),
+        y = c(c2_tmrca_brood$tmrca_quantile_0.050/Ne, rev(c2_tmrca_brood$tmrca_quantile_0.950)/Ne),
+        col = adjustcolor("blue",alpha=0.3), border=F) 
+polygon(x = c(c2_tmrca_egg$chromStart/1e3, rev(c2_tmrca_egg$chromStart/1e3)),
+        y = c(c2_tmrca_egg$tmrca_quantile_0.050/Ne, rev(c2_tmrca_egg$tmrca_quantile_0.950)/Ne),
+        col = adjustcolor("gold4",alpha=0.3), border=F)
+
+```
+```{r fig, fig.height=8, fig.width=20}
+par(mfrow=c(2,1))
+plot(c2_tmrca_egg$chromStart/1e3, c2_tmrca_egg$tmrca_quantile_0.500/Ne, type="l", log="y", ylim=c(0.1,10), xlim=c(50,67), col="gold4", lwd=3, xlab="Position (kb)", main="Contig3201 FULL", ylab="TMRCA median (Ne)")
+lines(c2_tmrca_brood$chromStart/1e3, c2_tmrca_brood$tmrca_quantile_0.500/Ne, type="l", log="y", col="blue", lwd=3)
+#lines(c2_tmrca_all$chromStart/1e3, c2_tmrca_all$tmrca_quantile_0.500/Ne, type="l", log="y", col="black", lwd=1)
+polygon(x = c(c2_tmrca_brood$chromStart/1e3, rev(c2_tmrca_brood$chromStart/1e3)),
+        y = c(c2_tmrca_brood$tmrca_quantile_0.050/Ne, rev(c2_tmrca_brood$tmrca_quantile_0.950)/Ne),
+        col = adjustcolor("blue",alpha=0.3), border=F) 
+polygon(x = c(c2_tmrca_egg$chromStart/1e3, rev(c2_tmrca_egg$chromStart/1e3)),
+        y = c(c2_tmrca_egg$tmrca_quantile_0.050/Ne, rev(c2_tmrca_egg$tmrca_quantile_0.950)/Ne),
+        col = adjustcolor("gold4",alpha=0.3), border=F) 
+
+
+plot(c2_sites$pos, rep(1, nrow(c2_sites)), type='n', ylim=c(1,100), xlim=c(50000, 67000), xlab = "Position", ylab = "Individual ID") +
+  plot_snps(c2_sites, 1, "grey80") +
+  plot_snps(c2_sites, 0, "blue") 
+```
+
+
+```{r}
+## Read trees and SPRs
+# Read trees in the whole region
+tr2 <- read.table("./Contig3201_run1/sample/Contig3201.10000_trees.txt")
+colnames(tr2) <- c("event","chromStart","chromEnd","tree")
+str(tr2) #1185 trees in 30kb region
+
+# Read SPRs in the whole region
+spr2 <- read.table("./Contig3201_run1/sample/Contig3201.10000_SPR.txt")
+colnames(spr2) <- c("event","position", "recomb_node", "recomb_time", "coal_node", "coal_time")
+str(spr2)
+```
+
+```{r}
+## Trees in focal region
+c2_chromStart <- 50000
+c2_chromEnd <- 67000
+
+tr2_sub <- subset_genomic_interval(tr2, chromStart = c2_chromStart, chromEnd = c2_chromEnd)
+nrow(tr2_sub) #784 trees in 6kb region
+
+c2_sites_sub <- c2_sites[which(c2_sites$pos>=c2_chromStart & c2_sites$pos<=c2_chromEnd),]
+nrow(c2_sites_sub) #556 SNPs - snpID 310-464
+```
+
+```{r}
+## Extracting edge information from each tree, and store them as a list
+tr2_sub_list <- extract_edges(tr2_sub, Ne)
+```
+
+```{r}
+## Extract trees at each SNP position
+tr2_snps <- extract_trees_at_SNPs(c2_sites_sub, tr2_sub, spr2)
+#rownames(tr1_snps) <- seq(nrow(tr1_snps))
+```
+
+```{r fig, fig.height=5, fig.width=20}
+## Plot all Trees
+par(mfrow=c(2, 7))
+for(i in 1:nrow(tr1_snps)){plotTree(tr1_snps$tree[i], leafCol = indColour_argIDs,  logScale = T, timeScale = 1/Ne, ylim=c(0.1,5))}
+# lapply(tr1_snps$tree, function(x){plotTree(x, leafCol = indColour_argIDs)})
+```
+
+```{r}
+## 
+timeScale = 1/Ne
+tr2_snps_list <- list()
+
+for (rowID in c(1:nrow(tr2_snps))){
+  
+  cat (rowID, tr2_snps$snpID[rowID], tr2_snps$pos[rowID],"\n")
+  alleles <- tr2_snps[rowID, c2_snail$ID]
+  
+  #majAllele <- levels(as.factor(alleles))[which.max(table(as.factor(alleles)))]
+  #minAllele <- levels(as.factor(alleles))[which.min(table(as.factor(alleles)))]
+  majClade_brood <- setdiff(names(alleles[which(alleles == 1)]), egg_layers[,1])
+  minClade_brood <- setdiff(brooders[,1], majClade_brood)
+  
+  majClade_broodID <- c2_snail[which(c2_snail$ID %in% majClade_brood),"argID"] # 0-indexed
+  tr2_snps$majClade_broodID[rowID] <- list(majClade_broodID)
+  tr2_snps$majAlleleCount_brood[rowID] <- length(tr2_snps$majClade_broodID[rowID][[1]]) 
+  
+  minClade_broodID <- c2_snail[which(c2_snail$ID %in% minClade_brood),"argID"] # 0-indexed
+  tr2_snps$minClade_broodID[rowID] <- list(minClade_broodID)
+  tr2_snps$minAlleleCount_brood[rowID] <- 50-tr2_snps$majAlleleCount_brood[rowID]
+  
+  ## make a function 
+  tr <- tr2_snps[rowID,"tree"]
+  tr.egg <- pruneTree(tree = tr, seqs = as.character(c2_eggID)) # 0-indexed
+  tr.brood <- pruneTree(tree = tr, seqs = as.character(c2_broodID)) # 0-indexed
+  
+  tr2_snps_list$tree[rowID] <- tr.brood
+  apeTree <- read.tree(text=tr.brood)
+  
+  ## Tree
+  nleaf <- length(apeTree$tip.label)
+  rootage <- getTreeDepth(apeTree)*timeScale
+  rootNode <- getRootNode(apeTree)
+  edge <- as.data.frame(apeTree$edge)
+  names(edge) <- c("anc", "dec")
+  edge$anc.label <- sapply(apeTree$edge[,1], select.tip.or.node, tree = apeTree)
+  edge$dec.label <- sapply(apeTree$edge[,2], select.tip.or.node, tree = apeTree)
+  
+  edge <- rbind(edge, data.frame(anc=-1, dec=rootNode, anc.label=-1, dec.label=rootNode))
+  nnode <- nrow(edge)
+  edge$length <- c(apeTree$edge.length*timeScale, max(maxtime - rootage, 1))
+  edge$depth <- rep(rootage, nnode)
+  for (i in 1:nnode) {j <- i
+    while (1) {if (edge$dec[j] == rootNode) break
+        edge$depth[i] <- edge$depth[i] - edge$length[j]
+        j <- which(edge[,"dec"] == edge[j,"anc"])}}
+  
+  edge[which(edge$anc == -1),"dec.label"] <- edge[1,"anc.label"]
+  # edge$tip.label <- rep("", nrow(edge))
+  # for (i in 1:length(apeTree$tip.label)){edge[edge$dec==i,"tip.label"] <- apeTree$tip.label[i]}
+
+  for (dec.nodeID in c(1:nrow(edge))){
+    decs <- Descendants(apeTree, edge$dec[dec.nodeID],"tips")[[1]]
+    edge$tips.from.dec[dec.nodeID] <- list(apeTree$tip.label[decs])
+    edge$majClade.node[dec.nodeID] <- all(as.character(majClade_broodID) %in% apeTree$tip.label[decs])
+    edge$minClade.node[dec.nodeID] <- ifelse(length(minClade_broodID) != 0, all(as.character(minClade_broodID) %in% apeTree$tip.label[decs]),'NA')
+  }
+  
+  tr2_snps_list$tree.attributes[[rowID]] <- data.frame(edge)
+  tr2_snps_list$snpID[[rowID]] <- tr2_snps$snpID[rowID]
+  majClade.node <- edge[which(edge$majClade.node==T),'dec.label']
+  #if (length(majClade.node)!=1){majClade.node <- edge[which(edge$anc != -1 & edge$majClade.node==T),'dec.label']}
+  if (length(majClade.node)!=1){majClade.node <- edge[which(edge$anc != -1 & edge$majClade.node==T),'dec.label']}
+  if (length(majClade.node)!=1){
+     for (i in majClade.node){
+      if (length(edge$tips.from.dec[i][[1]]) == length(minClade_broodID)){
+        majClade.node.final <- i
+      }
+    }
+  }else{majClade.node.final <- majClade.node}
+  
+  tr2_snps$majClade.node.depth[rowID] <- edge[which(edge$dec.label == majClade.node.final),'depth']
+  #tr1_snps$snpID[rowID] <- snpID
+}
+tr2_snps$node.jump <- c('NA',diff(floor(as.numeric(tr2_snps$majClade.node))))
+tr2_snps$depth.jump <- c('NA',diff(floor(tr2_snps$majClade.node.depth)))
+```
+
+```{r}
+table(tr2_snps$majAlleleCount_brood)
+nrow(tr2_snps)
+```
+```{r}
+#str(tr1_snps[,c(1,102,104,105,112:119)])
+# tr1_af45 <- tr1_snps[which(tr1_snps$majAlleleCount_brood == 45),-c(3:102,106)] 
+# tr1_af46 <- tr1_snps[which(tr1_snps$majAlleleCount_brood == 46),-c(3:102,106)]
+# tr1_af47 <- tr1_snps[which(tr1_snps$majAlleleCount_brood == 47),-c(3:102,106)] #YES
+# tr1_af48 <- tr1_snps[which(tr1_snps$majAlleleCount_brood == 48),-c(3:102,106)]
+# tr1_af49 <- tr1_snps[which(tr1_snps$majAlleleCount_brood == 49),-c(3:102,106)] #YES
+
+# tr1_af41 <- tr1_snps[which(tr1_snps$majAlleleCount_brood == 41),-c(3:102,106)] #YES
+# tr1_af45 <- tr1_snps[which(tr1_snps$majAlleleCount_brood == 45),-c(3:102,106)] #YES
+# tr1_af47 <- tr1_snps[which(tr1_snps$majAlleleCount_brood == 47),-c(3:102,106)] #YES
+# tr1_af48 <- tr1_snps[which(tr1_snps$majAlleleCount_brood == 48),-c(3:102,106)] #YES
+# tr1_af50 <- tr1_snps[which(tr1_snps$majAlleleCount_brood == 50),-c(3:102,106)] #YES
+
+```
+
+```{r}
+#tr1_af47
+#tr1_af49
+#tr1_af50
+```
+
+```{r}
+## getting uniqie edges for fixed alleles af50
+tr2_af50 <- tr2_snps[which(tr2_snps$majAlleleCount_brood == 50),-c(3:102,106)]
+tr2_af50$majClade.node.depth <- round(tr2_af50$majClade.node.depth,3)
+
+table(tr2_af50$majClade.node.depth) #considering 1,2,4,5,6 at least >2 SNPs
+
+c2_node_depths50 <- sort(unique(tr2_af50$majClade.node.depth))
+c2_indsALL <- c2_broodID
+
+c2_bl50 <- list()
+c2_hap50 <- list()
+c2_hap50_all <- list()
+
+for (i in seq(length(c2_node_depths50))){
+  c2_bl50[[i]] <- tr2_af50[which(tr2_af50$majClade.node.depth == c2_node_depths50[i]), c("pos","snpID")]
+  c2_hap50[[i]] <- find_hapblocks(c2_indsALL, c2_node_depths50[i], FALSE, tr2_sub_list)
+  c2_hap50_all[[i]] <- find_disjunct_hapblocks(c2_hap50[[i]]) 
+}
+```
+
+```{r}
+## getting uniqie edges for fixed alleles af25
+tr2_af25 <- tr2_snps[which(tr2_snps$majAlleleCount_brood == 25),-c(3:102,106)]
+tr2_af25$majClade.node.depth <- round(tr2_af25$majClade.node.depth,3)
+table(tr2_af25$majClade.node.depth)
+
+c2_bl25 <- tr2_af25[which(tr2_af25$majClade.node.depth == 3.127), c("pos","snpID")]
+c2_hap25 <- find_hapblocks(c(73, 82, 39, 19, 6, 59, 41, 90, 23, 8, 4, 50, 32, 61, 51, 93, 37, 72, 40, 35, 53, 99, 49, 14, 79 ), 3.127, FALSE, tr1_sub_list)
+#c1_hap48_all <- list()
+c2_hap25_all <- find_disjunct_hapblocks(c2_hap25)
+```
+
+```{r}
+#read tmrca from iter 10000
+c2_tmrca10000_all <- readArgSummary("./Contig3201_run1/Contig3201.10000.tmrca.samples_Haplo.bed.gz")
+c2_tmrca10000_egg <- readArgSummary("./Contig3201_run1/Contig3201.10000.tmrca.egg.bed.gz")
+c2_tmrca10000_brood <- readArgSummary("./Contig3201_run1/Contig3201.10000.tmrca.brood.bed.gz")
+```
+
+
+```{r fig, fig.height=12, fig.width=20}
+par(mfrow=c(3,1))
+plot(c2_tmrca10000_egg$chromStart/1e3, c2_tmrca10000_egg$tmrca_quantile_0.500/Ne, type="s", ylim=c(0.2,15), xlim=c(50,67), log="y", col="gold4", lwd=3, xlab="Position (kb)", main="Contig1808 FULL", ylab="TMRCA median (Ne)")
+lines(c2_tmrca10000_brood$chromStart/1e3, c2_tmrca10000_brood$tmrca_quantile_0.500/Ne, type="s", col="blue", lwd=3)
+#lines(c2_tmrca_all$chromStart/1e3, c2_tmrca_all$tmrca_quantile_0.500/Ne, type="l", log="y", col="black", lwd=1)
+polygon(x = c(c2_tmrca_brood$chromStart/1e3, rev(c2_tmrca_brood$chromStart/1e3)),
+        y = c(c2_tmrca_brood$tmrca_quantile_0.050/Ne, rev(c2_tmrca_brood$tmrca_quantile_0.950)/Ne),
+        col = adjustcolor("blue",alpha=0.3), border=F) 
+polygon(x = c(c2_tmrca_egg$chromStart/1e3, rev(c2_tmrca_egg$chromStart/1e3)),
+        y = c(c2_tmrca_egg$tmrca_quantile_0.050/Ne, rev(c2_tmrca_egg$tmrca_quantile_0.950)/Ne),
+        col = adjustcolor("gold4",alpha=0.3), border=F) 
+
+plot(c2_sites$pos, rep(1, nrow(c2_sites)), type='n', ylim=c(1,50), xlim=c(50000,67000), xlab = "Position", ylab = "Individual ID") +
+  # plot_snps(c2_sites, 1, "darkgrey") +
+  # plot_snps(c2_sites, 0, "grey") +
+  points(rep(c2_bl50[[1]]$pos, each = 50), rep(1:50, nrow(c2_bl50[[1]])) , col=adjustcolor('red', alpha=0.7), pch=19, cex = 0.7) +
+  #points(rep(c2_bl50[[2]]$pos, each = 50), rep(1:50, nrow(c2_bl50[[2]])) , col=adjustcolor(col='yellow', alpha=0.7), pch=19, cex = 0.7) +
+  points(rep(c2_bl50[[3]]$pos, each = 50), rep(1:50, nrow(c2_bl50[[3]])) , col=adjustcolor(col='pink', alpha=0.7), pch=19, cex = 0.7) +
+  points(rep(c2_bl50[[4]]$pos, each = 50), rep(1:50, nrow(c2_bl50[[4]])) , col=adjustcolor(col='limegreen', alpha=0.7), pch=19, cex = 0.7) +
+  points(rep(c2_bl50[[5]]$pos, each = 50), rep(1:50, nrow(c2_bl50[[5]])) , col=adjustcolor(col='darkgreen', alpha=0.7), pch=19, cex = 0.7) +
+  points(rep(c2_bl50[[6]]$pos, each = 50), rep(1:50, nrow(c2_bl50[[6]])) , col=adjustcolor('cyan', alpha=0.7), pch=19, cex = 0.7) +
+  #points(rep(c2_bl50[[7]]$pos, each = 50), rep(1:50, nrow(c2_bl50[[7]])) , col=adjustcolor('red', alpha=0.7), pch=19, cex = 0.7) +
+  #points(rep(c2_bl50[[8]]$pos, each = 50), rep(1:50, nrow(c2_bl50[[8]])) , col=adjustcolor('red', alpha=0.7), pch=19, cex = 0.7) +
+  points(rep(c2_bl50[[9]]$pos, each = 50), rep(1:50, nrow(c2_bl50[[9]])) , col=adjustcolor('magenta', alpha=0.7), pch=19, cex = 0.7) +
+  points(rep(c2_bl50[[10]]$pos, each = 50), rep(1:50, nrow(c2_bl50[[10]])) , col=adjustcolor('yellow', alpha=0.7), pch=19, cex = 0.7) +
+  points(rep(c2_bl50[[11]]$pos, each = 50), rep(1:50, nrow(c2_bl50[[11]])) , col=adjustcolor('orange', alpha=0.7), pch=19, cex = 0.7) +
+  #points(rep(c2_bl50[[12]]$pos, each = 50), rep(1:50, nrow(c2_bl50[[12]])) , col=adjustcolor('red', alpha=0.7), pch=19, cex = 0.7) +
+    
+    
+plot((c2_hap50[[1]]$chromStart), c2_hap50[[1]]$length, type="n", log="y", ylim=c(0.2,15), xlab="", ylab="Time (Ne)") +
+  plot_hapblock(c2_hap50_all[[1]], "red", F) +
+  plot_hapblock(c2_hap50_all[[3]], "pink", F) +
+  plot_hapblock(c2_hap50_all[[4]], "limegreen", F) +
+  plot_hapblock(c2_hap50_all[[5]], "darkgreen", F) +
+  plot_hapblock(c2_hap50_all[[6]], "cyan", F) +
+  plot_hapblock(c2_hap50_all[[9]], "magenta", F) +
+  plot_hapblock(c2_hap50_all[[10]], "yellow", F) +
+  plot_hapblock(c2_hap50_all[[11]], "orange", F)
+```
+
+
+# Contig 3201 MASKED
+```{r}
+c2_masked_mcmc <- "./Contig3201_masked_run2/sample/Contig3201.stats"
+plotTraces(c2_masked_mcmc, stats=c("prior", "likelihood", "joint", "recombs", "arglen", "noncompats"))
+#burin5000 used
+```
+```{r}
+c2_masked_tmrca_all <- readArgSummary("./Contig3201_masked_run2/Contig3201.tmrca.samples_Haplo.bed.gz")
+c2_masked_tmrca_egg <- readArgSummary("./Contig3201_masked_run2/Contig3201.tmrca.egg.bed.gz")
+c2_masked_tmrca_brood <- readArgSummary("./Contig3201_masked_run2/Contig3201.tmrca.brood.bed.gz")
+Ne=2e5
+```
+
+```{r fig1, fig.width=15, fig.height=5}
+plot(c2_masked_tmrca_egg$chromStart/1e3, c2_masked_tmrca_egg$tmrca_quantile_0.500/Ne, type="l", log="y", ylim=c(0.1,10), col="gold4", lwd=3, xlab="Position (kb)", main="Contig3201 MASKED", ylab="TMRCA median (Ne)")
+lines(c2_masked_tmrca_brood$chromStart/1e3, c2_masked_tmrca_brood$tmrca_quantile_0.500/Ne, type="l", log="y", col="blue", lwd=3)
+#lines(c2_masked_tmrca_all$chromStart/1e3, c2_masked_tmrca_all$tmrca_quantile_0.500/Ne, type="l", log="y", col="black", lwd=1)
+
+polygon(x = c(c2_masked_tmrca_brood$chromStart/1e3, rev(c2_masked_tmrca_brood$chromStart/1e3)),
+        y = c(c2_masked_tmrca_brood$tmrca_quantile_0.050/Ne, rev(c2_masked_tmrca_brood$tmrca_quantile_0.950)/Ne),
+        col = adjustcolor("blue",alpha=0.3), border=F) 
+polygon(x = c(c2_masked_tmrca_egg$chromStart/1e3, rev(c2_masked_tmrca_egg$chromStart/1e3)),
+        y = c(c2_masked_tmrca_egg$tmrca_quantile_0.050/Ne, rev(c2_masked_tmrca_egg$tmrca_quantile_0.950)/Ne),
+        col = adjustcolor("gold4",alpha=0.3), border=F) 
+```
+
+```{r fig2, fig.width=15, fig.height=5}
+plot(con1_egg$chromStart/1e3, con1_egg$tmrca_mean/Ne, type="l", log="y", ylim=c(0.1,10), col="gold4", lwd=3, xlab="Position (kb)", main="Contig1808", ylab="TMRCA mean (Ne)")
+lines(con1_brood$chromStart/1e3, con1_brood$tmrca_mean/Ne, type="l", log="y", col="blue", lwd=3)
+lines(con1_all$chromStart/1e3, con1_all$tmrca_mean/Ne, type="l", log="y", lty=1)
+```
+
+```{r}
+con2_egg <- read.table("/nfs/scistore18/bartogrp/apal/Littorina/HaploBlocks/Contig3201_masked_run1/tmrca.egg.bed")
+colnames(con2_egg) <- header_names
+con2_brood <- read.table("/nfs/scistore18/bartogrp/apal/Littorina/HaploBlocks/Contig3201_masked_run1/tmrca.brood.bed")
+colnames(con2_brood) <- header_names
+con2_all <- read.table("/nfs/scistore18/bartogrp/apal/Littorina/HaploBlocks/Contig3201_masked_run1/tmrca.all.bed")
+colnames(con2_all) <- header_names
+
+```
+
+```{r fig3, fig.width=15, fig.height=5}
+plot(con2_all$chromStart/1e3, con2_all$tmrca_quantile_0.500/Ne, type="l", log="y", ylim=c(0.3,7), lwd=1, xlab="Position (kb)", main="Contig3201", ylab="TMRCA median (Ne)")
+lines(con2_brood$chromStart/1e3, con2_brood$tmrca_quantile_0.500/Ne, type="l", log="y", col="blue", lwd=3)
+lines(con2_all$chromStart/1e3, con2_all$tmrca_quantile_0.500/Ne, type="l", log="y", col="gold4", lwd=3)
+lines(con2_all$chromStart/1e3, con2_all$tmrca_quantile_0.500/Ne, type="l", log="y", lwd=1)
+```
+
+```{r}
+con2_egg <- read.table("/nfs/scistore18/bartogrp/apal/Littorina/HaploBlocks/Contig3201_masked_run1/tmrca.egg.bed")
+colnames(con2_egg) <- header_names
+con2_brood <- read.table("/nfs/scistore18/bartogrp/apal/Littorina/HaploBlocks/Contig3201_masked_run1/tmrca.brood.bed")
+colnames(con2_brood) <- header_names
+con2_all <- read.table("/nfs/scistore18/bartogrp/apal/Littorina/HaploBlocks/Contig3201_masked_run1/tmrca.all.bed")
+colnames(con2_all) <- header_names
+```
+
+```{r fig3, fig.width=15, fig.height=5}
+plot(con2_all$chromStart/1e3, con2_all$tmrca_quantile_0.500/Ne, type="l", log="y", ylim=c(0.3,7), lwd=1, xlab="Position (kb)", main="Contig3201", ylab="TMRCA median (Ne)")
+lines(con2_brood$chromStart/1e3, con2_brood$tmrca_quantile_0.500/Ne, type="l", log="y", col="blue", lwd=3)
+lines(con2_all$chromStart/1e3, con2_all$tmrca_quantile_0.500/Ne, type="l", log="y", col="gold4", lwd=3)
+lines(con2_all$chromStart/1e3, con2_all$tmrca_quantile_0.500/Ne, type="l", log="y", lwd=1)
+```

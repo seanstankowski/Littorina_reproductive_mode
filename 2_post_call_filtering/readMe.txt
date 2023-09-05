@@ -1,0 +1,1 @@
+This folder contains two files. The first ‘Filtering.txt’ contains all of the steps that were used to go from a raw VCF file to the dataset that we analysed. The second file ‘VCF_stats contains the output of bcftools stats, which provides descriptive statistics about the final data VCF file. 

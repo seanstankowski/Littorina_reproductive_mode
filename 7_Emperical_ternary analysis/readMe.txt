@@ -1,0 +1,1 @@
+This file contains the code used to conduct the analyses in Fig 2, parts C and D. This includes the code need to produce the ternary histogram in the program ggtern, and the code used to conduct the symmetry analysis. Note that a TwisstNtern python package is currently underdevelopment: https://github.com/HilaLifchitz/TwisstNTern/tree/main

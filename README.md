@@ -6,7 +6,7 @@ This repository contains the code needed to conduct the analyses in our MS, curr
 
 doi: https://doi.org/10.1101/2023.02.13.528213
 
-Much of the code is available here, but below we provide links to other code repositories.
+Much of the code is available here, but below are link to other important repositories.
 
 The code used to conduct the differential gene expression analysis is available here:
 https://github.com/MartinGarlovsky/littorina_reprod_rnaseq
